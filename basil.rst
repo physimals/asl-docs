@@ -12,15 +12,14 @@ Bayesian Inference for Arterial Spin Labelling MRI
 
 Arterial Spin Labeling (ASL) MRI is a non-invasive method for the quantification 
 of perfusion. Analysis of ASL data typically requires the inversion of a kinetic 
-model of label inflow along with a separate calculation of the equilibrium 
-magnetization of arterial blood. The BASIL toolbox provides a means to do this 
-based on Bayeisan inference principles. The method was orginally developed for 
+model of labeled blood-water inflow along with a separate calculation of the equilibrium 
+magnetization of arterial blood. The BASIL toolbox provides the tools to do this 
+based on Bayeisan inference principles. The toolbox was orginally developed for 
 multi delay (inversion time) data where it can be used to greatest effect, but 
 is also sufficiently fleixble to deal with the widely used single delay form 
 of acquisition.
 
-If you have resting ASL data with only a single inversion time then you can 
-still use the tools in BASIL for perfusion quantification. If you want to 
+If you want to 
 perform analysis of a functional experiment with ASL data, i.e. one where 
 you want to use a GLM, then you should consult the perfusion section of 
 `FEAT <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT/UserGuide>`_, 
@@ -28,9 +27,9 @@ or if you have dual-echo (combined BOLD and ASL) data then consult
 `FABBER <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FABBER>`_.
 
 For single delay ASL data kinetic model inversion is realtively trivial and 
-solutions to the standard model have been described int he literature. However,
-it is becoming increasingly common to aquire ASL data at multiple times 
-post-inversion and fit the resultant data to a kinetic curve model. This 
+solutions to the standard model have been described in the literature. However,
+there are various advantages to aquiring ASL data at multiple times 
+post-inversion and fitting the resultant data to a kinetic model. This 
 permits problems in perfusion estimation associated with variable bolus arrival 
 time to be avoided, since this becomes a paramter of the model whose value is 
 determined from the data. Commonly the model fitting will be performed with a 
@@ -56,8 +55,8 @@ technique employed by BASIL.
 Pre-release
 ===========
 
-A pre-release of the latest version of the BASIL tools, inlcuding the new GUI as 
-demonstrated at ISMRM, can be found by following the link below. Use with caution, 
+The documentation found here relates to the version of BASIL found in
+FSL 6.0. A pre-release of the latest version of the BASIL tools, inlcuding the new GUI, can be found by following the link below. Use with caution, 
 as this is still under development!
 
 https://github.com/ibme-qubic/oxford_asl/releases
@@ -79,19 +78,16 @@ registration of the data. This will generally be the first place to go for most 
 who want to do processing of ASL data.
 
  - Asl (Asl_gui) - The graphical user interface that brings the BASIL tools together 
-   in one place. [BETA from FSL 5.0.3 onward]
+   in one place.
 
  - Oxford_asl - A command line interface for most common ASL perfusion analysis.
 
-(Note: there are a couple of changes in oxford_asl in the FSL 5.0.6 release that might 
-affect perfusion quantification compared to previous versions - see the user guide for more 
-information)
 
 The BASIL toolset
 -----------------
 
- - BASIL (itself) - this is the core tool that performs kinetic-model inversion to the 
-   data using a Bayesian algorithm. You should only need to use it directly for more 
+ - BASIL (itself) - this is the core tool that performs kinetic-model inversion with the 
+   data using Bayesian inference. You should only need to use it directly for more 
    custom analyses than that offered by oxford_asl/Asl_gui.
  - QUASIL - A special version of BASIL optimised for QUASAR ASL data, includes model-based 
    or model-free analyses along with calibration.
@@ -104,6 +100,26 @@ The BASIL toolset
    into oxford_asl and Asl_gui.
  - asl_file - a command line tol for the manipulation of ASL data files that respects the 
    normal structure of ASL data.
+
+Further Reading
+============
+
+To learn more about ASL, acquisition choices, the
+principles of analysis and how perfusion images can be used in group
+studies you might like to read:
+
+*Introduction to Perfusion Quantification using Arterial Spin
+Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
+Oxford University Press, 2017.
+
+Online examples are availble to go with this primer using the BASIL
+tools. These can be found on the Oxford Neuroimaging Primers website.
+
+The follwing book reamins a good introduciton to functional imaging
+including perfusion using ASL:
+
+*Introduction to Functional Magnetic Resonance Imaging: principles and
+Techniques*. Buxton, Cambridge University Press, 2009.
 
 References
 ==========
