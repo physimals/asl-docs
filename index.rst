@@ -8,8 +8,10 @@ Sections
    :maxdepth: 2
 
    basil
+   basilcmd_userguide
    basil_userguide
    basil_tutorial
-   basil_further_info
+   basilcmd_examples
+
 
 
