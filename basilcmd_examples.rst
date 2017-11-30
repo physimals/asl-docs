@@ -8,7 +8,11 @@ The following provides some examples of the usage of the BASIL command line tool
 Single PLD pcASL
 -------------------------------
 
-This example uses the single-PLD pcASL data from the Oxford Neuroimaging Primer: Introduction to Perfusion Quantification using Arterial Spin Labelling MRI. This can be found here.
+This example uses the single-PLD pcASL data from the Oxford
+Neuroimaging Primer: Introduction to Perfusion Quantification using
+Arterial Spin Labelling MRI. This can be found here_.
+
+.. _here: http://www.neuroimagingprimers.org/examples/introduction-to-perfusion-quantification-using-asl/
 
 Firstly, we need a mask in which to do the analysis. We will form a
 very simple mask using BET on the raw ASL data (more robust options
@@ -104,7 +108,7 @@ Multi PLD pcASL
 
 This example uses the multi-PLD pcASL data from the Oxford
 Neuroimaging Primer: Introduction to Perfusion Quantification using
-Arterial Spin Labelling MRI. This can be found here.
+Arterial Spin Labelling MRI. This can be found here_.
 
 As in the single-PLD example we need a brain mask::
 

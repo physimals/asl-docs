@@ -41,79 +41,68 @@ spatial regularisation of your data.
 
 BASIL can be called from the command line with the following information:
 
-- ``-i <file>`` Input file containing label-control differenced data.
-- ``-m <file>`` Brain mask for the data.
-- ``-o <dir>`` Name of directory into which results are to be written (default is a subdirectory called basil within the input directory).
-- ``-@ <file>`` Model and sequence parameters (to be passed to
-   FABBER).
-- ``--spatial`` Apply a spatial regularising prior to the estimated
-  perfusion image, this is preferable to spatial smoothing of the data
-  before analysis.
+-i <file>  Input file containing label-control differenced data.
+-m <file>  Brain mask for the data.
+-o <dir>  Name of directory into which results are to be written (default is a subdirectory called basil within the input directory).
+-@ <file>  Model and sequence parameters (to be passed to FABBER).
+--spatial  Apply a spatial regularising prior to the estimated perfusion image, this is preferable to spatial smoothing of the data before analysis.
   
 **Model options**
    
 BASIL provides a number of options to access more advanced parts of the kinetic curve models:
 
-- ``--infertau`` Infer the bolus duration from the data.
-  
-  - this option is particularly suitable for pASL data in which the
-    bolus duration is undefined (e.g. when not using QUIPSSII or
-    Q2TIPS)
+--infertau  Infer the bolus duration from the data.
+
+ this option is particularly suitable for pASL data in which the bolus duration is undefined (e.g. when not using QUIPSSII or Q2TIPS)
     
-- ``--inferart`` Include an arterial compartment in the model.
+--inferart  Include an arterial compartment in the model.
   
-  - this option will infer the arterial blood volume (aCBV) and
-    arterial blood arrival time.
-  - this option is suitable for data with multiple post-labelling
-    delays, especially where short PLD (or TIs) are used.
+  this option will infer the arterial blood volume (aCBV) and arterial blood arrival time.
+  this option is suitable for data with multiple post-labelling delays, especially where short PLD (or TIs) are used.
     
-- ``--inferpc`` Include a non-exchanging compartment in the model.
+--inferpc  Include a non-exchanging compartment in the model.
   
-  - this option might be used to model pre-capillary vessels assuming
-    minimal water exchange.
-  - this parameter adds a pre-capillary transit time parameter.
+  this option might be used to model pre-capillary vessels assuming minimal water exchange.
+  this parameter adds a pre-capillary transit time parameter.
     
-- ``--infert1`` Infer the values of T1 and T1b from the data.
+--infert1  Infer the values of T1 and T1b from the data.
   
-  - this option is primarily to account for uncertainty in the T1
-    values in the inference. ASL data does not have sufficient
-    sensitivity to T1 to estimate it accurately.
+  this option is primarily to account for uncertainty in the T1 values
+  in the inference. ASL data does not have sufficient sensitivity to T1 to estimate it accurately.
 
 **Advanced Options**
     
 BASIL also has a few more advanced options:
 
-- ``--t1im`` For loading a image of T1 (tissue) values to be used in
+--t1im  For loading a image of T1 (tissue) values to be used in
   the kinetic modelling (same resolution as the ASL data).
-- ``--fast=<value>`` Use a value of ``2`` to perform the analysis in a single step, mostly for use with --spatial.
-- ``--pvgm / --pvwm`` Perform partial volume correction with the
-  supplied partial volume estimates for grey and white matter (these
-  should be the same resolution as the ASL data).
+--fast=<value>  Use a value of ``2`` to perform the analysis in a single step, mostly for use with --spatial.
+--pvgm  Perform partial volume correction with the supplied partial volume estimates for grey and white matter (these should be the same resolution as the ASL data).
+--pvwm  White matter partial volume estimates (to go with ``--pvgm``).
+
+
 
 **Kinetc model choice**
     
 BASIL also offers a number of variants on the kinetic model used:
 
-- ``--disp=<option>`` Model of the label dispersion
+--disp=<option>  Model of the label dispersion
+
+  --disp=none  No dispersion.
+  --disp=gamma  Dispersion modelled according to a gamma dispersion kernel (vascular transport function).
+  --disp=gauss  Dispersion modelled according to a Gaussian dispersion kernel.
+  --disp=sgauss  Dispersion modelled according to a spatially (rather than temporally) derived Gaussian dispersion function.
   
-  - ``none`` No dispersion.
-  - ``gamma`` Dispersion modelled according to a gamma dispersion kernel (vascular transport function).
-  - ``gauss`` Dispersion modelled according to a Gaussian dispersion kernel.
-  - ``sgauss`` Dispersion modelled according to a spatially (rather
-    than temporally) derived Gaussian dispersion function.
-  
-- ``--exch=<option>`` Model of the excahnge of labeled water in the capilliary bed (selects the residue function).
-  
-  - ``mix`` Well-mixed single compartment
-  - ``simple`` Simple single compartment with T1 of blood (mimics the assumptions made in the white paper)
-  - ``2cpt`` A two compartment exchange model following Parkes & Tofts
-    (by default the slow solution is used).
-  - ``spa`` An implementation of the single pass approximation from St. Lawrence.
+--exch=<option>  Model of the excahnge of labeled water in the capilliary bed (selects the residue function).
+
+  --exch=mix  Well-mixed single compartment
+  --exch=simple  Simple single compartment with T1 of blood (mimics the assumptions made in the white paper)
+  --exch=2cpt  A two compartment exchange model following Parkes & Tofts (by default the slow solution is used).
+  --exch=spa  An implementation of the single pass approximation from St. Lawrence.
 
 BASIL assumes by default a single well-mixed tissue
 compartment (``--exch=mix``) and no dispersion of the bolus of labeled
 blood water (``--disp=none``).
-
 
 
 
@@ -148,13 +137,13 @@ A generic BASIL options file for pcASL (at 3T) might look like (preceding a line
 
 By default BASIL assumes that your data is pulsed ASL (pASL), if you are using continuous (cASL) or pseudo continuous (pcASL) labelling then you should set the cASL option:
 
-- ``--casl`` Use the cASL version of the model.
+--casl  Use the cASL version of the model.
 
 For the model you can set the appropriate values of T1 (and T1b) as well as the duration of the label as set by your sequence, if these are not specified in the parameter file then the default values are used:
 
-- ``--t1=<value>`` The value of T1 (default 1.3 seconds).
-- ``--t1b=<value>`` The value of T1b (default 1.65 seconds).
-- ``--t1wm=<value>`` The T1 value of white matter (default 1.1
+--t1=<value>  The value of T1 (default 1.3 seconds).
+--t1b=<value>  The value of T1b (default 1.65 seconds).
+--t1wm=<value>  The T1 value of white matter (default 1.1
    seconds) - only for partial volume correction.
 
 Some models variants will have their own specific options, see Kinetic Model.
@@ -168,31 +157,32 @@ contained in the file.    You should specify each PLD/TI individually in the ord
 
 Post Label delay(s)
 
-- ``--pld=<value>`` The time (in seconds) for the PLD in single-PLD cASL/pcASL.
-- ``--pld<n>=<value>`` The time (in seconds) of the *n*\ th PLD in multi-PLD cASL/pcASL.
+--pld=<value>  The time (in seconds) for the PLD in single-PLD cASL/pcASL.
+--pld1=<value>, --pld2=<value>, --pld-n-=<value>  The time (in seconds) of the *n*\ th PLD in multi-PLD cASL/pcASL.
 
 Inversion time(s)
    
-- ``--ti<n>=<value>`` The time (in seconds) of the *n*\ th TI for multi-TI pASL.
+--ti1=<value>, --ti2=<value>, --ti-n-=<value>  The time (in seconds) of the *n*\ th TI for multi-TI pASL.
 
 Label duration(s)
    
-- ``--tau=<value>`` Label bolus duration (default is infinite).
-- A fixed bolus duration is set in any cASL/pcASL implementation.
-
-  - For pASL a fixed bolus duration is often implemented using QUIPSS2 for example. If the bolus length is not fixed, e.g. FAIR then BASIL can estimate the bolus duration from multi-TI data if you use the ``infertau`` option when calling BASIL.
-     
-- ``--tau<n>=<value>`` Label duration for the nth PLD
+--tau=<value>  Label bolus duration (default is infinite).
+--tau1=<value>, --tau2=<value>, --tau-n-=<value>  Label duration for the nth PLD
     measurement. Used where pcASL has been applied with different
     label durations.
 
+A fixed bolus duration is set in any cASL/pcASL implementation.
+For pASL a fixed bolus duration is often implemented using QUIPSS2 for example. If the bolus length is not fixed, e.g. FAIR then BASIL can estimate the bolus duration from multi-TI data if you use the ``infertau`` option when calling BASIL.
+     
+
+
 Look-locker readout (for multi-PLD/TI)
     
-- ``-FA`` The flip angle in a Look-Locker readout scheme.
+--FA=<value>  The flip angle in a Look-Locker readout scheme.
 
-   Flow suppression (mutlple phases)
+Flow suppression (multiple phases)
    
-- ``--crush<n>=<value>`` Specification of the flow suppressing
+--crush<n>=<value>  Specification of the flow suppressing
    crusher direction for the nth PLD/TI. Any one of ``xyz, -xyz, x-yz,
    -x-yz``.
 
@@ -211,23 +201,22 @@ and you tell BASIL the number of cycles to expect,  you shoud specify
 the appropriate **single** PLD
 and label duration values.
 
-- ``--hadamard=<value>`` Labeling has been performed using hadamard
+--hadamard=<value>  Labeling has been performed using hadamard
   encoding with the number of cycles specified, and the data has not
   been 'decoded' prior to being input to BASIL.
   
-  - For this analysis it is necessary to also infer the static tissue
-    component (that would otherwise have been removed during
-    decoding). Thus the following options need to be added to the
-    basil options file: ``--incstattiss --inferstattiss``
+  For this analysis it is necessary to also infer the static tissue
+  component (that would otherwise have been removed during
+  decoding). Thus the following options need to be added to the basil options file: ``--incstattiss --inferstattiss``
       
-- ``--fullhad`` When the full Hadamard matrix is needed. This is for
+--fullhad  When the full Hadamard matrix is needed. This is for
   the case where the hadamard encoding included the first 'column' of
   all control boli. (If this doesn't mean anything to you, the chances
   are that it isn't relevant).
    
 Repeated measurements
 
-- ``--repeats=<n>`` The number of repeats of each PLD or TI in the
+--repeats=<n>  The number of repeats of each PLD or TI in the
    data (default is 1).
 
 BASIL process data where there are multiple measurements at the same
@@ -272,11 +261,10 @@ later steps, as models of increasingly complexity are fit as the step
 number is increased.
 
 Typical parameter names from BASIL are:
+
 - ``ftiss`` (relative) tissue perfusion.
-- ``delttiss`` arterial transit time (transit time or bolus arrival
-  time to the tissue component).
-- ``fblood`` (relative) arterial cerebral blood volume, the scaling
-  parameter of the arterial/macrovascular component.
+- ``delttiss`` arterial transit time (transit time or bolus arrival time to the tissue component). 
+- ``fblood`` (relative) arterial cerebral blood volume, the scaling parameter of the arterial/macrovascular component.
 - ``deltblood`` bolus arrival time (to arterial component).
 - ``fwm`` (relative) white matter perfusion.
 - ``deltwm`` arterial transit time for white matter.
