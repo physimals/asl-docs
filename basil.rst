@@ -86,19 +86,19 @@ who want to do processing of ASL data.
 The BASIL toolset
 -----------------
 
- - BASIL (itself) - this is the core tool that performs kinetic-model inversion with the 
-   data using Bayesian inference. You should only need to use it directly for more 
+ - ``BASIL`` (itself) - this is the core tool that performs kinetic-model inversion to the 
+   data using a Bayesian algorithm. You should only need to use it directly for more 
    custom analyses than that offered by oxford_asl/Asl_gui.
- - QUASIL - A special version of BASIL optimised for QUASAR ASL data, includes model-based 
+ - ``QUASIL`` - A special version of BASIL optimised for QUASAR ASL data, includes model-based 
    or model-free analyses along with calibration.
- - asl_calib - this tool takes a supplied calibration volume and calculates the 
+ - ``asl_calib`` - this tool takes a supplied calibration volume and calculates the 
    magnetization of arterial blood allowing CBF to be quantified in absolute units. The 
    main functionality of asl_calib is built into oxford_asl, Asl_gui and QUASIL, but 
    more options are available when using it directly.
- - asl_reg - this tool is designed to assist in registration of (low resolution) ASL 
+ - ``asl_reg`` - this tool is designed to assist in registration of (low resolution) ASL 
    images to structural or standard brain images. The functionality of asl_reg is built 
    into oxford_asl and Asl_gui.
- - asl_file - a command line tol for the manipulation of ASL data files that respects the 
+ - ``asl_file`` - a command line tol for the manipulation of ASL data files that respects the 
    normal structure of ASL data.
 
 Further Reading

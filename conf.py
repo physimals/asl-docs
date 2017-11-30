@@ -36,7 +36,7 @@ extensions = []
 templates_path = ['_templates']
 
 # The master toctree document.
-master_doc = 'asl'
+master_doc = 'index'
 
 # General information about the project.
 project = u'ASL documentation'
