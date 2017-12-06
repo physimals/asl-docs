@@ -8,10 +8,13 @@ Sections
    :maxdepth: 2
 
    basil
+   oxasl
+   oxasl_userguide
+   basilcmd
    basilcmd_userguide
-   basil_userguide
-   basil_tutorial
    basilcmd_examples
+   aslfile
+   aslfile_userguide
 
 
 
