@@ -5,16 +5,16 @@ Sections
 --------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    basil
    oxasl
-     oxasl_userguide
+   oxasl_userguide
    basilcmd
-     basilcmd_userguide
-     basilcmd_examples
+   basilcmd_userguide
+   basilcmd_examples
    aslfile
-     aslfile_userguide
+   aslfile_userguide
 
 
 
