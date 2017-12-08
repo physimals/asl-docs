@@ -26,12 +26,12 @@ you want to use a GLM, then you should consult the perfusion section of
 or if you have dual-echo (combined BOLD and ASL) data then consult 
 `FABBER <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FABBER>`_.
 
-For single delay ASL data kinetic model inversion is realtively trivial and 
+For single delay ASL data kinetic model inversion is relatively trivial and 
 solutions to the standard model have been described in the literature. However,
 there are various advantages to aquiring ASL data at multiple times 
 post-inversion and fitting the resultant data to a kinetic model. This 
 permits problems in perfusion estimation associated with variable bolus arrival 
-time to be avoided, since this becomes a paramter of the model whose value is 
+time to be avoided, since this becomes a parameter of the model whose value is 
 determined from the data. Commonly the model fitting will be performed with a 
 least squares technique providing parameter estimates, e.g. perfusion and bolus 
 arrival time. In contrast to this BASIL uses a (fast) Bayesian inference method 
@@ -98,8 +98,10 @@ The BASIL toolset
  - ``asl_reg`` - this tool is designed to assist in registration of (low resolution) ASL 
    images to structural or standard brain images. The functionality of asl_reg is built 
    into oxford_asl and Asl_gui.
- - ``asl_file`` - a command line tol for the manipulation of ASL data files that respects the 
-   normal structure of ASL data.
+ - ``asl_file`` - a command line tool for the manipulation of ASL data
+   files, particulary designed to cope with the complex strcuture of
+   interleaved lable and control images combined with muliple
+   post-labeling delays.
 
 Further Reading
 ============

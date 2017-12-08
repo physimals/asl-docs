@@ -7,13 +7,13 @@ Oxford_ASL
    
    oxasl_userguide
    
-Oxford_ASL is an automated command line utility that can processes ASL
+Oxford_ASL is an automated command line utility that can process ASL
 data to produce a calibrated map of resting state tissue perfusion. It
 also includes a range of other useful analysis methods inlcuding
 amongst others:
 
 - motion correction
-- registration to a strctural image (and thereby a template space)
+- registration to a structural image (and thereby a template space)
 - partial volume correction
 - distorition correction
 
@@ -30,7 +30,7 @@ and control pairs). In practice you will also most probably want:
 
 - *a calibration image*: normally a proton-density-weighted image (or
   a close match) acquired with the same readout parameters as the main
-  ASL data. Only once you have a calibraiton iamge can you get
+  ASL data. Only once you have a calibration image can you get
   perfusion in absolute units.
 - *a structural image*: it is helpful to have a structral image to pass
   to ``oxford_asl`` and if your data incldues this we strongly suggest
@@ -54,7 +54,7 @@ is availabe as part of the primer:
 Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
 Oxford University Press, 2017.
 
-The examples themselves are avaialbe freely online at the primer
+The examples themselves are freely available online at the primer
 website: neuorimagingprimers.org, you can access the ASL examples
 directly here_.
 
@@ -62,8 +62,8 @@ directly here_.
 
 Things to note
 -------------------------
-To produce the most robust analysis posisble ``oxford_asl`` includes a
-number of things in the overll analysis pipeline that you might want
+To produce the most robust analysis possible ``oxford_asl`` includes a
+number of things in the overall analysis pipeline that you might want
 to be aware of:
 
 - *spatial regularisation*: this feature is now enabled by default for
@@ -77,7 +77,7 @@ to be aware of:
   poor there will be an impact on the quality of the mask. Where no
   structural information is provided, the mask will be derived from
   the ASL data via brain extraction, this can be somewhat variable
-  depending upon your data. It is thus **always** worht examining the
+  depending upon your data. It is thus **always** worth examining the
   mask created. ``oxford_asl`` provides the option to input your own
   mask where you are not satisfied with the one automatically
   generated or you need a specific mask for your study.
@@ -86,8 +86,8 @@ to be aware of:
   this to be reliable, as long as the perfusion image is of
   sufficient quality. In practice, an initial registration is done
   earlier in the pipeline using the raw ASL images and this is used
-  to in the mask generation step. You should **always** inspect the
-  quanlity of the final registered images.
+  in the mask generation step. You should **always** inspect the
+  quality of the final registered images.
 - *multiple repeats*: ASL data typically contains many repeats of the
   same measurement to increase the overall signal-to-noise ratio of
   the data. You should provide this data to ``oxford_asl``, and not
@@ -95,16 +95,16 @@ to be aware of:
   the tool). ``oxford_asl`` now inlcudes a pipeline where it intially
   analyses the data having done averaging over the repeats, followed
   by a subsequent analysis with all the data - to achieve both good
-  robustness and accuracy. If your data has already had the repeates
-  avareged, it is still perfectly reasonable to do analysis with
-  ``oxford_asl``, if you have very few measurements in the data pass
+  robustness and accuracy. If your data has already had the repeats
+  averaged, it is still perfectly reasonable to do analysis with
+  ``oxford_asl``, if you have very few measurements in the data to pass
   to ``oxford_asl`` you might want to use the special 'noise prior'
-  option.
+  option, since this sets information needed for spatial regularisation.
 - *Avanced analyses*: Partial volume correction, or analysis of the
   data into separate epochs, are avaialbe as advanecd supplementary
   analyses in ``oxford_asl``. If you choose these options
   ``oxford_asl`` will *always* run a conventional analysis first, this
-  is used to intialise the subsequent analyses. THis also means that
-  you can get both ceonventional and advanced results in a single run
+  is used to intialise the subsequent analyses. This also means that
+  you can get both conventional and advanced results in a single run
   of ``oxford_asl``.
 

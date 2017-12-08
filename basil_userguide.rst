@@ -87,7 +87,7 @@ Note you specfically have to chose the option to enable calibration. It is possi
 
 These options apply to the *Reference Region* mode of calibration.
 
-- *Type*: The reference tissue typw to use, one of: CSF/white matter/grey matter/none. For the first three options a mask will be generated automatically from the structural image (if you have specfied one). Otherwise you have to add your own mask in the Reference Tissue Mask box. Generally CSF or white matter are good choices, avoid grey matter due to partial volume effects.
+- *Type*: The reference tissue type to use, one of: CSF/white matter/grey matter/none. For the first three options a mask will be generated automatically from the structural image (if you have specfied one). Otherwise you have to add your own mask in the Reference Tissue Mask box. Generally CSF or white matter are good choices, avoid grey matter due to partial volume effects.
 - *Sequence TE*: This corrects for T2 differences between the reference tissue and the brain tissue (using a blood T2 value) using the TE of the data (which is assumed to be the same as any calibration image).
 - *Reference T2/ Blood T2*: T2 values, these are only relevant if you specify the TE of your sequence. T2 of the reference deafults to a CSF value. These should be replaced by T2* values if appropriate.
 - *Reference T1*: T1 of the reference tissue.

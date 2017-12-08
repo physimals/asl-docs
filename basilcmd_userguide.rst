@@ -2,27 +2,6 @@
 BASIL (command) User Guide
 ===========================
 
-The BASIL command line tool performs kinetic model inversion on ASL label-control difference data. It uses a common Bayesian inference method regardless of whether the data contains a single or multiple post labelling delays. BASIL includes a flexibly defined kinetic model appropriate for ASL kinetics that can be applied in humans and also other species - for more information see the model section.
-
-To run BASIL on resting-state ASL data you will need:
-
-- ASL difference data (single or multiple post labeling delays)
-  
-  - differencing of label and control images should have been done
-    already, see ``asl_file``.
-    
-- Details of the sequence, i.e. post-lableing delay(s), bolus
-  duration, etc.
-
------------------------
-  Multi-step inference
------------------------
-
-BASIL runs in multiple steps increasing the model complexity at each stage. A rough overview of the process would be:
-
-- STEP 1: Bayesian inference - Inference for CBF and arrival time (and optionally label duration)
-- STEP 2+: Bayesian inference - further parameters of the model can be inferred from the data, see below.
-
 -------------
 Calling BASIL
 -------------
@@ -44,30 +23,34 @@ BASIL can be called from the command line with the following information:
 -i <file>  Input file containing label-control differenced data.
 -m <file>  Brain mask for the data.
 -o <dir>  Name of directory into which results are to be written (default is a subdirectory called basil within the input directory).
--@ <file>  Model and sequence parameters (to be passed to FABBER).
+--optfile <file>  Model and sequence parameters (to be passed to
+FABBER) (was previouosly ``-@``).
 --spatial  Apply a spatial regularising prior to the estimated perfusion image, this is preferable to spatial smoothing of the data before analysis.
   
 **Model options**
    
-BASIL provides a number of options to access more advanced parts of the kinetic curve models:
+BASIL provides a number of options to access more advanced parts of
+the kinetic curve models, you should consult the literature to
+determine whether you want to explore these model options (the
+Further Reading and Literaure sections for BASIL should be a good start):
 
 --infertau  Infer the bolus duration from the data.
 
- this option is particularly suitable for pASL data in which the bolus duration is undefined (e.g. when not using QUIPSSII or Q2TIPS)
+ This option is particularly suitable for pASL data in which the bolus duration is undefined (e.g. when not using QUIPSSII or Q2TIPS)
     
 --inferart  Include an arterial compartment in the model.
   
-  this option will infer the arterial blood volume (aCBV) and arterial blood arrival time.
-  this option is suitable for data with multiple post-labelling delays, especially where short PLD (or TIs) are used.
+  This option will infer the arterial blood volume (aCBV) and arterial blood arrival time.
+  This option is suitable for data with multiple post-labelling delays, especially where short PLD (or TIs) are used.
     
 --inferpc  Include a non-exchanging compartment in the model.
   
-  this option might be used to model pre-capillary vessels assuming minimal water exchange.
-  this parameter adds a pre-capillary transit time parameter.
+  This option might be used to model pre-capillary vessels assuming minimal water exchange.
+  This parameter adds a pre-capillary transit time parameter.
     
 --infert1  Infer the values of T1 and T1b from the data.
   
-  this option is primarily to account for uncertainty in the T1 values
+  This option is primarily to account for uncertainty in the T1 values
   in the inference. ASL data does not have sufficient sensitivity to T1 to estimate it accurately.
 
 **Advanced Options**
@@ -76,7 +59,9 @@ BASIL also has a few more advanced options:
 
 --t1im  For loading a image of T1 (tissue) values to be used in
   the kinetic modelling (same resolution as the ASL data).
---fast=<value>  Use a value of ``2`` to perform the analysis in a single step, mostly for use with --spatial.
+--fast=<value>  Use a value of ``2`` to perform the analysis in a
+single step, mostly for use with --spatial. A value of ``1`` reduces
+the number of iterations performed in each step.
 --pvgm  Perform partial volume correction with the supplied partial volume estimates for grey and white matter (these should be the same resolution as the ASL data).
 --pvwm  White matter partial volume estimates (to go with ``--pvgm``).
 
@@ -93,18 +78,18 @@ BASIL also offers a number of variants on the kinetic model used:
   --disp=gauss  Dispersion modelled according to a Gaussian dispersion kernel.
   --disp=sgauss  Dispersion modelled according to a spatially (rather than temporally) derived Gaussian dispersion function.
   
---exch=<option>  Model of the excahnge of labeled water in the capilliary bed (selects the residue function).
+--exch=<option>  Model of the exchange of labeled water in the capilliary bed (selects the residue function).
 
   --exch=mix  Well-mixed single compartment
-  --exch=simple  Simple single compartment with T1 of blood (mimics the assumptions made in the white paper)
-  --exch=2cpt  A two compartment exchange model following Parkes & Tofts (by default the slow solution is used).
+  --exch=simple  Simple single compartment with T1 of blood (mimics
+  the assumptions made in the white paper)
+  --exch=2cpt  A two compartment exchange model following Parkes &
+  Tofts (by default the slow solution is used).
   --exch=spa  An implementation of the single pass approximation from St. Lawrence.
 
 BASIL assumes by default a single well-mixed tissue
 compartment (``--exch=mix``) and no dispersion of the bolus of labeled
 blood water (``--disp=none``).
-
-
 
    
 BASIL parameter file
@@ -112,18 +97,19 @@ BASIL parameter file
 BASIL requires a text file in which you specify model parameters, plus
 information about the collected data. 
 
-A generic BASIL options file for pcASL (at 3T) might look like (preceding a line with # indicates it is a comment and will be ignored)::
+A generic BASIL options file for single-PLD pcASL (at 3T) might look like (preceding a line with # indicates it is a comment and will be ignored)::
 
     # Sequence/scanner parameters
     --casl
     --t1=1.3
     --t1b=1.65
     --tau=1.8
+    # tau specified label/bolus duration
 
     # Data information
     --repeats=10 --pld=1.8
       
-      An equivalent generic file for pASL might look like::
+An generic file for multi-TI pASL might look like::
 
      # Sequence/scanner parameters
     --t1=1.3
@@ -182,20 +168,20 @@ Look-locker readout (for multi-PLD/TI)
 
 Flow suppression (multiple phases)
    
---crush<n>=<value>  Specification of the flow suppressing
+--crush1=<value>, --crush2=<value>, --crush-n-=<value>  Specification of the flow suppressing
    crusher direction for the nth PLD/TI. Any one of ``xyz, -xyz, x-yz,
    -x-yz``.
 
 Time or Hadamard encoding
 
-BASIL is directly compatiable with time/hadmard encoding where
+BASIL is directly compatible with time/hadamard encoding where
 'decoding' has been performed. In that case the multi-PLD data can be
-sued exactly like any other multi-PLD pcASL with sutiable setting of
+used exactly like any other multi-PLD pcASL with suitable setting of
 the PLDs and label duration.
 
 BASIL can also directly estimate perfusion from 'raw', i.e. not
 decoded, data. Although this is currently limited to specific cases -
-largely ones that use the same duation for each of the encoded
+largely ones that use the same duration for each of the encoded
 blocks. To use this option the input data is the raw data as acquired
 and you tell BASIL the number of cycles to expect,  you shoud specify
 the appropriate **single** PLD
@@ -219,12 +205,13 @@ Repeated measurements
 --repeats=<n>  The number of repeats of each PLD or TI in the
    data (default is 1).
 
-BASIL process data where there are multiple measurements at the same
+BASIL processes data where there are multiple measurements at the same
 PLD/TI, as indicated by the ``--repeats`` option: in which case it is
 assumed that the data comes with the individual time points in the 4th
-dimension, with repeats at each PLD/TI coming in blocks. Suitable manipulation of the data can be done using asl_file.
+dimension, with **repeats at each PLD/TI coming in blocks (gorups)**. Suitable manipulation of the data can be done using asl_file.
 
-For example: the data contains 8 readings taken at 4 TIs (0.5, 1, 1.5, 2 seconds), repeated twice and is presented to BASIL with each TI grouped together
+For example: the data contains 8 readings taken at 4 TIs (0.5, 1, 1.5,
+2 seconds), repeated twice. It should be presented to BASIL with each TI grouped together
 
 i.e. TI1 TI1 TI2 TI2 TI3 TI3 TI4 TI4
 
@@ -234,7 +221,9 @@ Hence the parameter file would contain::
 
 NOTE that the number of TIs specified multiplied by the number of repeats should equal the number of time points in the 4D input data set.
 
-It is possible to deal with more complicated data by specifying an individual --ti[n]= for every time point in the data, for the above example this would give::
+It is possible to deal with more complicated data by specifying an
+individual ``--ti[n]=`` for every time point in the data, for the
+above example we could equally input it to BASIL as::
 
     --ti1=0.5 --ti2=0.5 --ti3=1 --ti4=1 --ti5=1.5 --ti6=1.5 --ti7=2 --ti8=2
    
@@ -255,8 +244,8 @@ Within the output directory a number of subdirectories will be created containin
   references for more information.
 
 Depending upon the model options chosen there will be a range of
-parameters for which results will be provided. The mluti-step nature
-of basil means that more parameters are likely ot be found in the
+parameters for which results will be provided. The multi-step nature
+of basil means that more parameters are likely to be found in the
 later steps, as models of increasingly complexity are fit as the step
 number is increased.
 
@@ -289,7 +278,9 @@ inversion time use::
 
 i.e. the first 5 entries correspond to the first TI and these should
 use the first noise magnitude, the next 5 entries are the next TI and
-next noise magnitude etc.
+next noise magnitude etc. The numerbs here are purely labels and do
+not relate to the actual magnitude of the noise, which will be estimed
+by ``basil`` from the data.
 
 NOTE: if you have more than 9 TIs then for the 10th TI and onward
 letters should be used in place of numbers starting with a, i.e. for
