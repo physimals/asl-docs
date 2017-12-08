@@ -1,88 +1,152 @@
-================
-Oxford ASL User Guide
-================
+=======================
+BASIL User Guide
+=======================
 
+The graphical user interface to the BASIL tools can be accessed by typing either ``Asl`` (linux) or ``Asl_gui`` (OS X) at the command line. It should provide most of the options required for analysis of ASL data inlcuding the majority of the more advanced features of BASIL.
 
-Asl_gui
-=======
+This page documents the GUI avilable in FSL v6 (also available via the pre-release website), there are some differences with the GUI found in FSL v5. The GUI largely provides a more approachable interface to the ``oxford_asl`` command line tool (and even produces a command line call for ``oxford_asl`` for you to reuse separately if you like). Documentation on ``oxford_asl`` itself can be found [here].
 
-The graphical user interface to the BASIL tools can be accessed by typing either Asl (linux) or Asl_gui (OS X) at the command line. It should provide most of the options required for analysis of ASL data inlcuding the majority of the more advanced features of BASIL.
+The GUI has five tabs, whose function are fairly self-explanatory. Each tab represents one step in the (notional) workflow for your ASL analysis and you can work through them using the prev/next buttons in the lowe right of each tab. For many analyses you will be able to accept many of the default options and you might find you do no need to even visit some of the later tabs.
 
-Note: Asl_gui was only officially released with FSL 5.0.3 (any previous versions are unlikely to be very stable and will not adhere to the documentation here). This is still a beta version, we expect to add further features and refine the interface for a future release.
-
-Note: Changes in oxford_asl in FSL 5.0.6 also apply to asl_gui - namely that inversion efficiency is now included in the calculation (using default values) and that structural images shoud have been brain extracted before input to asl_gui.
-
-Asl_gui has four tabs, whose function are fairly obvious:
-
-- Data: Specify details of the ASL data here, as well as any supplementary data such as a structural image.
+- Input Data: Specify details of the ASL data here, this is also where oyu have to record details about the acquisition used.
+- Calibration: Specify your calibration image (if you have one), to be used to produce images of absolute perfision (in ml/100g/min). You can also choose to set options relating to the method for estimation of the equilibrium magnetization of arterial blood.
+- Structural: Specify a structural image, or the output of a previous run of ``fsl_anat``, to be used in the analysis process and for registration. Analysis can proceed without a structural iamge, but if you have one it is recommeded that you include it.
+- Distortion correction: If you have suitable images to do distortion correction of your ASL data you can include them here.
 - Analysis: Options relating to the analysis, primarily the kinetic model and the estimation process.
-- Registration: Options relating to the registration of the results to the structural image.
-- Calibration: Options relating to the estimation of M0a (the equilibrium magnetization of arterial blood) for absolute quantification of pefusion.
+
 
 More details on each tab are provided below. Note that some of the options available on each tab depend on what information is present in your data (set on the data tab). Thus your view of the tab might differ from the one shown here slightly.
 
-Data
-----
+Input Data
+--------------------
 
 .. image:: images/aslgui_data.jpg
 
-- Input Filename: Select here the ASL data file - it should be a single 4D nifti file, with the individual measurements in the 4th dimension
-- Inversion Times: The inversion times present in the data as a comma separated list. If the data contains multiple repeats of the same indiviual/set of inversion times then it is only necessary to list this once.
-- Bolus duration: For cASL/pcASL this is the labeling duration, for pASL this is the assumed value for the bolus duration that may have been set by a QUIPSSII method or otherwise a reasonable estimate of its value (usually int he range 1-1.5s). If the bolus duration has not be fixed by the acquisition then estimating its value from the data should be selected on the analysis tab.
-- Labeling: Choose the labelling scheme employed.
-- Data is tag-control pairs: Instructs BASIL to do tag control subtraction on the data, turn off if this has already been done.
-- Data order (grouped by): This is only applicable to multi delay ASL data and specifies how the different inversion times appear in the data - see the oxford_asl help section.
-- Static tissue: Specify whether the static tissue has been manipulated in any way (not relevant to data that is not tag-control pairs). This determines what options are available for calibration.
-- Structural image: provide a structural image to which to register the resulting images.
+**Data contents**
+
+- *Input Image*:  A single 4D nifti file of the main ASL data (either label-control pairs or subtracted images), with the individual measurements in the 4th dimension.
+- *Numer of PLDs*: Set the number of post-label delays (or inversion times/inflow times) in the data.
+- *Number of repeats*: A value will be calculated here based on the number of PLDs you entered in the box above. Use this is a sanity check again the number of repeats you expect from your acquisition.
+
+**Data order**
+
+- Grouping order: This specfies how different measurements are grouped within the data. (There are two options that you can indepdently set for this option). In the lower right of the tab is a visual guide, the *data order preview* for the ordering of the measurments in the data that might be helpful when setting these options.
+  
+  - For single PLD data you simply need to choose if the label and control images are interleaved (this is conventional) - *Label/Control pairs* - or if the first half of the data is all of the label images and the rest control - *repeats*. 
+  - For multi-PLD data there are more options, as there are label and control images, from a number of different PLDs, with each PLD having been repeated a number of times. It is conventional for label and control images to be interleaved - first option box *Label/Control pairs*. The second option box then either specifies that a full set of PLDs come in order as a group, with this grouping repeated multiple times (conventinoally how the data is acquired) - second option box *PLDs* - or if all of the repeated measurements of one PLD are grouped together, before the next - second option box *repeats*.
+  - The **data order preview**. To interpret this note that:
+  
+    - Control images are hatched to dinstinguish them from label
+    - The first appearance of a measurent at a given PLD appears in mauve (each PLD in a multi-PLD acquisition is given a different shade),
+    - Subsequent repeats of the same PLD are shown in green (again shading is sued to denote different PLDs). 
+
+- *Label-control pairs*: Sepcify whether the first volume is a label or a control image. You can also untick the box associated with this option if your data has already been label-control subtracted.
+
+**Acquisition parameters**
+
+- *Labeling*: Choose the labelling scheme employed, either pcASL/cASL or pASL (note for analysis purposes there is no difference between cASL and pcASL).
+- *PLD / TIs*: Set the post-labeling delay(s) (or inversion time(s)) for the acquisition. For a multi-PLD/TI acquisition there will be a value to be set for each PLD/TI in the data.
+- *Bolus duration (s)*: The duration of the labeled bolus in seconds.
+
+  [Advanced] If your data is multi-PLD you can additionally specify different bolus durations for the different PLD, by changing from *single* to *mulitple*. Using this option you can have any combination of PLD and bolus duration to match those used in the acquisition
+
+- Readout: Specify if a full 3D or a 2d multi-slice acquisition was used. For 2D you should then set the time taken to acquire each slice (in miliseconds) as this determines the true PLD/TI for each slice.
+- Multi-band: Inlcude this option where the readout was a multi-band (simultaneous multi-slice) 2D acquisition, in which case you need to specify the number of slices in each band, to correctly set the PLD/TI for each slice.
+
+**Data preview - perfusion weighted image**
+
+On the right of the window is a preview pane. Once you have set the *Data contents* and *Data order* parameters you can press *preview* and the GUI will generate a perfuion-weighted image based on the information you have provided. This is a good sanity check to ensure that you have set these parameters correctly - if at this stage you dont see something that looks like a perfusion-weighted image - i.e., something in which the grey matter structure of the brain is evident - then you probably haven't set the ordering correctly. You can scroll through the slices in the iamge using your mouses' scroll wheel (or equivalent). Note that for multi-PLD data this preview averages all the different PLD.
+
+
+Structural
+------------
+
+.. image:: images/aslgui_reg.jpg
+
+- *Use FSL_ANAT output*: Recommended, use the output for a previous ``fsl_anat`` analysis to obtain stuctural image information.
+- *Use Structural Image*: Supply a high-resolution structural image (only if above option is deselected).
+- *Brain extraction*: Supply a brain extracted version of the structural image or request an ``fsl_anat`` analysis to be run for brain extraction.
+- *Transform to standard space*: Provide a linear matrix (``flirt``) or warp (``fnirt``) from structural image to standard space. Only required if an ``fsl_anat`` output is not available and results are required in standard space.
+  
+Calibration
+-----------
+
+.. image:: images/aslgui_calib.jpg
+
+**Enable Calibration**
+
+Note you specfically have to chose the option to enable calibration. It is possible to perform ASL analysis without calibraiton, but only then posisble to get relative perfusion images.
+
+- *Calibration image*: An image to be sued for calibration. This shoudl ahve the same resolution as the ASL data, ideally have the same readout and be proton density weighted.
+- *M0 type*: Specify what sort of calibration image you are supplying. In most cases this will be *Proton Density*, unless you have data with a pre-saturation in which case chose *saturation recovery*.
+- *Sequence TR (s)*: The repetition time of the sequence used to colelct the calibration image (this may not be the same as the ASL data itself). This is used to correct for non-equilirum effects on the PD image.
+- Calibration gain*: If there is a difference in acquisition gain between the calibration image and the ASL data if can be set here. This might be the case where background suppression has been applied for the main ASL data.
+- *Calibration mode*: Chose either to compute and apply the calibration factor (equilibirum magnetization of arterial blood) *voxelwise*, or from within a *Reference Region*. The latter relies upon a structural image being provided (unless you spply your own mask for this below), the former is the approach assumed by the white paper.
+
+**Reference tissue**
+
+These options apply to the *Reference Region* mode of calibration.
+
+- *Type*: The reference tissue typw to use, one of: CSF/white matter/grey matter/none. For the first three options a mask will be generated automatically from the structural image (if you have specfied one). Otherwise you have to add your own mask in the Reference Tissue Mask box. Generally CSF or white matter are good choices, avoid grey matter due to partial volume effects.
+- *Sequence TE*: This corrects for T2 differences between the reference tissue and the brain tissue (using a blood T2 value) using the TE of the data (which is assumed to be the same as any calibration image).
+- *Reference T2/ Blood T2*: T2 values, these are only relevant if you specify the TE of your sequence. T2 of the reference deafults to a CSF value. These should be replaced by T2* values if appropriate.
+- *Reference T1*: T1 of the reference tissue.
+- *Coil Sensitivity Image*: Optionally inlcude an image of coil sensitivity to apply in the calibration process (same resolution as the ASL data). This is applicable where 'pre-scan normalise' or the equivalent hasn't been performed on the scanner when using parallel acquisition.
+
+Distortion Correction
+--------------------------------
+
+- *Apply distortion correction*: Select to apply correction for readout distortions in the ASL data using a suitable set of reference images. You will need either a *calibration image* with a different phase encoding direction to the main calibration image, or a *fieldmap*.
+
+*Calibration image mode*
+
+- *Phase encode reversed calibration image*: An image that matches the calibration image in all acquisition parameters, except that the phase-encode direction is reversed.
+- *Effective EPI echo spacing*: Set this value from the sequence in miliseconds.
+- *Phase encode direction*: The phase encode direction of the calibration image (entered on the *Calibration* tab).
+
+*Fieldmap mode*
+
+- *Effective EPI echo spacing*: Set this value from the sequence in miliseconds.
+- *Phase encode direction*: The phase encode direction of the calibration image (entered on the *Calibration* tab).
+- *Fieldmap image*: A fieldmap image (need not necessarily match ASL nor structural image resolution) in rad/s - be careful about the units, as this is not consistent between neuroimaging tools.
+- *Fieldmap magnitude image*: A magntiude image to go with the fieldmap, this is used for registration of the fieldmap.
+- *Brain extracted fieldmap magntiude image*: Brain extracted version of above image.
 
 Analysis
 --------
 
 .. image:: images/aslgui_analysis.jpg
 
-- Output directory: where to put the results.
-- Optional brain mask: BASIL will try to create a brain mask for you using the available data. This permits you to specify your own mask.
-- Output parameter variance: Instructs BASIL also to output the variance images for perfusion (and other paramters) allowing you to assess the uncertainty of estimation and pass these up into a higher-level analysis.
-- Bolus arrival time: The assumed value for the BAT. For multi dealy data BAT is estimated from the data and this value is used as prior information, for single delay data this value can be treated as fixed. The default 0.7 appears to be reasonable for pASL, but logner values ~1.3s have been found to be more suitable for pcASL data.
-- T1/T1b: T1 values for tissue and blood.
-- Use adaptive spatial smoothing on CBF: applys a spatial prior to the perfusion image during estimation, thus making use of neighbourhood information. This is a highly recommended option, but is off by default.
-- Incorporate T1 uncertainty: Permits voxelwise variability in the T1 values, this will primiarly be reflected in the variance images.
-- Include macro vascular componet: Corrects for MV contamination and it suitable where the data contains multiple delays (including the case with flow suppression)
-- Fix bolus duration: Takes the value from the data tab as fixed, turn off to estimate this from the data, where the value on the data tab will be used as prior information.
+**Basic analysis options**
 
-Registration
-------------
+- *Output directory*: where to put the results.
+- *Brain Mask*: BASIL will try to create a brain mask for you using the available data, you may specify your own mask here (in the same space as the ASL data).
+- *Analysis which conforms to 'White Paper'*: sets kinetic model such that it mimics the assumptions made in the formula provided in the ASL consensus, 'white', paper.
 
-.. image:: images/aslgui_reg.jpg
+**Inital parameter values**
 
-- Structural to standard space transform: a .mat from flirt that specifies the transformation from structural to 'standard' space.
-- Alternate standard brain iamge: The 'standard' brain for the above transformation if MNI152 has not been used.
-- Low-resolution structual image: Another structural image of lower resolution (similar to the ASL data) to be used as an intermediary for registration.
+This section sets parameter values for the kientic model. In some cases these are treated as initial and/or prior (mean) values, but are also estimated in the analysis itself.
 
-Calibration
------------
+- *Arterial Transit Time*: The assumed value for the ATT. For multi-PLD ASL, ATT is estimated from the data and this value is used as prior information, for single delay data this value will be treated as fixed. The default 0.7 appears to be reasonable for pASL, but longer values ~1.3s have been found to be more suitable for pcASL data, these are the defaults used by the GUI. (in *white paper mode* this value is set to 0)
+- *T1/T1b*: T1 values for tissue and blood. Defaults are 1.65 seconds for blood and 1.3 seconds for tissue (based on 3T field strength). (in *white paper mode* both T1 values are set to 1.65 seconds).
+- *Inversion efficiency*: A fixed value for the inversion efficiency applied in the calculation of absolute perfusion. The default values (0.85 for pcASL and 0.98 for pASL) are taken from the white paper.
 
-.. image:: images/aslgui_calib.jpg
+**Analysis Options**
 
-- Perform calibration: by default M0a estimation is not done.
-- Mode: either 'LongTR' or 'Saturation Recovery' - the options present here will depend upon the choice of 'static tissue' on the data tab.
-- M0 calibration image (only for background suppressed data): a separate 'calibration' image to be used for M0a calculation.
-- Use coil sensitivity reference image: A separate image with the same acquisition parameters as the main calibration (either image above or the control images in the ASL data) but with a different coil with flatter sensitivity that used for the main data.
-- Calibration gain: Only relevant if the gain was higher for the ASL data than the calibration image, in which case this is how much higher the gain was for the ASL data (normally this might only apply for backgroudn suppressed data).
-- Reference tissue: Here details of the reference tissue to used for M0a calculation are specified. Voxelwise calculation of M0a cannot be carried out using Asl_gui, use the asl_calib tool directly.
-- Reference tissue type: CSF/white matter/grey matter/none. For the first three options a mask will be generated automatically from the structural image (if you have specfied one). Otherwise you have to add your own mask in the Reference Tissue Mask box. Generally CSF or white matter are good choices, avoid grey matter.
-- Reference T1: T1 of the reference tissue - currently this defaults to the CSF value, so will need to be changed if you change the tissue type (see asl_calib).
-- Reference T2/ Blood T2: T2 values, these are only relevant if you specify the TE of your sequence. T2 of the reference deafults to a CSF value. These should be replaced by T2* values if appropriate.
-- Sequence parameters
-  - TR: This is for the longTR mode and should be the Tr of the ASL sequence, unless you have a separate calibration image in which case use that TR.
-  - TE: This corrects for T2 differences between the reference tissue and the tissue (using a blood T2 value) using the TE of the data (which is assumed to be the same as any calibration image).
+- *Adaptive spatial regularisation on perfusion*: applys a spatial prior to the perfusion image during estimation, thus making use of neighbourhood information. This is a highly recommended option, and is on by default.
+- *Incorporate T1 uncertainty*: Permits voxelwise variability in the T1 values, this will primiarly be reflected in the variance images for the estimated parameters, dont expect accurate T1 maps from conventional ASL data.
+- *Include macro vascular componet*: Corrects for arterial or macrovascular contamination, and it suitable where the data multi-PLD (even where flow suppresion has been applied).
+- *Fix label duration*: Takes the value for the label duration from the *Input Data* tab as fixed, turn off to estimate this from the data (the value on the data tab will be used as prior information in that case). You are most likely to want to deslect the option for pASL data, particularly where QUIPSSII/Q2TIPS has not been used to fix the label duration.
+- *Partial Voume Correction*: Correct for the different contributinos from grey and white matter, and CSF to the perfusion image. This will prodice separate grey and white matter perfusion maps.
+- *Motion Correction*: Uses ``mcflirt`` to perform motion correction of the ASL data (and the calibration image).
 
+  
 Output
 ------
 
-The outputs from Asl_gui are a resting perfusion image called perfusion.nii.gz, which provides blood flow in relative (scanner) units, and an arrival time image called arrival.nii.gz. If a calibration has been performed then a further image perfusion_calib.nii.gz is also produced, which is a flow map in absolute units (ml/100g/min). Results in standard space (assuming that the transformation matrix has been supplied) will appear in the output directory directly. Results in the native space of the data and structural space (along with any transformation matrices from the registration process) will appear in their own subdirectories.
+The outputs from the GUI are a perfusion image called ``perfusion.nii.gz``, which provides blood flow in relative (scanner) units, and an arrival time image called ``arrival.nii.gz`` for multi-PLD ASL. If a calibration image has been provided then a further image, ``perfusion_calib.nii.gz``, is also produced, which is a flow map in absolute units (ml/100g/min). Results in native ASL, structural and standard space will appear in the output directory within separate subdirectories. Where applicable transformatino between spaces will also be saved, along with summary measures of perfusion in the ``native_space`` subdirectory if the structural information is availabe to calcualte these.
 
-If calibration was performed then a separate subdirectory will be created and will contain text file called M0b.txt that records the estimated M0 value from arterial blood. If a reference tissue mask was not supplied then the automatically generated one will also be saved in as refmask.nii.gz
+If calibration was performed then a separate subdirectory will be created and will contain text file called ``M0b.txt`` that records the estimated M0 value from arterial blood if the reference region mode was use, otherwise an image will be supplied instead. For reference region calibration, if a manual reference tissue mask was not supplied then the automatically generated one will also be saved in as ``refmask.nii.gz``.
 
 
 
