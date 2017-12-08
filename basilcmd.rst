@@ -2,6 +2,12 @@
 BASIL (command) 
 ===========================
 
+.. toctree::
+   :maxdepth: 2
+
+   basilcmd_userguide
+   basilcmd_examples
+
 The BASIL command line tool performs kinetic model inversion on ASL label-control difference data. It uses a common Bayesian inference method regardless of whether the data contains a single or multiple post labelling delays. BASIL includes a flexibly defined kinetic model appropriate for ASL kinetics that can be applied in humans and also other species - for more information see the model section.
 
 To run BASIL on resting-state ASL data you will need:
