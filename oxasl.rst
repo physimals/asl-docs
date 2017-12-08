@@ -2,6 +2,11 @@
 Oxford_ASL
 ===============
 
+.. toctree::
+   :maxdepth: 2
+   
+   oxasl_userguide
+   
 Oxford_ASL is an automated command line utility that can processes ASL
 data to produce a calibrated map of resting state tissue perfusion. It
 also includes a range of other useful analysis methods inlcuding
