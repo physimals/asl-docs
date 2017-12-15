@@ -2,6 +2,11 @@
 Basil Introduction
 ==================
 
+.. toctree::
+   :maxdepth: 2
+
+   basil_userguide
+
 Bayesian Inference for Arterial Spin Labelling MRI
 ==================================================
 
