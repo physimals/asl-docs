@@ -53,6 +53,18 @@ Input Data
 - Readout: Specify if a full 3D or a 2D multi-slice acquisition was used. For 2D you should then set the time taken to acquire each slice (in miliseconds) as this determines the true PLD/TI for each slice.
 - Multi-band: Inlcude this option where the readout was a multi-band (simultaneous multi-slice) 2D acquisition, in which case you need to specify the number of slices in each band, to correctly set the PLD/TI for each slice.
 
+.. image:: images/aslgui_dataorder_preview.jpg
+
+*Data preview for a single-PLD label-control pair, repeated 20 times. Grouping order is ``Label/Control pairs``*
+
+.. image:: images/aslgui_dataorder_preview2.jpg
+
+*Data preview for a single-PLD label-control pair with repeats. The label is repeated 20 times, then the control is repeated 20 times. Grouping order is ``Repeats``*
+
+.. image:: images/aslgui_dataorder_preview3.jpg
+
+*Data preview for 4 PLDs. A set of 4 control-label pairs, one for each PLD, is repeated 5 times. Grouping order is ``Label/Control pairs``, ``PLDs`` using the ``Control then label`` setting*
+
 **Data preview - perfusion weighted image**
 
 On the right of the window is a preview pane. Once you have set the *Data contents* and *Data order* parameters you can press *preview* and the GUI will generate a perfuion-weighted image based on the information you have provided. This is a good sanity check to ensure that you have set these parameters correctly - if at this stage you dont see something that looks like a perfusion-weighted image - i.e., something in which the grey matter structure of the brain is evident - then you probably haven't set the ordering correctly. You can scroll through the slices in the image using your mouses' scroll wheel (or equivalent). Note that for multi-PLD data this preview averages all the different PLD.
