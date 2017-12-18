@@ -61,7 +61,7 @@ On the right of the window is a preview pane. Once you have set the *Data conten
 Structural
 ------------
 
-.. image:: images/aslgui_reg.jpg
+.. image:: images/aslgui_struc.jpg
 
 - *Use FSL_ANAT output*: Recommended, use the output for a previous ``fsl_anat`` analysis to obtain stuctural image information.
 - *Use Structural Image*: Supply a high-resolution structural image (only if above option is deselected).
@@ -95,6 +95,8 @@ These options apply to the *Reference Region* mode of calibration.
 
 Distortion Correction
 --------------------------------
+
+.. image:: images/aslgui_distcorr.jpg
 
 - *Apply distortion correction*: Select to apply correction for readout distortions in the ASL data using a suitable set of reference images. You will need either a *calibration image* with a different phase encoding direction to the main calibration image, or a *fieldmap*.
 
