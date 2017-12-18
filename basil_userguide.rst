@@ -55,15 +55,15 @@ Input Data
 
 .. image:: images/aslgui_dataorder_preview.jpg
 
-*Data preview for a single-PLD label-control pair, repeated 20 times. Grouping order is ``Label/Control pairs``*
+*Data preview for a single-PLD label-control pair, repeated 20 times. Grouping order is* ``Label/Control pairs``
 
 .. image:: images/aslgui_dataorder_preview2.jpg
 
-*Data preview for a single-PLD label-control pair with repeats. The label is repeated 20 times, then the control is repeated 20 times. Grouping order is ``Repeats``*
+*Data preview for a single-PLD label-control pair with repeats. The label is repeated 20 times, then the control is repeated 20 times. Grouping order is* ``Repeats``
 
 .. image:: images/aslgui_dataorder_preview3.jpg
 
-*Data preview for 4 PLDs. A set of 4 control-label pairs, one for each PLD, is repeated 5 times. Grouping order is ``Label/Control pairs``, ``PLDs`` using the ``Control then label`` setting*
+*Data preview for 4 PLDs. A set of 4 control-label pairs, one for each PLD, is repeated 5 times. Grouping order is* ``Label/Control pairs``, ``PLDs`` *using the* ``Control then label`` *setting*
 
 **Data preview - perfusion weighted image**
 
