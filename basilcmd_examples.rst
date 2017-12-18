@@ -74,7 +74,7 @@ like::
   logfile	params.txt	step1	step2
 
 Both ``step1`` and ``step2`` contain a similar set of files, the
-difference in this case being wether the spatial method was applied or
+difference in this case being whether the spatial method was applied or
 not. In general, the contents of the highest numbered step
 subdirectory is the result you will want.
 
@@ -99,7 +99,7 @@ Of note are:
   default value for the ATT parameter for pcASL. Since we cannot
   estimate ATT from single-PLD pcASL data, BASIL has applied the
   default value in the model inference for us. If we had wanted a
-  different value we could ahve set that using the ``--bat=<value>``
+  different value we could have set that using the ``--bat=<value>``
   option in the basil_options.txt file.
 
 -------------------------------
@@ -148,8 +148,8 @@ single-PLD case you will get ``basilout+`` as your output directory,
 output directory specified.
 
 As with the single-PLD example we can examine the perfusion image from
-the higherst numbered step: ``mean_ftiss`` in subdirectory
-``step2``. We can now also examine the ATT map ``meandelttiss``.
+the highest numbered step: ``mean_ftiss`` in subdirectory
+``step2``. We can now also examine the ATT map ``mean_delttiss``.
 
 Being multi-PLD data, we might consider a more advanced analysis. For
 example, we could add an arterial (or macrovascular) component to the
@@ -192,6 +192,6 @@ applied in the third and final step.
 
 Now in the output directory are three subdirectories for the different
 steps. In the both ``step2`` and ``step3`` you will find, alongside
-the files present in the prevoious analysis, files related to the
+the files present in the previous analysis, files related to the
 arterial cerebral blood volume parameter, named ``fblood``.
 

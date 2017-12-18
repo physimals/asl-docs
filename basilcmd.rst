@@ -2,6 +2,12 @@
 BASIL (command) 
 ===========================
 
+.. toctree::
+   :maxdepth: 2
+
+   basilcmd_userguide
+   basilcmd_examples
+
 The BASIL command line tool performs kinetic model inversion on ASL label-control difference data. It uses a common Bayesian inference method regardless of whether the data contains a single or multiple post labelling delays. BASIL includes a flexibly defined kinetic model appropriate for ASL kinetics that can be applied in humans and also other species - for more information see the model section.
 
 To run BASIL on resting-state ASL data you will need:
@@ -47,7 +53,7 @@ Resonance in Medicine 40(3): 383-396, 1998.
 As per this paper, BASIL assumes by default a single well-mixed tissue
 compartment and no dispersion of the bolus of labeled
 blood water. Different T1 values are assumed for blood and tissue
-water, but it is posisble to set these to be indetical to match the
+water, but it is posisble to set these to be identical to match the
 simple model assumed by the quantification formula in the 'white paper'.
 
 BASIL also implements a range of alternative arterial input
@@ -57,7 +63,7 @@ restricted water exchange.
 **Dispersion and Arterial Input Functions**
 
 BASIL includes a number of Vascular Transport Function (Dispersion
-Kernel) models of dispersion. These inlcude modelling the VTF as
+Kernel) models of dispersion. These include modelling the VTF as
 either a Gamma or Gaussian function. For more information see:
 
 Chappell, M. A., Woolrich, M. W., Kazan, S., Jezzard, P.,
@@ -70,7 +76,7 @@ Hrabe, J., & Lewis, D. (2004). Two analytical solutions for a model of pulsed ar
 
 **Exchange and residue functions**
 
-As well as the single well-mixed tissue compartment model in whihc the
+As well as the single well-mixed tissue compartment model in which the
 residue function just accounts for T1 decay (and a small venous
 outflow), BASIL includes two-compartment exchange models as described
 in the following papers:

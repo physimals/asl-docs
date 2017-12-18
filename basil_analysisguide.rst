@@ -1,0 +1,102 @@
+=============================
+ASL Analysis Guide
+=============================
+
+BASIL provides a comprehesive set of tools for the generation of quantative perfusion images from ASL data from an individual and links to other tools in FSL so that neuorimaging studies can be performed with groups of individuals, potentially also incorporating other neuroimaging data. The purpose of this section fot he documentation is to provide some gudiance as to key concepts you might want to know to understand ASL and its analysis. More detailed gudiance can be found in the following primer (for which online examples using BASIL are available):
+
+`Introduction to Perfusion Quantification using Arterial Spin Labelling`_, Michael Chappell, Bradley MacIntosh, and Thomas Okell, Oxford University Press, 2017.
+
+.. _Introduction to Perfusion Quantification using Arterial Spin Labelling: https://global.oup.com/academic/product/introduction-to-perfusion-quantification-using-arterial-spin-labelling-9780198793816?q=neuroimaging&lang=en&cc=gb#
+
+ASL analysis principles
+=========================
+
+The generation of a perfusion-weighted image from ASL data is relatively simple, requiring the pair-wise subtraction of label and control images to leave the contribution of labelled blood-water delivered by the vasculature. Since the magnitude of the signal directly relates to the delivery of blood, the image created is itself perfusion-weighted. To go beyond the perfusion weighted image, and generate quantitative voxelwise measures of perfusion with values in the typical units of ml/100 g/min, we need an analysis scheme that would look like the following:
+
+* Subtraction.
+* Kinetic Modelling.
+* Calibration.
+
+Subtraction
+-------------------------------
+
+Central to ASL analysis is the subtraction of label and control images. Both label and control images will contain some signal from brain tissue - called the static tissue signal (this is true even if background suppression has been used to reduce this contribution). Subtraction of the label-control pair reveals the contribution from labelled blood-water. This image is often referred to as the difference image and is perfusion-weighted, which means it reflects the perfusion in each voxel, but the intensity value in each voxel does not alone provide an absolute measure of perfusion.
+
+Kinetic Modelling
+--------------------------------
+The voxel intensity in an ASL difference image is directly related to the labelled blood-water. More accurately, it relates to the amount of labelled blood-water that has accumulated in the voxel in the time between creation of the label and the collection of a brain image. This means that it is a measure of delivery and thus perfusion, rather than blood volume or blood flow rate. To be able to say how much labelled blood has been delivered, and thus what the perfusion is, it is necessary to describe the delivery process, as well as what happens to the labelled blood once it has been delivered. This is achieved by means of a kinetic model.
+
+At its very simplest the kinetic model for labelled blood-water in an ASL study needs to account for the delivery of a finite duration (the label duration) of labelled blood-water into the voxel where it accumulates. At the same time as it is being delivered, the label is also decaying away. THe tracer decays at a rate defined by the T1 time constant, which is of the order of a second in the brain at typical MRI field strengths. The kinetic model allows the relationship between the signal and perfusion to be expressed as an equation and this can be rearranged to give an equation that takes signal magnitude and returns perfusion, or fit to the data using optimisation techniques.
+
+Calibration
+--------------------------------
+The ASL calculation relies on knowledge of the tracer concentration, strictly the quantity called the equilibrium magnetization of arterial blood, which will vary between individuals and other MRI-related factors (e.g. the main magnetic field strength). The simplest approach for estimating this parameter is by the acquisition of a separate proton-density-weighted image. This can be converted to a measure of arterial magnetization by accounting for the relative density of hydrogen nuclei in tissue and blood (the partition coefficient). Various corrections can be performed where the calibration image is not a pure proton-density weighted image, e.g., where it has a (realtively) short repetition time.
+
+Key ASL data parameters
+============================
+
+There are various parameters associated with an ASL acquisition. Some of which are important for the quantification/analysis process. Whilst you do not necessarily need to know all of the details of an ASL acquisition to be able to extract a perfusion image, you should at least find out the following information before attempting analysis.
+
+pcASL or pASL
+-----------------------------------
+
+The labelling may either have been pseudo-continuous ASL (pcASL, most common) or pulsed ASL (pASL). There are important differences between these two forms of ASL that affect the kinetic model used and thus you need to tell BASIL which one you have.
+
+Post-label delay(s)
+------------------------------------
+
+After labeling a delay is left for the labeled blood-water to travel into the brain. For pcASL this is called the Post-Label Delay (PLD) and is the time from the *end* of the label duration (see `Label duration`_) until imaging. For pASL the labeling process is instantaneous and it is more common to refer to the inversion time (TI). For the BASIl GUI you are asked for PLD value(s) for pcASL and TI for pASL. However, the command line tools primiarly use the common delay measure: the inflow time (also TI), the time from the *start* of labeling. This is identical to the inversion time for pASL, but for pcASL is the sum of the bolus duration and PLD:
+
+cASL or pcASL: TI = PLD + Label duration
+
+It is quite common to meet ASL data with multiple repeats/measurements (and thus volumes in the resulting images) that all have the same PLD (or TI) - single delay ASL. It is, however, possible to use a range of different PLD in an acquisition in an attempt to extract more information, or achieve a better SNR - multi-delay (multi-PLD) ASL. BASIL can process both forms of ASL and the various tools have been designed so that you can specify ewither the numer ofs TIs in the data (``asl_file``) or a list of values (e.g., ``oxford_asl``). When you have multi-delay ASL you will also obtain an estimate of the arterial transit time (ATT), which will be provided as an extra output from ``oxford_asl``.
+
+Label duration
+-------------------------------------
+
+The label (or bolus) duration is an important measure of how much labeled-blood water has been deliviered to the tissue and is thus important for quantification. For pcASL the value is set by the sequence and thus is something you need to know.
+
+In principle in pASL the label duration is unknown (a spatial region is labeled instead of a know duration of flowing blood). You may find that your pASL acquisition is using Q2TIPS or QUIPSSII in which case the label duration has been set using extra pulses. Quite often the value of label duration can then be determined from the associated parameter, often called TI2 - a value of 0.7 or 0.8 seconds would be quite normal. Where the label duration is genuinely unknown (e.g. a FAIR pASL acquisition), BASIL can attempt to estimate it as long as the data is multi-TI. In practice, BASIL automatically estimates the label duration for all multi-TI pASL data, since it is possible with Q2TIPS/QUIPSSII that the duration will be shorter than expected due to high flow in the labelling region.
+
+Other ASL quantification/analysis issues
+==========================================
+
+There are a number of other analysis steps and processes that are specific to ASL, or specifically availabel for ASL through BASIL. Some important ones are noted here.
+
+Spatial regularization
+----------------------
+
+BASIL can apply a spatial regularisation to the estimated perfusion image and this is highly *recommended*. This exploits the fact that neighboring voxels are likely to have similar perfusion values, i.e. perfusion variation in the brain is relatively smooth. It brings the advantages associated with the more common pre-processing step of spatially smoothing the data. However, unlike smoothing the data it correctly preserves the non-linear kinetics exploited by the perfusion estimation. It is also adaptive, so that in regions where the data does not support the use of smoothing the perfusion image will not be smoothed.
+
+Registration
+------------
+
+Registration of ASL data to the structural image is difficult since the images are low resolution and with limited contrast. By default in oxford_asl
+registration is carried out in multiple steps using the perfusion image directly after the BASIL analysis, an intial registration having already been done using the raw (undifferenced) ASL data. BASIL now exploits the BBR cost function for registration and this has been found to be more robust and accurate, when using the perfusion image itself, than previous methods that relied on the raw data.
+
+You should *ALWAYS* inspect the results of registration to determine whether it has been effective. It is possible use alternative registration strategies with ``oxford_asl`` (e.g., using the ``--regfrom`` option) or even do the registration separately on the ``native_space`` results from ``oxford_asl``, the ``asl_reg`` tool exists as a separate function if you wish to explore the ASL registration process apart from the main ``oxford_asl`` pipeline.
+
+Arterial (macrovascular) contribution
+--------------------------------------
+
+If flow suppresion has not been applied to your data and you have short PLDs (<1 second), then there may be significant signal from labeled arterial blood in the region of major vessels in the ASL data. In single PLD ASL data you will need to examine the perfusion images for signs of arterial contaimination (see the 'White Paper' for an example of this). This can also be an issue in patients with vascular diseases, where slow flow and thus long arterial transit times are expected.
+
+For multi delay data the arterial signal can be accounted for by modelling this arterial component (by ``default oxford_asl`` will includes this component). When the arterial component is included in the analysis then a further parameter, the arterial blood volume, is available in the output images.
+
+Partial volume correction
+-------------------------
+
+The low resolution of ASL data typically means that there is substantial partial voluming of grey (GM) and white matter (WM), plus CSF too. Since GM and WM have very different kinetics (WM tends to have lower perfusion and longer arterial transit time) a normal analysis will provide a perfusion that is something of a combination of the two tissue types. BASIL can attempt to automatically correct for the different tissue types. BASIL via ``oxford_asl`` can do this automatically as long as you supply a structural image that has been already been processed using ``fsl_anat`` (or if you supply suitable partial volume estimate images).
+
+Partial volume correction is available though the basil command line tool. For this implementation you need to provide partial volume estimates (PVE) at the same resolution as the ASL data. PVE can be obtained from a structural image, for example using ``FAST``, the high resolution PVE images can then be converted using a transformation matrix from the structural to ASL image space. This step is best done using ``applywarp`` to ensure that the values are the total PVE within the voxel, something like::
+
+    applywarp --ref={asl_data} --in={PV_estimate_image} --out={PV_estimate_low_res} 
+              --premat={structural_to_ASL_tranformation_matrix} --super --interp=spline 
+              --superlevel=4
+
+T1 values
+---------
+
+T1 values are important to the kinetic model inversion and should be chosen based on the field strength that data was acquired at, consideration might also need to be taken of the subject in which analysis is being carried out. BASIL by deafult takes values for 3T and assumes for the tissue only a grey matter value, unless partial volume correction is applied when separate grey and white matter values are specified. By deafult a separate value for the T1 of bloos is used unless operating in 'white paper' mode, where the blood T1 value is also used for the tissue.
+
+Commonly it is assumed that T1 values are fixed across the brain in the quantification. However, these value are not absolutely certain and may well vary across the brain and between individuals. BASIL can take this into account by inferring on T1 values, you should still, however, set sensible expected values. NOTE: maps of T1 produced by this process are unlikely to be accurate measures of T1 in the brain - ASL data is not suitable for this. The purpose of including T1 the inference is primarily to take account of their varaibility when estimating the other parameters. An exception to this is QUASAR data (in quasil) where a tissue T1 image is estimated from the saturation recovery of the control data (and subsequently applied to the kinetic curve fitting).

@@ -2,6 +2,11 @@
 Basil Introduction
 ==================
 
+.. toctree::
+   :maxdepth: 2
+
+   basil_userguide
+
 Bayesian Inference for Arterial Spin Labelling MRI
 ==================================================
 
@@ -26,12 +31,12 @@ you want to use a GLM, then you should consult the perfusion section of
 or if you have dual-echo (combined BOLD and ASL) data then consult 
 `FABBER <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FABBER>`_.
 
-For single delay ASL data kinetic model inversion is realtively trivial and 
+For single delay ASL data kinetic model inversion is relatively trivial and 
 solutions to the standard model have been described in the literature. However,
 there are various advantages to aquiring ASL data at multiple times 
 post-inversion and fitting the resultant data to a kinetic model. This 
 permits problems in perfusion estimation associated with variable bolus arrival 
-time to be avoided, since this becomes a paramter of the model whose value is 
+time to be avoided, since this becomes a parameter of the model whose value is 
 determined from the data. Commonly the model fitting will be performed with a 
 least squares technique providing parameter estimates, e.g. perfusion and bolus 
 arrival time. In contrast to this BASIL uses a (fast) Bayesian inference method 
@@ -98,8 +103,10 @@ The BASIL toolset
  - ``asl_reg`` - this tool is designed to assist in registration of (low resolution) ASL 
    images to structural or standard brain images. The functionality of asl_reg is built 
    into oxford_asl and Asl_gui.
- - ``asl_file`` - a command line tol for the manipulation of ASL data files that respects the 
-   normal structure of ASL data.
+ - ``asl_file`` - a command line tool for the manipulation of ASL data
+   files, particulary designed to cope with the complex strcuture of
+   interleaved lable and control images combined with muliple
+   post-labeling delays.
 
 Further Reading
 ============
@@ -113,9 +120,10 @@ Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
 Oxford University Press, 2017.
 
 Online examples are availble to go with this primer using the BASIL
-tools. These can be found on the Oxford Neuroimaging Primers website.
+tools. These can be found on the Oxford Neuroimaging Primers
+website: http://www.neuroimagingprimers.org
 
-The follwing book reamins a good introduciton to functional imaging
+The following book reamins a good introduction to functional imaging
 including perfusion using ASL:
 
 *Introduction to Functional Magnetic Resonance Imaging: principles and
@@ -130,7 +138,7 @@ that specifically relate to the analysis you have performed:
 
  - *Chappell MA, Groves AR, Whitcher B, Woolrich MW. Variational Bayesian inference for a non-linear forward model. IEEE Transactions on Signal Processing 57(1):223-236, 2009.*
 
-If you employ spatial priors you should ideally reference this article too.
+If you employ spatial regularisation (priors) you should ideally reference this article too:
 
  - *A.R. Groves, M.A. Chappell, M.W. Woolrich, Combined Spatial and Non-Spatial Prior for Inference on MRI Time-Series , NeuroImage 45(3) 795-809, 2009.*
 
@@ -142,7 +150,8 @@ If you employ the partial volume correction method then you should reference thi
 
  - *Chappell MA, MacIntosh BJ, Donahue MJ,Jezzard P, Woolrich MW. Partial volume correction of multiple inversion time arterial spin labeling MRI data, Magn Reson Med, 65(4):1173-1183, 2011.*
 
-If you perform model-based analysis of QUASAR ASL data then you should reference this article too.
+If you perform model-based analysis of QUASAR ASL data then you should
+reference this article too.
 
  - *Chappell, M. A., Woolrich, M. W., Petersen, E. T., Golay, X., & Payne, S. J. (2012). Comparing model-based and model-free analysis methods for QUASAR arterial spin labeling perfusion quantification. doi:10.1002/mrm.243*
 
