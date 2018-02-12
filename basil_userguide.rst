@@ -55,13 +55,15 @@ Input Data
 
 **Data preview - perfusion weighted image**
 
+.. image:: images/aslgui_preview.jpg
+
 On the right of the window is a preview pane. Once you have set the *Data contents* and *Data order* parameters you can press *preview* and the GUI will generate a perfuion-weighted image based on the information you have provided. This is a good sanity check to ensure that you have set these parameters correctly - if at this stage you dont see something that looks like a perfusion-weighted image - i.e., something in which the grey matter structure of the brain is evident - then you probably haven't set the ordering correctly. You can scroll through the slices in the image using your mouses' scroll wheel (or equivalent). Note that for multi-PLD data this preview averages all the different PLD.
 
 
 Structural
 ------------
 
-.. image:: images/aslgui_reg.jpg
+.. image:: images/aslgui_struct.jpg
 
 - *Use FSL_ANAT output*: Recommended, use the output for a previous ``fsl_anat`` analysis to obtain stuctural image information.
 - *Use Structural Image*: Supply a high-resolution structural image (only if above option is deselected).
@@ -95,6 +97,8 @@ These options apply to the *Reference Region* mode of calibration.
 
 Distortion Correction
 --------------------------------
+
+.. image:: images/aslgui_distcorr.jpg
 
 - *Apply distortion correction*: Select to apply correction for readout distortions in the ASL data using a suitable set of reference images. You will need either a *calibration image* with a different phase encoding direction to the main calibration image, or a *fieldmap*.
 
