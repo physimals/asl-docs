@@ -1,5 +1,5 @@
 ==================================================
-asl_file: command line manipulation of ASL data
+asl_file
 ==================================================
 
 .. toctree::
