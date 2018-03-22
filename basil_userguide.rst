@@ -2,9 +2,11 @@
 BASIL User Guide
 =======================
 
-The graphical user interface to the BASIL tools can be accessed by typing either ``Asl`` (linux) or ``Asl_gui`` (OS X) at the command line. It should provide most of the options required for analysis of ASL data inlcuding the majority of the more advanced features of BASIL.
+The graphical user interface to the BASIL tools can be accessed by typing ``asl_gui`` at the command line. It should provide most of the options required for analysis of ASL data inlcuding the majority of the more advanced features of BASIL.
 
-This page documents the GUI avilable in FSL v6 (also available via the pre-release website), there are some differences with the GUI found in FSL v5. The GUI largely provides a more approachable interface to the ``oxford_asl`` command line tool (and even produces a command line call for ``oxford_asl`` for you to reuse separately if you like). Documentation on ``oxford_asl`` itself can be found [here].
+Note: if you are using a release of BASIL that you have installed separately from FSL you may need to specfically call ``asl_gui`` with the full path to where it is installed: e.g. ``/Users/{blah}/Downloads/oxford_asl/asl_gui``. This page documents the GUI avilable in FSL v6 (also available via the pre-release website), there are some differences with the GUI found in FSL v5.
+
+The GUI largely provides a more approachable interface to the ``oxford_asl`` command line tool (and even produces a command line call for ``oxford_asl`` for you to reuse separately if you like). 
 
 The GUI has five tabs, whose function are fairly self-explanatory. Each tab represents one step in the (notional) workflow for your ASL analysis and you can work through them using the prev/next buttons in the lowe right of each tab. For many analyses you will be able to accept many of the default options and you might find you do no need to even visit some of the later tabs.
 
