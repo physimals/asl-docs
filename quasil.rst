@@ -2,6 +2,11 @@
 QUASIL
 ======================
 
+.. toctree::
+   :maxdepth: 2
+
+   quasil_userguide
+
 QUASIL is a special implementation of BASIL specifically designed to exploit the features of QUASAR ASL data. It uses the same two component (tissue plus macro vascular signal) model that is employed by BASIL, but it has been extended to use all the information provided by the various phases for flow suppression provided by the QUASAR sequence. QUASIL uses information from the full QUASAR dataset to produce CBF images in absolute units (using an implementation of ``asl_calib``). QUASIL also provides the option to perform a 'model-free' analysis using a very similar methodology as presented in the original QUASAR paper.
 
 More information on the model used can be found in:

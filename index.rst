@@ -11,3 +11,4 @@ Sections
    oxasl
    basilcmd
    aslfile
+   quasil
