@@ -2,11 +2,6 @@
 Basil Introduction
 ==================
 
-.. toctree::
-   :maxdepth: 2
-
-   basil_userguide
-
 Bayesian Inference for Arterial Spin Labelling MRI
 ==================================================
 
@@ -57,14 +52,36 @@ While the first two apply specfically to the case of mulitple delay data, the la
 are also applicable to single delay ASL and are only available using the Bayesian 
 technique employed by BASIL.
 
-Pre-release
-===========
+Download and use
+========================
 
 The documentation found here relates to the version of BASIL found in
 FSL 6.0. A pre-release of the latest version of the BASIL tools, inlcuding the new GUI, can be found by following the link below. Use with caution, 
 as this is still under development!
 
 https://github.com/ibme-qubic/oxford_asl/releases
+
+.. toctree::
+   :maxdepth: 2
+
+   basil_userguide
+
+Examples
+===============
+
+An extensive set of examples of the use of  BASIL (for pcASL)
+is availabe as part of the primer:
+
+*Introduction to Perfusion Quantification using Arterial Spin
+Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
+Oxford University Press, 2017.
+
+The examples themselves are freely available online at the primer
+website: neuorimagingprimers.org, you can access the ASL examples
+directly here_.
+
+.. _here: http://www.neuroimagingprimers.org/examples/introduction-to-perfusion-quantification-using-asl/
+   
 
 BASIL tools
 ===========
