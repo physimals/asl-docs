@@ -1,5 +1,5 @@
 ==================
-Basil Introduction
+Basil 
 ==================
 
 Bayesian Inference for Arterial Spin Labelling MRI
@@ -52,14 +52,19 @@ While the first two apply specfically to the case of mulitple delay data, the la
 are also applicable to single delay ASL and are only available using the Bayesian 
 technique employed by BASIL.
 
-Download and use
+Download
 ========================
 
-The documentation found here relates to the version of BASIL found in
-FSL 6.0. A pre-release of the latest version of the BASIL tools, inlcuding the new GUI, can be found by following the link below. Use with caution, 
-as this is still under development!
+The documentation found here relates to the version of BASIL that is
+scheduled for FSL 6.0. A release of the latest version of the BASIL
+tools can be found by following the link below. This can be installed
+alonside an existing FSL 5.0.x release, we recommend you use this
+version instead of the version of BASIL in FSL 5.0.x now.
 
 https://github.com/ibme-qubic/oxford_asl/releases
+
+User Guide
+=================
 
 .. toctree::
    :maxdepth: 2
@@ -99,10 +104,10 @@ including kinetic-model inversion, absolute quantification via a calibration ima
 registration of the data. This will generally be the first place to go for most people 
 who want to do processing of ASL data.
 
- - Asl (Asl_gui) - The graphical user interface that brings the BASIL tools together 
+ - ``asl_gui`` - The graphical user interface that brings the BASIL tools together 
    in one place.
 
- - Oxford_asl - A command line interface for most common ASL perfusion analysis.
+ - ``oxford_asl`` - A command line interface for most common ASL perfusion analysis.
 
 
 The BASIL toolset
