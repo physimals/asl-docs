@@ -64,6 +64,10 @@ single step, mostly for use with --spatial. A value of ``1`` reduces
 the number of iterations performed in each step.
 --pvgm  Perform partial volume correction with the supplied partial volume estimates for grey and white matter (these should be the same resolution as the ASL data).
 --pvwm  White matter partial volume estimates (to go with ``--pvgm``).
+--init  Initialise BASIL with the results of a previous run - this
+option expects the ``finalMVN.nii.gz`` image from a previous ``basil``
+run (model
+specification must match - use with caution).
 
 
 
@@ -123,7 +127,8 @@ An generic file for multi-TI pASL might look like::
 
 By default BASIL assumes that your data is pulsed ASL (pASL), if you are using continuous (cASL) or pseudo continuous (pcASL) labelling then you should set the cASL option:
 
---casl  Use the cASL version of the model.
+--casl  Use the cASL version of the model (NOTE: the default ATT value
+is likely to be poorly suited to pcASL/cASL data, see below).
 
 For the model you can set the appropriate values of T1 (and T1b) as well as the duration of the label as set by your sequence, if these are not specified in the parameter file then the default values are used:
 
@@ -131,6 +136,18 @@ For the model you can set the appropriate values of T1 (and T1b) as well as the 
 --t1b=<value>  The value of T1b (default 1.65 seconds).
 --t1wm=<value>  The T1 value of white matter (default 1.1
    seconds) - only for partial volume correction.
+
+You can set an appropriate Arterial Transit Time (sometimes called
+Bolus Arrival Time) value. This will be used as the mean of the prior
+distribution for the ATT parameter during inference, i.e., the default
+value for ATT which will be updated based on the data.
+
+--bat=<value>  The value of ATT (aka Bolus Arrival Time) (default 0.7
+seconds).
+
+NOTE: in ``oxford_asl`` the default ATT is automatically changed from
+0.7 seconds to 1.3 seconds for cASL/pcASL. This does not happen in
+``basil``, you need to do this using the ``--bat`` option.
 
 Some models variants will have their own specific options, see Kinetic Model.
 
@@ -144,7 +161,8 @@ contained in the file.    You should specify each PLD/TI individually in the ord
 Post Label delay(s)
 
 --pld=<value>  The time (in seconds) for the PLD in single-PLD cASL/pcASL.
---pld1=<value>, --pld2=<value>, --pld-n-=<value>  The time (in seconds) of the *n*\ th PLD in multi-PLD cASL/pcASL.
+--pld1=<value>, --pld2=<value>, --pld-n-=<value>  The time (in
+seconds) of the *n*\ th PLD in multi-PLD cASL/pcASL.
 
 Inversion time(s)
    
@@ -160,7 +178,13 @@ Label duration(s)
 A fixed bolus duration is set in any cASL/pcASL implementation.
 For pASL a fixed bolus duration is often implemented using QUIPSS2 for example. If the bolus length is not fixed, e.g. FAIR then BASIL can estimate the bolus duration from multi-TI data if you use the ``infertau`` option when calling BASIL.
      
+Slice timing
 
+--slicedt  The time (in seconds) between acquisition of different
+slices in a 2D multi-slice readout. This is used to adjust the PLD for
+more superior slices (this assumes that the most inferior slice is
+acquired first with a PLD/TI that matches the value supplied via
+``--pld`` or ``--ti``).
 
 Look-locker readout (for multi-PLD/TI)
     

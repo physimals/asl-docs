@@ -26,7 +26,7 @@ Multi-step inference
 BASIL runs in multiple steps increasing the model complexity at each
 stage, this ensures a more robust final result by ensuring good
 convergence upon the global solution in all voxels. In general we
-recommend including the spatial prior/regularisaiton option that BASIL
+recommend including the spatial prior/regularisation option that BASIL
 offers, this is run as a final step.
 
 A rough overview of the process would be:
@@ -36,7 +36,15 @@ A rough overview of the process would be:
   inferred from the data.
 - STEP N: Bayesian inference with spatial prior - a final run
   for all the parameters inlcuding a spatial prior on the perfusion
-  parameter, initalised by the prior step. 
+  parameter, initalised by the prior step.
+
+In ``oxford_asl`` the data analysis using ``basil`` is often run
+twice: firstly on the data where the different repeats at the various
+PLD have been averaged, and then on the full data using the output of
+the first run to initialise the second. This is for similar reasons of
+robutness and encouraging good convergence as the multi-step process
+outlined above. This is not a default behviour of the ``basil``
+command line tool, but can be achiueve using the ``--init`` option.
 
 
 Kinetic model
