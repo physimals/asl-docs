@@ -56,10 +56,10 @@ Download
 ========================
 
 The documentation found here relates to the version of BASIL that is
-scheduled for FSL 6.0. A release of the latest version of the BASIL
+scheduled for release in FSL soon. A release of the latest version of the BASIL
 tools can be found by following the link below. This can be installed
-alonside an existing FSL 5.0.x release, we recommend you use this
-version instead of the version of BASIL in FSL 5.0.x now.
+alonside an existing FSL 6.0 release, we recommend you use this
+version instead of the version of BASIL 6.0 now (or previously in FSL 5.x).
 
 https://github.com/ibme-qubic/oxford_asl/releases
 

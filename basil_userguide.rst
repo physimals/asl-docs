@@ -119,12 +119,16 @@ Distortion Correction
 *Calibration image mode*
 
 - *Phase encode reversed calibration image*: An image that matches the calibration image in all acquisition parameters, except that the phase-encode direction is reversed.
-- *Effective EPI echo spacing*: Set this value from the sequence in miliseconds.
+- *Effective EPI echo spacing*: Set this value from the sequence in seconds (typical values are of the order of 0.1 ms).
 - *Phase encode direction*: The phase encode direction of the calibration image (i.e. the image entered on the *Calibration* tab).
 
+  Note that in this mode ``oxford_asl`` uses TOPUP_ to do the distortion correction. For this, the Effective EPI echo spacing is converted to total readout time by multiplication by the number of slices (minus one) in the encode direction.
+
+.. _TOPUP: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup
+  
 *Fieldmap mode*
 
-- *Effective EPI echo spacing*: Set this value from the sequence in miliseconds (sometimes called the dwell time).
+- *Effective EPI echo spacing*: Set this value from the sequence in seconds (sometimes called the dwell time), typical values are of the order of 0.1 ms.
 - *Phase encode direction*: The phase encode direction of the calibration image (entered on the *Calibration* tab).
 - *Fieldmap image*: A fieldmap image (need not necessarily matched to the ASL nor structural image resolution) in rad/s - be careful about the units, as this is not consistent between neuroimaging tools.
 - *Fieldmap magnitude image*: A magntiude image to go with the fieldmap, this is used for registration of the fieldmap.

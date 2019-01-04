@@ -137,6 +137,8 @@ Using phase-encode-reversed calibration image (a la ``topup``):
 --echospacing=<value>  Effective EPI echo spacing (sometimes called dwell time) - in seconds
 --pedir=<dir>  phase encoding direction, dir = x/y/z/-x/-y/-z
 
+For ``topup`` the effective EPI echo spacing is converted to total readout time by multiplication by the number of slices (minus one) in the encode direction. Earlier versions of oxford_asl (pre v3.9.22) interpreted the ``--echospacing`` parameter as total readout time when supplied with a phase-encode-reversed calibration image.
+
 **Partial volume correction**
 
 Correction for the effect of partial voluming of grey and white matter, and CSF can be performed using ``oxford_asl`` to get maps of 'pure' grey (and white) matter perfusion. When partial volume correction is performed a separate subdirectory (``pvcorr``) within the main results subdirectories will appear with the corrected perfusion images in: in this directory the ``perfusion.nii.gz`` image is for grey matter, ``perfusion_wm.nii.gz`` contains white matter estimates. Note that, the non-corrected analysis is always run prior to partial volume correction and thus you will also get a conventional perfusion image.
