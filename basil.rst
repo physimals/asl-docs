@@ -55,11 +55,13 @@ technique employed by BASIL.
 Download
 ========================
 
-The documentation found here relates to the version of BASIL that is
-scheduled for release in FSL soon. A release of the latest version of the BASIL
+The documentation found here relates to the version of BASIL that can
+be found in FSL v6.0.1 (and higher). We strongly recommend you use
+that version in place of the one present in previous FSL releases.
+
+A release of the latest version of the BASIL
 tools can be found by following the link below. This can be installed
-alonside an existing FSL 6.0 release, we recommend you use this
-version instead of the version of BASIL 6.0 now (or previously in FSL 5.x).
+alonside an existing FSL 6.0 release.
 
 https://github.com/ibme-qubic/oxford_asl/releases
 
