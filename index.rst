@@ -12,3 +12,4 @@ Sections
    basilcmd
    aslfile
    quasil
+   aslcalib
