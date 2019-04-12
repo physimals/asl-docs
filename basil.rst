@@ -65,6 +65,14 @@ alonside an existing FSL 6.0 release.
 
 https://github.com/ibme-qubic/oxford_asl/releases
 
+Analysis Guide
+=================
+
+.. toctree::
+   :maxdepth: 2
+
+   basil_analysisguide
+
 User Guide
 =================
 

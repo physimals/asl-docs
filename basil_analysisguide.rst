@@ -2,7 +2,7 @@
 ASL Analysis Guide
 =============================
 
-BASIL provides a comprehesive set of tools for the generation of quantative perfusion images from ASL data from an individual and links to other tools in FSL so that neuorimaging studies can be performed with groups of individuals, potentially also incorporating other neuroimaging data. The purpose of this section fot he documentation is to provide some gudiance as to key concepts you might want to know to understand ASL and its analysis. More detailed gudiance can be found in the following primer (for which online examples using BASIL are available):
+BASIL provides a comprehesive set of tools for the generation of quantative perfusion images from ASL data from an individual and links to other tools in FSL so that neuorimaging studies can be performed with groups of individuals, potentially also incorporating other neuroimaging data. The purpose of this section of the documentation is to provide some gudiance as to key concepts you might want to know to understand ASL and its analysis. More detailed gudiance can be found in the following primer (for which online examples using BASIL are available):
 
 `Introduction to Perfusion Quantification using Arterial Spin Labelling`_, Michael Chappell, Bradley MacIntosh, and Thomas Okell, Oxford University Press, 2017.
 
@@ -45,18 +45,24 @@ The labelling may either have been pseudo-continuous ASL (pcASL, most common) or
 Post-label delay(s)
 ------------------------------------
 
-After labeling a delay is left for the labeled blood-water to travel into the brain. For pcASL this is called the Post-Label Delay (PLD) and is the time from the *end* of the label duration (see `Label duration`_) until imaging. For pASL the labeling process is instantaneous and it is more common to refer to the inversion time (TI). For the BASIl GUI you are asked for PLD value(s) for pcASL and TI for pASL. However, the command line tools primiarly use the common delay measure: the inflow time (also TI), the time from the *start* of labeling. This is identical to the inversion time for pASL, but for pcASL is the sum of the bolus duration and PLD:
+After labeling a delay is left for the labeled blood-water to travel into the brain. For pcASL this is called the Post-Label Delay (PLD) and is the time from the *end* of the label duration (see `Label duration`_) until imaging. For pASL the labeling process is instantaneous and it is more common to refer to the inversion time (TI). For the BASIl GUI you are asked for PLD value(s) for pcASL and TI for pASL. However, the command line tools primiarly use the common delay measure: the inflow time (also TI), the time from the *start* of labeling. This is identical to the inversion time for pASL, but for pcASL is the sum of the label duration and PLD:
 
 cASL or pcASL: TI = PLD + Label duration
 
-It is quite common to meet ASL data with multiple repeats/measurements (and thus volumes in the resulting images) that all have the same PLD (or TI) - single delay ASL. It is, however, possible to use a range of different PLD in an acquisition in an attempt to extract more information, or achieve a better SNR - multi-delay (multi-PLD) ASL. BASIL can process both forms of ASL and the various tools have been designed so that you can specify ewither the numer ofs TIs in the data (``asl_file``) or a list of values (e.g., ``oxford_asl``). When you have multi-delay ASL you will also obtain an estimate of the arterial transit time (ATT), which will be provided as an extra output from ``oxford_asl``.
+It is quite common to meet ASL data with multiple repeats/measurements (and thus volumes in the resulting images) that all have the same PLD (or TI) - single delay ASL. It is, however, possible to use a range of different PLD in an acquisition in an attempt to extract more information, or achieve a better SNR - multi-delay (multi-PLD) ASL. BASIL can process both forms of ASL and the various tools have been designed so that you can specify either the numer ofs TIs in the data (``asl_file``) or a list of values (e.g., ``oxford_asl``). When you have multi-delay ASL you will also obtain an estimate of the arterial transit time (ATT), which will be provided as an extra output from BASIL and ``oxford_asl``.
 
 Label duration
 -------------------------------------
 
-The label (or bolus) duration is an important measure of how much labeled-blood water has been deliviered to the tissue and is thus important for quantification. For pcASL the value is set by the sequence and thus is something you need to know.
+The label (or bolus) duration is an important measure of how much labeled-blood water has been delivered to the tissue and is thus important for quantification. For pcASL the value is set by the sequence and thus is something you need to know. It is quite common to use a 1.8 second (or longer) label duration with pcASL.
 
-In principle in pASL the label duration is unknown (a spatial region is labeled instead of a know duration of flowing blood). You may find that your pASL acquisition is using Q2TIPS or QUIPSSII in which case the label duration has been set using extra pulses. Quite often the value of label duration can then be determined from the associated parameter, often called TI2 - a value of 0.7 or 0.8 seconds would be quite normal. Where the label duration is genuinely unknown (e.g. a FAIR pASL acquisition), BASIL can attempt to estimate it as long as the data is multi-TI. In practice, BASIL automatically estimates the label duration for all multi-TI pASL data, since it is possible with Q2TIPS/QUIPSSII that the duration will be shorter than expected due to high flow in the labelling region.
+In principle in pASL the label duration is unknown (a spatial region is labeled instead of a known duration of flowing blood). You may find that your pASL acquisition is using Q2TIPS or QUIPSSII, in which case the label duration has been set using extra pulses. Quite often the value of label duration can then be determined from the associated parameter, often called TI2 - a value of 0.7 or 0.8 seconds would be quite normal. Where the label duration is genuinely unknown (e.g. a FAIR pASL acquisition), BASIL can attempt to estimate it as long as the data is multi-TI. In practice, BASIL automatically estimates the label duration for all multi-TI pASL data, since it is possible with Q2TIPS/QUIPSSII that the duration will be shorter than expected due to high flow in the labelling region.
+
+Hadamard/Time-encoded ASL
+--------------------------------------
+This is a form of pcASL where the label ling performed via a series of sub-labels with shorter duration. Individual volumes in the ASL acquisition will vary whether for given periods during the label duration labeling is actually taking palce or not. THis is normally done accoridng to a specific sceme that means that adter decoding it is posisble to recover multi-PLD data that appears as if it has been collected with a PLD equal to the sub-label duration. Even more advanced versions vary the sub-label durations.
+
+To analyse this data in BASIL you first need to perform the decoding step to reveal the multi-PLD data. Thereafter this can be used in BASIL (and associated tools) treating the data as label-control subtracted and specufying the relevant (sub-) label duration and PLDs. Variable label durations are supported in BASIL if needed.
 
 Other ASL quantification/analysis issues
 ==========================================
