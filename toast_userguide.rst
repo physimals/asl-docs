@@ -7,14 +7,14 @@ Usage
 
 TOAST expects the input data without label-control subtraction being performed. A typical command line usage would be::
 
-    quasil -i <asl_data> -o <output_directory>  --infert1
+    toast -i <asl_data> -o <output_directory>  --infert1
  
-This would carry out a model-based analysis of Turbo-QUASAR data and provide voxelwise quantification of perfusion and arterial transit time. Note:: the current implementation of TOAST does NOT support dispersion correction, model-free analysis, or partial volume correction.
+This would carry out a model-based analysis of Turbo-QUASAR data and provide voxelwise quantification of perfusion and arterial transit time. Note: the current implementation of TOAST does NOT support dispersion correction, model-free analysis, or partial volume correction.
 
-Typing quasil with no options will give basic usage information.
-
-Main options
+Output files
 ----------------
+
+The main output files are (some of them are only available when using certain options)
 
 -i <image>  The QUASAR ASL data in Nifti file format. The data order should 'as acquired', i.e. as blocks of TIs measured in the different phases of flow suppression.
 -o <directory>  Use this to place the result in a different directory to the current working directory.
