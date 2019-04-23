@@ -15,6 +15,3 @@ More information on the model used can be found in:
   *Chappell, M. A., Woolrich, M. W., Petersen, E. T., Golay, X., & Payne, S. J. (2012). Comparing model-based and model-free analysis methods for QUASAR arterial spin labeling perfusion quantification. Magnetic resonance in medicine. doi:10.1002/mrm.24372*
 
   *E. T. Petersen, J. B. De Vis, C. a. T. van den Berg, and J. Hendrikse, “Turbo-QUASAR: a signal-to-noise optimal arterial spin labeling and sampling strategy,” Proc. Intl. Soc. Mag. Reson. Med. 21 2146., vol. 60, no. 6, p. 2146, 2013.*
-
-
-

@@ -1,15 +1,15 @@
 =====================
-QUASIL User Guide
+TOAST User Guide
 =====================
 
 Usage
 -----
 
-Since the acquisition of data using QUASAR is very well defined there are far fewer options to set with QUASIL than a typical BASIL analysis. NOTE that QUASIL expects the data without tag-control subtraction having been performed. A typical command line usage would be::
+TOAST expects the input data without label-control subtraction being performed. A typical command line usage would be::
 
-    quasil -i <asl_data> -o <output_directory>
+    quasil -i <asl_data> -o <output_directory>  --infert1
  
-This would carry out a model-based analysis of the ASL data and provide voxelwise estimates of perfusion, arterial transit time and arterial blood volume (aBV). The calibration of the data to the equilibrium magnetization is also carried out as part of the processing so that the perfusion image is provided in absolute units (ml/100ml/min). Additionally, the perfusion image prior to calibration is also provided: ``perfusion_raw``.
+This would carry out a model-based analysis of Turbo-QUASAR data and provide voxelwise quantification of perfusion and arterial transit time. Note:: the current implementation of TOAST does NOT support dispersion correction, model-free analysis, or partial volume correction.
 
 Typing quasil with no options will give basic usage information.
 
