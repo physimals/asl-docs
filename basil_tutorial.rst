@@ -235,25 +235,27 @@ Turbo-QUASAR achieves full brain coverage and improves the SNR of QUASAR by usin
 
 The command to quantify the hemodynamic parameters by correcting for MT effects in calibration::
 
-    toast -i <asl_data> -o <output_directiroy> --infert1 --corrcal
+    cd data_turbo_quasar
+
+    toast -i data -o ex4_1 --infert1 --corrcal
 
 The option --infert1 indicates that MT effects are corrected. The optional step --corrcal indicates that the partial volume effects on the edge of the brain are corrected.
 
 **Exercise 4.2: Calibration by using a separately acquired**
 
-Calibration can also be performed using a user-provided M0 image from a separate scan in the same session. The TR of the calibration image needs to be specified. A structural image needs to be provided in order to register the calibration image to the ASL image. The command is: ::
+Calibration can also be performed using a user-provided M0 image from a separate scan in the same session. The TR of the calibration image needs to be specified. A structural image needs to be provided in order to register the calibration image to the ASL image. The command is::
 
-    toast --i <asl_data> -o <output_directory>  --calib <calibration_image> --tr <TR_of_calibration_image> --struct <structural_image> --corrcal
+    toast -i data -o ex4_2  --calib M0 --tr 4.4 --struct structural --corrcal
 
 **Exercise 4.3 Quantify arterial blood volume**
 
 Turbo-QUASAR can also quantify arterial blood volume (ABV or aCBV) from the data using the --inferart option. We could use either of the calibration methods. The command is::
 
-    toast --i <asl_data> -o <output_directory>  --infert1 –corrcal --inferart
+    toast -i data -o ex4_3_1 --infert1 --corrcal --inferart
 
 or::
 
-    toast --i <asl_data> -o <output_directory>  --calib <calibration_image> --tr <TR_of_calibration_image> --struct <structural_image> --corrcal --inferart
+    toast -i data -o ex4_3_2 --calib M0 --tr 4.4 --struct structural --corrcal --inferart
 
 
 
