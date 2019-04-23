@@ -17,21 +17,21 @@ Output files
 +------------------------+-----------------------------------------------------------+
 | File name              | Description                                               |
 +========================+===========================================================+
-| ABV_absolute           | Arterial blood volume in decimals after calibration       |
+| ABV_absolute           | Arterial blood volume (in decimals) after calibration     |
 +------------------------+-----------------------------------------------------------+
 | Arrival_time_blood     | Arterial arrival time (in seconds) to macrovasculature    |
 +------------------------+-----------------------------------------------------------+
 | ATT                    | Arterial transit time (in seconds)                        |
 +------------------------+-----------------------------------------------------------+
-| calib_M0t              |  M0 of tissue                                             |
+| calib_M0t              | M0 of tissue                                              |
 +------------------------+-----------------------------------------------------------+
 | CBF_absolute           | CBF (in ml/100g/min) in absolute units after calibration  |
 +------------------------+-----------------------------------------------------------+
 | M0a_for_absolute_CBF   | M0 of arterial blood used for calibration                 |
 +------------------------+-----------------------------------------------------------+
-| mask                   |    Mask used in the analysis                              |
+| mask                   | Mask used in the analysis                                 |
 +------------------------+-----------------------------------------------------------+
-| T1_tissue              |   T1 of tissue                                            |
+| T1_tissue              | T1 of tissue                                              |
 +------------------------+-----------------------------------------------------------+
 
 Sequence parameters
