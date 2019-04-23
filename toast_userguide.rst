@@ -18,7 +18,7 @@ The main output files are (some of them are only available when using certain op
 
 <ABV_absolute>  Arterial blood volume in decimals after calibration
 
-<ABV_absolute>  The QUASAR ASL data in Nifti file format. The data order should 'as acquired', i.e. as blocks of TIs measured in the different phases of flow suppression.
+-i <ABV_absolute>  The QUASAR ASL data in Nifti file format. The data order should 'as acquired', i.e. as blocks of TIs measured in the different phases of flow suppression.
 -o <directory>  Use this to place the result in a different directory to the current working directory.
 -m <image>  Use this to provide a brain mask in which data analysis should take place. If this is not set, a mask will be generated automatically from the data.
 
