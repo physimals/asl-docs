@@ -14,13 +14,44 @@ This would carry out a model-based analysis of Turbo-QUASAR data and provide vox
 Output files
 ----------------
 
++------------------------+-----------------------------------------------------------+
+| File name              | Description                                               |
++========================+===========================================================+
+| ABV_absolute           | Arterial blood volume in decimals after calibration       |
++------------------------+-----------------------------------------------------------+
+| Arrival_time_blood     | Arterial arrival time (in seconds) to macrovasculature    |
++------------------------+-----------------------------------------------------------+
+| ATT                    | Arterial transit time (in seconds)                        |
++------------------------+-----------------------------------------------------------+
+| calib_M0t              |  M0 of tissue                                             |
++------------------------+-----------------------------------------------------------+
+| CBF_absolute           | CBF (in ml/100g/min) in absolute units after calibration  |
++------------------------+-----------------------------------------------------------+
+| M0a_for_absolute_CBF   | M0 of arterial blood used for calibration                 |
++------------------------+-----------------------------------------------------------+
+| mask                   |    Mask used in the analysis                              |
++------------------------+-----------------------------------------------------------+
+| T1_tissue              |   T1 of tissue                                            |
++------------------------+-----------------------------------------------------------+
+
 The main output files are (some of them are only available when using certain options)
 
-<ABV_absolute>  Arterial blood volume in decimals after calibration
+<ABV_absolute.nii.gz>  Arterial blood volume in decimals after calibration
 
-<ABV_absolute>  Arterial blood volume in decimals after calibration
--o <directory>  Use this to place the result in a different directory to the current working directory.
--m <image>  Use this to provide a brain mask in which data analysis should take place. If this is not set, a mask will be generated automatically from the data.
+Arrival_time_blood.nii.gz	Arterial arrival time (in seconds) to macrovasculature
+
+ATT.nii.gz			Arterial transit time (in seconds)
+
+calib_M0t.nii.gz		M0 of tissue
+
+CBF_absolute.nii.gz		CBF (in ml/100g/min) in absolute units after calibration
+
+M0a_for_absolute_CBF.nii.gz	M0 of arterial blood used for calibration
+
+mask.nii.gz			Mask used in the analysis
+
+T1_tissue.nii.gz		T1 of tissue
+
 
 Sequence parameters
 -------------------
@@ -42,4 +73,3 @@ Extended options
 --struct  Include a structural image
 --corrcal  Includecorrection for partial volume effects present around the edges of the calibration image.
 --inferart  Estimate voxelwise arterial blood volume (ABV or aCBV)
-
