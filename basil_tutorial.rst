@@ -228,7 +228,7 @@ Like the model-based analysis both perfusion and aCBV images are produced. Compa
 DATASET 4: Turbo-QUASAR
 -------------------------
 
-Turbo-QUASAR achieves full brain coverage and improves the SNR of QUASAR by using multiple labelling pulses to create a longer effective bolus duration while retaining the other characteristics of QUASAR. Due to the frequent labelling pulses, MT effects can be an issue affecting both calibration and CBF quantification. The analysis pipeline TOAST includes options to either correct the MT effects or use a separately acquired calibration data, in addition to quantifying the main hemodynamic parameters such as perfusion, arterial transit time, and arterial blood volume. The tool for analysing Turbo-QUASAR data is called ``toast``.
+Turbo-QUASAR achieves full brain coverage and improves the SNR of QUASAR by using multiple labelling pulses to create a longer effective bolus duration while retaining the other characteristics of QUASAR. Due to the frequent labelling pulses, MT effects can be an issue affecting both calibration and CBF quantification. The analysis pipeline ``toast`` includes options to either correct the MT effects or use a separately acquired calibration data, in addition to quantifying the main hemodynamic parameters such as perfusion, arterial transit time, and arterial blood volume.
 
 
 **Exercise 4.1: Calibration by correcting for MT effects**
