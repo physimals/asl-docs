@@ -34,25 +34,6 @@ Output files
 | T1_tissue              |   T1 of tissue                                            |
 +------------------------+-----------------------------------------------------------+
 
-The main output files are (some of them are only available when using certain options)
-
-<ABV_absolute.nii.gz>  Arterial blood volume in decimals after calibration
-
-Arrival_time_blood.nii.gz	Arterial arrival time (in seconds) to macrovasculature
-
-ATT.nii.gz			Arterial transit time (in seconds)
-
-calib_M0t.nii.gz		M0 of tissue
-
-CBF_absolute.nii.gz		CBF (in ml/100g/min) in absolute units after calibration
-
-M0a_for_absolute_CBF.nii.gz	M0 of arterial blood used for calibration
-
-mask.nii.gz			Mask used in the analysis
-
-T1_tissue.nii.gz		T1 of tissue
-
-
 Sequence parameters
 -------------------
 
