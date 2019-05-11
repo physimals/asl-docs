@@ -25,7 +25,6 @@ The perfusion quantification follows the same procedure as we learned in the BAS
 
 For the baseline perfusion quantification, we are going to use the parameter values shown in the following three screenshots to setup BASIL. Note that the inversion efficiency of baseline remains the same with the default value (0.85).
 
-# Insert three diagrams
 .. image:: /images/cvr_tutorial/baseline_data.jpg
 .. image:: /images/cvr_tutorial/baseline_calib.jpg
 .. image:: /images/cvr_tutorial/baseline_output.jpg
@@ -33,7 +32,6 @@ For the baseline perfusion quantification, we are going to use the parameter val
 
 For the stimulus perfusion quantification, we will need to change the inversion efficiency value to 0.80. This can be estimated using Bloch equation simulation on the flow velocity from the phase contrast MRI data.
 
-# Insert three diagrams
 .. image:: /images/cvr_tutorial/stimulus_data.jpg
 .. image:: /images/cvr_tutorial/stimulus_calib.jpg
 .. image:: /images/cvr_tutorial/stimulus_output.jpg
