@@ -39,9 +39,7 @@ For the stimulus perfusion quantification, we will need to change the inversion 
 
 After we have quantified the absolute perfusion of baseline and stimulus, we are going to apply the following formula to estimate CVR.
 
-.. math::
-
-	CVR=\frac{CBF_{stimulus}-CBF_{baseline}}{CBF_{baseline}}\times 100\%
+.. image:: /images/cvr_tutorial/CVR_equation.png
 
 This can be done using the ``fslmaths`` command::
 
