@@ -60,9 +60,15 @@ In principle in pASL the label duration is unknown (a spatial region is labeled 
 
 Hadamard/Time-encoded ASL
 --------------------------------------
-This is a form of pcASL where the label ling performed via a series of sub-labels with shorter duration. Individual volumes in the ASL acquisition will vary whether for given periods during the label duration labeling is actually taking palce or not. THis is normally done accoridng to a specific sceme that means that adter decoding it is posisble to recover multi-PLD data that appears as if it has been collected with a PLD equal to the sub-label duration. Even more advanced versions vary the sub-label durations.
+This is a form of pcASL where the label ling performed via a series of sub-labels with shorter duration. Individual volumes in the ASL acquisition will vary whether for given periods during the label duration labeling is actually taking palce or not. This is normally done accoridng to a specific sceme that means that adter decoding it is posisble to recover multi-PLD data that appears as if it has been collected with a PLD equal to the sub-label duration. Even more advanced versions vary the sub-label durations.
 
 To analyse this data in BASIL you first need to perform the decoding step to reveal the multi-PLD data. Thereafter this can be used in BASIL (and associated tools) treating the data as label-control subtracted and specufying the relevant (sub-) label duration and PLDs. Variable label durations are supported in BASIL if needed.
+
+Turbo-QUASAR
+--------------------------------------
+This is a form of PASL where multiple sub-boluses are created using a series of labelling pulses. The total effective bolus duration is the summation of the duration each sub-bolus, which is equal to the time between each inversion time (TI) of the Look-Locker readout under normal circumstances where the flow velocity of the arterial blood is about 25cm/s. In conditions where the flow velocity is significantly different from this value, an estimation of the flow velocity is needed from a separate phase contrast MR data. Subsequently, the effective bolus duration can be estimated from the flow velocity information.
+
+To analyse Turbo-QUASAR in BASIL, you should use the command line tool TOAST.
 
 Other ASL quantification/analysis issues
 ==========================================
