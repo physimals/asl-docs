@@ -48,6 +48,8 @@ A number of parameters are similar with QUASAR so users may wish to consult the 
 Extended options
 ---------------------------
 
+These options include the estimation of T1 of tissue, correcting the partial volume effects of the calibration data, and estimation of the arterial blood volume.
+
 --infert1  Estimate voxelwise T1 of tissue
 --calib  Include a calibration image
 --tr  TR (in seconds) of the calibration image. Default: 5.0 seconds.
