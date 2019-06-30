@@ -12,6 +12,8 @@ TOAST is a pipeline designed to quantify the hemodynamic parameters of Turbo-QUA
 
 More information on the model used can be found in:
 
+  *Zhao M Y, Václavů L, Petersen E T, Biemond B J, Sokolska M J, Suzuki Y, Thomas D L, Nederveen A J, Chappell M A, (2019). Quantification of Cerebral Perfusion and Cerebrovascular Reserve Using Turbo-QUASAR Arterial Spin Labeling MRI. Magnetic resonance in medicine. in press*
+
   *Chappell, M. A., Woolrich, M. W., Petersen, E. T., Golay, X., & Payne, S. J. (2012). Comparing model-based and model-free analysis methods for QUASAR arterial spin labeling perfusion quantification. Magnetic resonance in medicine. doi:10.1002/mrm.24372*
 
   *E. T. Petersen, J. B. De Vis, C. a. T. van den Berg, and J. Hendrikse, “Turbo-QUASAR: a signal-to-noise optimal arterial spin labeling and sampling strategy,” Proc. Intl. Soc. Mag. Reson. Med. 21 2146., vol. 60, no. 6, p. 2146, 2013.*
