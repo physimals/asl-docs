@@ -2,8 +2,15 @@
 TOAST User Guide
 =====================
 
-Usage
------
+
+Turbo-QUASAR Description
+------------------------
+As an improvement of the QUASAR method, Turbo-QUASAR was designed to overcome the low SNR of PASL when compared to PCASL by applying a series of labeling pulses to create a longer effective bolus duration. These labeling pulses were inserted between readout (also replacing the QUIPPS II pulse used in QUASAR) to maintain the magnetization level of the tracer for a longer period than conventional PASL techniques, thus increasing the overall SNR of the resulting ASL data. The figure below shows the different labeling techniques and the associated arterial input function for QUASAR, Turbo-QUASAR, and PCASL.
+
+.. image:: /images/turbo_quasar/Turbo_QUASAR_description.png
+
+TOAST Usage
+-----------
 
 TOAST expects the input data without label-control subtraction being performed. A typical command line usage would be::
 
