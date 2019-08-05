@@ -67,7 +67,7 @@ These options include the estimation of T1 of tissue, correcting the partial vol
 
 Magnetisation Transfer (MT) effects in Turbo-QUASAR
 ---------------------------------------------------
-Due to the RF pulses in the label and control experiments of Turbo-QUASAR, MT effects could potentially affect the estimation accuracy of CBF. Turbo-QUASAR uses Look-Locker readout and the spins follows a saturation recovery. The figure below shows the saturation recovery curve for spins at different locations of the brain. The dash line indicates the time point that the labeling stopped. In essence, the MT effects have a stronger influence to spins that are closer to the labeling region. A correction method has been implemented in TOAST to correct the MT effects by modeling the saturation recovery signal in two parts: (1) under the influence of MT effects and (2) without the influence of MT effects.
+Due to the RF pulses in the label and control experiments of Turbo-QUASAR, MT effects could potentially affect the estimation accuracy of CBF. Turbo-QUASAR uses Look-Locker readout and the spins follows a saturation recovery. The figure below shows the saturation recovery curve for spins at different locations of the brain. The dash line indicates the time point that the labeling stopped. In essence, the MT effects have a stronger influence to spins that are closer to the labeling region. A correction method has been implemented in TOAST to correct the MT effects by modeling the saturation recovery signal in two parts: (1) under the influence of MT effects and (2) without the influence of MT effects. The correction is achieved by executing the --infert1 option (default).
 
 .. image:: /images/turbo_quasar/Turbo_QUASAR_MT_effects.png
 
