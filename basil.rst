@@ -80,23 +80,8 @@ User Guide
    :maxdepth: 2
 
    basil_userguide
-
-Examples
-===============
-
-An extensive set of examples of the use of  BASIL (for pcASL)
-is availabe as part of the primer:
-
-*Introduction to Perfusion Quantification using Arterial Spin
-Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
-Oxford University Press, 2017.
-
-The examples themselves are freely available online at the primer
-website: neuorimagingprimers.org, you can access the ASL examples
-directly here_.
-
-.. _here: http://www.neuroimagingprimers.org/examples/introduction-to-perfusion-quantification-using-asl/
-   
+   walkthrough_gui
+   example_primer
 
 BASIL tools
 ===========
@@ -142,7 +127,7 @@ The BASIL toolset
  - ``TOAST`` - A special version of BASIL optimised for Turbo-QUASAR ASL data, includes model-based analyses, calibration, and correction for MT effects.
 
 Further Reading
-============
+===============
 
 To learn more about ASL, acquisition choices, the
 principles of analysis and how perfusion images can be used in group
