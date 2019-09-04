@@ -65,7 +65,7 @@ There are further acquisition specific parameters that you might need to invoke 
 --t1=<value>  The T1 value of tissue, 1.3 s by default (assuming acquisition at 3T).
 --t1b=<value>  The T1 value of arterial blood, 1.65 s by default (assuming acquisition at 3T).
 --sliceband=<number>  Number of slices per band in a multi-band acquisition.
---rpts=<csv>``  Number of repeated measurements for each TI/PLD in the TIs list (``--tis=<csv>``), for use where the number of repeated measurements varies at each TI.
+--rpts=<csv>  Number of repeated measurements for each TI/PLD in the TIs list (``--tis=<csv>``), for use where the number of repeated measurements varies at each TI.
 
 **Structural image**
 

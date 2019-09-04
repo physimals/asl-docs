@@ -23,8 +23,7 @@ BASIL can be called from the command line with the following information:
 -i <file>  Input file containing label-control differenced data.
 -m <file>  Brain mask for the data.
 -o <dir>  Name of directory into which results are to be written (default is a subdirectory called basil within the input directory).
---optfile <file>  Model and sequence parameters (to be passed to
-FABBER) (was previouosly ``-@``).
+--optfile <file>  Model and sequence parameters (to be passed to FABBER) (was previouosly ``-@``).
 --spatial  Apply a spatial regularising prior to the estimated perfusion image, this is preferable to spatial smoothing of the data before analysis.
   
 **Model options**
@@ -71,19 +70,17 @@ BASIL also offers a number of variants on the kinetic model used:
 
 --disp=<option>  Model of the label dispersion
 
-  --disp=none  No dispersion.
-  --disp=gamma  Dispersion modelled according to a gamma dispersion kernel (vascular transport function).
-  --disp=gauss  Dispersion modelled according to a Gaussian dispersion kernel.
-  --disp=sgauss  Dispersion modelled according to a spatially (rather than temporally) derived Gaussian dispersion function.
+  - ``--disp=none``  No dispersion.
+  - ``--disp=gamma``  Dispersion modelled according to a gamma dispersion kernel (vascular transport function).
+  - ``--disp=gauss``  Dispersion modelled according to a Gaussian dispersion kernel.
+  - ``--disp=sgauss``  Dispersion modelled according to a spatially (rather than temporally) derived Gaussian dispersion function.
   
 --exch=<option>  Model of the exchange of labeled water in the capilliary bed (selects the residue function).
 
-  --exch=mix  Well-mixed single compartment
-  --exch=simple  Simple single compartment with T1 of blood (mimics
-  the assumptions made in the white paper)
-  --exch=2cpt  A two compartment exchange model following Parkes &
-  Tofts (by default the slow solution is used).
-  --exch=spa  An implementation of the single pass approximation from St. Lawrence.
+  - ``--exch=mix``  Well-mixed single compartment
+  - ``--exch=simple``  Simple single compartment with T1 of blood (mimics the assumptions made in the white paper)
+  - ``--exch=2cpt``  A two compartment exchange model following Parkes & Tofts (by default the slow solution is used).
+  - ``--exch=spa``  An implementation of the single pass approximation from St. Lawrence.
 
 BASIL assumes by default a single well-mixed tissue
 compartment (``--exch=mix``) and no dispersion of the bolus of labeled

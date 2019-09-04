@@ -27,10 +27,10 @@ Typing the asl_calib with no options will give the basic usage information, the 
 
 -c <calib_data>  Calibration data in Nifti file format with the individual images stacked in the time dimension.
 -s <structural_image>  Structural image used for determining reference 'tissue' mask (not required if reference 'tissue' mask is supplied, see below).
--t <asl->structural_transformation_matrix>  Transformation matrix for ASL images to structural image space, e.g. from ``asl_reg``, (not required if reference 'tissue' mask is supplied, see below).
+-t <asl to structural_transformation_matrix>  Transformation matrix for ASL images to structural image space, e.g. from ``asl_reg``, (not required if reference 'tissue' mask is supplied, see below).
 --mode <mode>  Specify what form the calibration data takes, options are: longtr, satrecov. See below for mode specific options.
 --tissref <Reference_tissue_type>  The 'tissue' type to use as a reference, see below, options are: ``csf, wm, gm, none``.
--te <TE_value>  TE of the calibration sequence in seconds, deafult is 0 s.
+--te <TE_value>  TE of the calibration sequence in seconds, default is 0 s.
 -i <perfusion_image>  A perfusion image for calibration. This should be still at the native resolution of the ASL data.
 
 **Output options**
@@ -41,11 +41,11 @@ Typing the asl_calib with no options will give the basic usage information, the 
 **Extended Options**
 
 -m <CSF_mask>  Provide a 'tissue' reference mask, e.g. hand drawn, instead of relying upon automated mask creation. If a mask is supplied the structural image and ASL to structural transformation are no longer required.
--bmask <brain_mask>  A mask of the brain in (ASL native space), this will be used for sensitivity estimation (LongTR method) or T1 estimation (SatRecov method). If not supplied a brain mask will be generated automatically from the calibration data if it is needed, this option allows the same mask from other processing steps to be employed for consistency.
--t2star  Tells ``asl_calib`` to do T2* correction rather than T2 correction. This option simply alters which set of default T2(*) values are used.
--t1r <T1_reference_tissue>  T1 (in seconds) for the reference tissue, the defaults for the different ``--tissref`` options are (based on 3T): csf 3.4, gm, 1.3, wm 1.0.
--t2r <T2_reference_tissue>  T2(*) (in miliseconds) for the reference tissue, the defaults for the different ``--tissref`` options are (based on 3T) T2/T2*: csf 750/500, gm, 100/50, wm 50/20. These defaults are general estimates based on the literature and should be used with care.
--t2b <T2_blood> T2 (in miliseconds) for blood, the default is 150/50 (T2/T2*). The defaults are a general estimate based on the literature and should be used with care.
+--bmask <brain_mask>  A mask of the brain in (ASL native space), this will be used for sensitivity estimation (LongTR method) or T1 estimation (SatRecov method). If not supplied a brain mask will be generated automatically from the calibration data if it is needed, this option allows the same mask from other processing steps to be employed for consistency.
+--t2star  Tells ``asl_calib`` to do T2* correction rather than T2 correction. This option simply alters which set of default T2(*) values are used.
+--t1r <T1_reference_tissue>  T1 (in seconds) for the reference tissue, the defaults for the different ``--tissref`` options are (based on 3T): csf 3.4, gm, 1.3, wm 1.0.
+--t2r <T2_reference_tissue>  T2(*) (in miliseconds) for the reference tissue, the defaults for the different ``--tissref`` options are (based on 3T) T2/T2*: csf 750/500, gm, 100/50, wm 50/20. These defaults are general estimates based on the literature and should be used with care.
+--t2b <T2_blood>  T2 (in miliseconds) for blood, the default is 150/50 (T2/T2*). The defaults are a general estimate based on the literature and should be used with care.
 
 **Mode specific options**
 
@@ -53,9 +53,9 @@ Typing the asl_calib with no options will give the basic usage information, the 
 
 --tr <TR_value>  TR of the calibration sequence in seconds, default is 3.2 s.
 --cagin <calibration_gain>  The relative gain of the ASL data to that of the calibration image, default 1. This allows for the case where the ASL data has been acquired with a higher gain than the calibration images, for example where background suppression was used allowing for a higher gain to be set for the ASL data.
--cref <calibration_reference_image>  A further image aquired using the same parameters as the main calibration file, but with a different coil to be used as a reference to calculate the sensitivity of the coil used for the main ASL data.
--osen <sensitivity_image_out_file>  Specify where the sensitivity file can be saved, if a reference image has been supplied with ``--cref``. This can be used later to correct an estimated CBF image for coil sensitivity.
--isen <sensitivity_image>  provide a sensitivity image (that matches the calibration image) to be used in calcuations.
+--cref <calibration_reference_image>  A further image aquired using the same parameters as the main calibration file, but with a different coil to be used as a reference to calculate the sensitivity of the coil used for the main ASL data.
+--osen <sensitivity_image_out_file>  Specify where the sensitivity file can be saved, if a reference image has been supplied with ``--cref``. This can be used later to correct an estimated CBF image for coil sensitivity.
+--isen <sensitivity_image>  provide a sensitivity image (that matches the calibration image) to be used in calcuations.
 
 *SatRecov*
 

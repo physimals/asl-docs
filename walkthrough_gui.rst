@@ -9,9 +9,8 @@ We will be working with single and multi-PLD data from the
 You will need to download this data before following the tutorial.
 
 The tutorial has been written so that we start with the most basic analysis and gradually add
-options and show the effect they have on the output, as well as how they are reported in the
-command log and the summary report. However this is not a complete description of all available
-options in the GUI or the command line - for that see the :ref:`CLI` or :ref:`CLref`.
+options and show the effect they have on the output. However this is not a complete description of all available
+options in the GUI.
 
 .. contents:: Contents
     :local:
