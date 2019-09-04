@@ -110,4 +110,12 @@ to be aware of:
   is used to intialise the subsequent analyses. This also means that
   you can get both conventional and advanced results in a single run
   of ``oxford_asl``.
+- *Multi-stage analysis*: By default oxford_asl will analyse the data
+  in multiple-stages where appropriate in an attempt to get as accurate and robust a
+  result as possible. The main example of this is a preliminary
+  analysis with the data having been averaged over multiple-repeats
+  (see above). But, this also applies to the registration (see
+  above). This does mean that you might find some differences in the
+  results than if you did an analysis of the data yourself using a
+  combination of other command line tools.
 
