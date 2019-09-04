@@ -58,11 +58,26 @@ The label (or bolus) duration is an important measure of how much labeled-blood 
 
 In principle in pASL the label duration is unknown (a spatial region is labeled instead of a known duration of flowing blood). You may find that your pASL acquisition is using Q2TIPS or QUIPSSII, in which case the label duration has been set using extra pulses. Quite often the value of label duration can then be determined from the associated parameter, often called TI2 - a value of 0.7 or 0.8 seconds would be quite normal. Where the label duration is genuinely unknown (e.g. a FAIR pASL acquisition), BASIL can attempt to estimate it as long as the data is multi-TI. In practice, BASIL automatically estimates the label duration for all multi-TI pASL data, since it is possible with Q2TIPS/QUIPSSII that the duration will be shorter than expected due to high flow in the labelling region.
 
+ASL variants
+=======================
+
 Hadamard/Time-encoded ASL
 --------------------------------------
-This is a form of pcASL where the label ling performed via a series of sub-labels with shorter duration. Individual volumes in the ASL acquisition will vary whether for given periods during the label duration labeling is actually taking palce or not. THis is normally done accoridng to a specific sceme that means that adter decoding it is posisble to recover multi-PLD data that appears as if it has been collected with a PLD equal to the sub-label duration. Even more advanced versions vary the sub-label durations.
+This is a form of pcASL where the label ling performed via a series of sub-labels with shorter duration. Individual volumes in the ASL acquisition will vary whether for given periods during the label duration labeling is actually taking palce or not. This is normally done accoridng to a specific sceme that means that adter decoding it is posisble to recover multi-PLD data that appears as if it has been collected with a PLD equal to the sub-label duration. Even more advanced versions vary the sub-label durations.
 
-To analyse this data in BASIL you first need to perform the decoding step to reveal the multi-PLD data. Thereafter this can be used in BASIL (and associated tools) treating the data as label-control subtracted and specufying the relevant (sub-) label duration and PLDs. Variable label durations are supported in BASIL if needed.
+It is posisble to directly analyse some forms of TE-ASL directly using BASIL (the command line tool). Otherwise, to analyse this data in BASIL you can first perform the decoding step to reveal the multi-PLD data. Thereafter this can be used in BASIL (and associated tools) treating the data as label-control subtracted and specufying the relevant (sub-) label duration and PLDs. Variable label durations are supported in BASIL if needed.
+
+QUASAR
+--------------------------------------
+This is a special version of pASL which combines data with and without vascular signal suppression. QUASAR can be used to separate signal from tissue and macrovasular contamination. It is possible using QUASAR to isolate the macrovascular signal and thus estimate an arterial input function, which enables 'model-free' deconvolution. QUASAR uses a Look-Locker readout to achieve sampling of different TIs.
+
+Analysis using both 'model-based' and 'model-free' methods are provided in the QUASIL tool, a version of BASIL optimised for QUASAR data. 
+
+Turbo-QUASAR
+--------------------------------------
+This is a form of pASL where multiple sub-boluses are created using a series of labelling pulses. It is a variant on QUASAR ASL. The total effective bolus duration is the summation of the duration each sub-bolus, which is equal to the time between each inversion time (TI) of the Look-Locker readout under normal circumstances where the flow velocity of the arterial blood is about 25cm/s. In conditions where the flow velocity is significantly different from this value, an estimation of the flow velocity is needed from a separate phase contrast MR data. Subsequently, the effective bolus duration can be estimated from the flow velocity information.
+
+To analyse Turbo-QUASAR in BASIL, you can the TOAST command line tool.
 
 Other ASL quantification/analysis issues
 ==========================================

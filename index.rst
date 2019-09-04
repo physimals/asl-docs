@@ -10,6 +10,7 @@ Sections
    basil
    oxasl
    basilcmd
+   aslcalib
    aslfile
    quasil
-   aslcalib
+   toast

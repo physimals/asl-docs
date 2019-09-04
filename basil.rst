@@ -126,8 +126,6 @@ The BASIL toolset
  - ``BASIL`` (itself) - this is the core tool that performs kinetic-model inversion to the 
    data using a Bayesian algorithm. You should only need to use it directly for more 
    custom analyses than that offered by oxford_asl/Asl_gui.
- - ``QUASIL`` - A special version of BASIL optimised for QUASAR ASL data, includes model-based 
-   or model-free analyses along with calibration.
  - ``asl_calib`` - this tool takes a supplied calibration volume and calculates the 
    magnetization of arterial blood allowing CBF to be quantified in absolute units. The 
    main functionality of asl_calib is built into oxford_asl, Asl_gui and QUASIL, but 
@@ -139,6 +137,9 @@ The BASIL toolset
    files, particulary designed to cope with the complex strcuture of
    interleaved lable and control images combined with muliple
    post-labeling delays.
+
+ - ``QUASIL`` - A special version of BASIL optimised for QUASAR ASL data, includes model-based or model-free analyses along with calibration.
+ - ``TOAST`` - A special version of BASIL optimised for Turbo-QUASAR ASL data, includes model-based analyses, calibration, and correction for MT effects.
 
 Further Reading
 ============
