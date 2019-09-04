@@ -112,9 +112,11 @@ There are some extended options (to be used alongside a structural image) for th
 --artoff  Turn off correction for signal arising from ASL signal still within the (macro) vasculature, this might be appropriate if the acquisition employed flow suppression. This is enabled by default for single-delay/PLD ASL.
 --fixbolus  Turn off the automatic estimation of bolus duration, this might be appropriate if the bolus duration is well defined by the acquisition sequence and is on by default for cASL and pcASL. It might be appropriate to use this with pASL where the bolus duration has been fixed using QUIPSSII or Q2TIPS.
 --fixbat  Force basil not to infer the ATT (BAT), this is on by default for single-delay/PLD ASL.
+--batsd  The standard deviation for the ATT (BAT) prior distribution (default 0.316 seconds for single-PLD, 1.0 second for multi-PLD). See BASIL command line user guide for more information.
 --infert1  Incorporate uncertainty in the T1 values into the analysis. Strictly this inlcudes the T1 values in the inference process, but dont expect accurate T1 maps from ASL data.
 --noiseprior  Use the in-built informative prior for noise estimation. This is particuarly useful where you only have a small number of repeats/volumes in the main ASL data (e.g., if your data has already been averaged before you get it). This provides information to ``basil`` about the typical noise present in ASL data and helps with the application of appropriate spatial regularisation.
 --noisesd  The standard deviation of the noise as described by the noise prior, overrides the values set internally and needs to be of the form of the standard deviation of the noise relative to the magnitude of the ASL data (only for very advanced use).
+
 
 **Distortion Correction**
 

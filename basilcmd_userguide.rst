@@ -142,12 +142,18 @@ Bolus Arrival Time) value. This will be used as the mean of the prior
 distribution for the ATT parameter during inference, i.e., the default
 value for ATT which will be updated based on the data.
 
---bat=<value>  The value of ATT (aka Bolus Arrival Time) (default 0.7
-seconds).
+--bat=<value>  The value of ATT (aka Bolus Arrival Time) (default 0.7 seconds).
 
 NOTE: in ``oxford_asl`` the default ATT is automatically changed from
 0.7 seconds to 1.3 seconds for cASL/pcASL. This does not happen in
 ``basil``, you need to do this using the ``--bat`` option.
+
+--batsd=<value>  The value of the standard deviation for the
+ATT prior distribution (default 0.316 seconds).
+
+The default value is appropriate if you are treating ATT as a confoud. If you are
+interested in estimating ATT from multi-PLD/TI ASL you may wish to use
+``--batsd=1``, the default value chosen by ``oxford_asl``.
 
 Some models variants will have their own specific options, see Kinetic Model.
 
