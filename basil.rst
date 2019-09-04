@@ -74,7 +74,7 @@ Analysis Guide
    basil_analysisguide
 
 User Guide
-=================
+==========
 
 .. toctree::
    :maxdepth: 2
@@ -82,7 +82,7 @@ User Guide
    basil_userguide
 
 Examples
-=================
+========
 
 .. toctree::
    :maxdepth: 2
