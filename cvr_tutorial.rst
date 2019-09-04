@@ -1,5 +1,5 @@
 =========================================================
-Cerebrovascular Reserve Quantification Using ASL Tutorial
+Cerebrovascular Reserve Quantification Using ASL
 =========================================================
 
 Introduction

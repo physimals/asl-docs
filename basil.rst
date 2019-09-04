@@ -91,7 +91,7 @@ Examples
    cvr_tutorial
 
 A set of examples of the use of  BASIL (for pcASL), which is similar
-to those above, is also availabe as part of the primer:
+to those above, is also available as part of the primer:
 
 *Introduction to Perfusion Quantification using Arterial Spin
 Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
