@@ -1,4 +1,4 @@
-Worked example from the FSL course
+Worked examples from the FSL course
 ==================================
 
 This tutorial demonstrates some of the common options available in the 
