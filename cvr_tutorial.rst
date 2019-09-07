@@ -14,7 +14,7 @@ Introduction
 
 Cerebrovascular reserve (CVR) is defined as the maximum change in perfusion in response to a vasoactive stimulus. CVR has become an important biomarker to assess tissue health and ASL offers a non-invasive technique to measure CVR in vivo. Measuring CVR requires the quantification of perfusion under two different physiological conditions: baseline and (physiologically) stimulated. In the baseline condition, it is common for us to follow the routine procedures where we acquire data while the subject is in a resting state in the scanner. In the stimulus condition, we need to administer a stimulus to manipulate the perfusion of the subject. The choice of the stimulus depends on the availability and the condition of the subject. Nevertheless, the key component in designing a CVR experiment is to change the perfusion of the subject to a different level (from the normal resting state level).
 
-In this tutorial, we are going to illustrate an example CVR study in which CVR was quantified using PCASL and azetazolamide as the stimulus.
+In this tutorial, we are going to illustrate an example CVR study in which CVR was quantified using PCASL and azetazolamide as the stimulus. Sample data can be downlowded here.
 
 
 ASL Sequence
