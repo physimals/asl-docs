@@ -230,14 +230,16 @@ DATASET 4: Turbo-QUASAR
 
 Turbo-QUASAR achieves full brain coverage and improves the SNR of QUASAR by using multiple labelling pulses to create a longer effective bolus duration while retaining the other characteristics of QUASAR. Due to the frequent labelling pulses, MT effects can be an issue affecting both calibration and CBF quantification. The analysis pipeline ``toast`` includes options to either correct the MT effects or use a separately acquired calibration data, in addition to quantifying the main hemodynamic parameters such as perfusion, arterial transit time, and arterial blood volume.
 
+This tutorial runs through the use of TOAST (the command line tool) on Turbo-QUASAR dataset. The data can be found here (~25 MB):
+
+.. Martin. Could you upload the sample data and make a download link here?
+
 
 **Exercise 4.1: Calibration by correcting for MT effects**
 
 The command to quantify the hemodynamic parameters by correcting for MT effects in calibration::
 
-    cd data_turbo_quasar
-
-    toast -i data -o ex4_1 --infert1 --corrcal
+    toast -i Turbo_QUASAR_data -o ex4_1 --infert1 --corrcal
 
 The option --infert1 indicates that MT effects are corrected. The optional step --corrcal indicates that the partial volume effects on the edge of the brain are corrected.
 
@@ -245,17 +247,17 @@ The option --infert1 indicates that MT effects are corrected. The optional step 
 
 Calibration can also be performed using a user-provided M0 image from a separate scan in the same session. The TR of the calibration image needs to be specified. A structural image needs to be provided in order to register the calibration image to the ASL image. The command is::
 
-    toast -i data -o ex4_2  --calib M0 --tr 4.4 --struct structural --corrcal
+    toast -i Turbo_QUASAR_data -o ex4_2  --calib M0 --tr 4.4 --struct structural --corrcal
 
 **Exercise 4.3 Quantify arterial blood volume**
 
 Turbo-QUASAR can also quantify arterial blood volume (ABV or aCBV) from the data using the --inferart option. We could use either of the calibration methods. The command is::
 
-    toast -i data -o ex4_3_1 --infert1 --corrcal --inferart
+    toast -i Turbo_QUASAR_data -o ex4_3_1 --infert1 --corrcal --inferart
 
 or::
 
-    toast -i data -o ex4_3_2 --calib M0 --tr 4.4 --struct structural --corrcal --inferart
+    toast -i Turbo_QUASAR_data -o ex4_3_2 --calib M0 --tr 4.4 --struct structural --corrcal --inferart
 
 
 
