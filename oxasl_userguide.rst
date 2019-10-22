@@ -57,6 +57,7 @@ There are a number of acquisition sepecific parameters that you should set to de
   When using the ``--tis=`` you can specify a full list of all TIs/PLDs in the data (i.e., as many entries as there are label-control pairs). Or, if you have a number of TIs/PLDs repeated multiple times you can just list the unique TIs in order and ``oxford_asl`` will automatically replicate that list to mathc the number of repeated measurements in the data. If you have a variable number of repeats at each TI/PLD then either list all TIs or use the ``--rpts=<csv>`` option (see below).
   
 --bolus=<value>  use this to specify the duration of the ASL labeling bolus used in the sequence (in seconds). For pcASL/cASL this will be the value fixed by the sequence, for pASL this will be taken as the inital value for bolus duration estimation (unless the ``--fixbolus``) option is specified.
+--bolus=<csv>  alternatively supply a list of bolus duration for each TI/PLD in the data (the length of the list should match that provided to ``--tis=``).
 --slicedt=<value>  For multi-slice (2D) acquisitions where superior slices are acquired later than those below, this option does not apply to 3D readouts. This provides the increase in time (in seconds) after labeling for a superior slice relative to the one directly below. It is assumed that the TIs provided refer to the lowest slice in the dataset.
 
 There are further acquisition specific parameters that you might need to invoke depending upon your data, although the defaults here are more likely to apply.
