@@ -1,5 +1,5 @@
 ==================
-Basil 
+Overview 
 ==================
 
 Bayesian Inference for Arterial Spin Labelling MRI
@@ -51,19 +51,6 @@ for the model inversion, this provides a number of advantages:
 While the first two apply specfically to the case of mulitple delay data, the latter 
 are also applicable to single delay ASL and are only available using the Bayesian 
 technique employed by BASIL.
-
-Download
-========================
-
-The documentation found here relates to the version of BASIL that can
-be found in FSL v6.0.1 (and higher). We strongly recommend you use
-that version in place of the one present in previous FSL releases.
-
-A release of the latest version of the BASIL
-tools can be found by following the link below. This can be installed
-alonside an existing FSL 6.0 release.
-
-https://github.com/ibme-qubic/oxford_asl/releases
 
 Analysis Guide
 =================
