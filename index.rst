@@ -16,6 +16,7 @@ Sections
    :maxdepth: 2
 
    basil
+   basil_analysisguide
    oxasl
    basilcmd
    aslcalib
