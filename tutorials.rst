@@ -1,8 +1,16 @@
-Worked example from the Neuroimaging primer
-===========================================
+=========
+Tutorials 
+=========
 
-An extensive set of examples of the use of  BASIL (for pcASL)
-is availabe as part of the primer:
+.. toctree::
+   :maxdepth: 2
+	      
+   gui_tutorial
+   cvr_tutorial
+   cli_tutorial
+
+A set of examples of the use of  BASIL (for pcASL), which is similar
+to those above, is also available as part of the primer:
 
 *Introduction to Perfusion Quantification using Arterial Spin
 Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,

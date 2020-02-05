@@ -1,5 +1,5 @@
 Worked examples from the FSL course
-==================================
+===================================
 
 This tutorial demonstrates some of the common options available in the 
 Basil GUI.
@@ -68,7 +68,7 @@ looks roughly like this, we might check if the data order that the
 GUI is expecting matches that in the data. We could alter the 'Data
 order' settings if needed and update the preview again. 
 
-.. image::  practical/PWI.jpeg
+.. image::  images/PWI.jpeg
     :alt: BASIL GUI previewing perfusion-weighted image
     
 Note also, beneath the 'Data Preview', that there is a 'Data order
@@ -118,7 +118,7 @@ the calibration image ``aslcalib.nii.gz``. Change the
 'Calibration mode' to 'voxelwise', and set the 'Sequence TR (s)' to
 be 4.8.
 
-.. image:: practical/Calib.jpeg
+.. image:: images/Calib.jpeg
     :alt: BASIL GUI Calibration
 
 Finally, we need to set the analysis options: either skip to the
@@ -132,7 +132,7 @@ formula. Note that in the lower left corner the GUI is now telling
 us that we are 'Ready to Go'. At this point you can click 'Run' in
 the lower right corner.
 
-.. image:: practical/Analysis.jpeg
+.. image:: images/Analysis.jpeg
     :alt: BASIL GUI Analysis
 
 The output of the oxford_asl command line tool is shown in a 
@@ -180,7 +180,7 @@ correction'. Load the 'Phase-encode-reveresed calibration image'
 ``aslcalib_PA.nii.gz``. Set the 'Effective EPI echo
 spacing' (also known as the dwell time) to 0.95ms and the 'Phase encoding direction' to 'y'.
 
- .. image:: practical/Dist.jpeg
+ .. image:: images/Dist.jpeg
      :alt: BASIL GUI previewing perfusion-weighted image
 
 On the 'Analysis' tab, select 'Motion Correction'. Make sure you
@@ -195,7 +195,7 @@ you can comapre to the previous analysis.
 
 Now click 'Run'.
 
- .. image:: practical/Analysis2.jpeg
+ .. image:: images/Analysis2.jpeg
      :alt: BASIL GUI Analysis
 
 For this analysis we are still in 'White
@@ -241,7 +241,7 @@ tab, for 'Structural data from' select 'Existing FSL_ANAT
 output'. Then for the 'Existing FSL_ANAT output' choose
 ``T1.anat``. 
 
- .. image:: practical/Struct.jpeg
+ .. image:: images/Struct.jpeg
      :alt: BASIL GUI Structure
 
 *This analysis will take somewhat longer overall (potentailly
@@ -303,7 +303,7 @@ different to 'T1b' (for arterial blood), since the Standard (aka
 Buxton) model for ASL kinetics considers labeled blood both in the
 vascualture and the tissue.
 
-.. image:: practical/Analysis3.jpeg
+.. image:: images/Analysis3.jpeg
     :alt: BASIL GUI Analysis
 
 Now that we are not in 'White Paper' mode we can also change the
@@ -312,7 +312,7 @@ Region'. Now all of the 'Reference tissue' options will become
 available, but leave these as they are: we will accept the default
 option of using the CSF (in the ventricles) for calibration.
 
-.. image:: practical/Calib2.jpeg
+.. image:: images/Calib2.jpeg
     :alt: BASIL GUI Calibration
 
 You could click 'Run' now and wait for the analysis to
@@ -425,7 +425,7 @@ correctly read 8. Click 'Update' below the 'Data preview pane'. A
 perfusion-weighted image should appear - this is an average over all
 the PLDs (and will thus look different to Example 1).
 
-.. image:: practical/Input2.jpeg
+.. image:: images/Input2.jpeg
     :alt: BASIL GUI Input Data
 
 Note the 'Data order preview'. For mutli-PLD ASL it is important
@@ -479,7 +479,7 @@ region of tissue to use. Select 'Mask' and load
 ``csfmask.nii.gz``. Set the 'Sequence TR' to be 4.8, but
 leave all of the other options alone.
 
-.. image:: practical/Calib3.jpeg
+.. image:: images/Calib3.jpeg
     :alt: BASIL GUI Calibration
 
 Move to the 'Distortion Correction' tab. Select 'Apply distortion

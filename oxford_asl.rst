@@ -1,14 +1,9 @@
-===============
+==========
 Oxford_ASL
-===============
+==========
 
-.. toctree::
-   :maxdepth: 2
-   
-   oxasl_userguide
-   
 Overview
------------------
+--------
 
 Oxford_ASL is an automated command line utility that can process ASL
 data to produce a calibrated map of resting state tissue perfusion. It
@@ -24,7 +19,6 @@ If you have ASL data to analyse, ``oxford_asl`` is most likely the tool
 you will want to use, unless you want a graphical user interface. In
 practice, the GUI in BASIL is largely a means to construct the right
 call to ``oxford_asl``.
-
 
 What you will need
 -------------------------
@@ -46,22 +40,6 @@ and control pairs). In practice you will also most probably want:
 - *multi-delay ASL*: the methods in ``oxford_asl`` are perfectly
   applicable to the widely used single delay/PLD ASL acquisition. But,
   they offer particular advantages if you have multi-delay/PLD data.
-
-Examples
--------------------------
-
-An extensive set of examples of the use of ``oxford_asl`` (for pcASL)
-is availabe as part of the primer:
-
-*Introduction to Perfusion Quantification using Arterial Spin
-Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
-Oxford University Press, 2017.
-
-The examples themselves are freely available online at the primer
-website: neuorimagingprimers.org, you can access the ASL examples
-directly here_.
-
-.. _here: http://www.neuroimagingprimers.org/examples/introduction-to-perfusion-quantification-using-asl/
 
 Things to note
 -------------------------
@@ -119,3 +97,11 @@ to be aware of:
   results than if you did an analysis of the data yourself using a
   combination of other command line tools.
 
+User Guide
+----------
+
+.. toctree::
+   :maxdepth: 1
+   
+   oxford_asl_userguide
+   

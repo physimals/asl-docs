@@ -24,7 +24,7 @@ Calibration data was also acquired using a long TR of 4400ms and 6 repeats.
 
 
 Data Analysis: Resting State Perfusion
-================================
+======================================
 We first quantify perfusion in the resting condition using the PCASL data of the resting state. We can use the BASIL GUI to estimate voxelwise perfusion values in absolute units. We can key in the sequence parameters in the GUI.
 
 .. image:: /images/cvr_tutorial/baseline_data.jpg
@@ -39,7 +39,7 @@ Finally, we need to set up the output director. Now we can click Run.
 
 
 Data Analysis: Stimulus State Perfusion
-=================================
+=======================================
 After quantifying the perfusion of the resting condition, we need to estimate the pwefuaion of the stimulus condition (in this case after the injection of acetazolamide). Since the data of the stimulus condition comes from the same scanning session of the resting state, the sequence parameters are exactly the same:
 
 .. image:: /images/cvr_tutorial/stimulus_data.jpg

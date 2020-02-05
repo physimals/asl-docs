@@ -1,11 +1,11 @@
-==============
-BASIL Tutorial
-==============
+=====================
+Command line Tutorial
+=====================
 
 Introduction
 ============
 
-In this section you will find a number of tutorials on the analysis of ASL data using the BASIL tools. If you are trying to use BASIL on your own data then a good place to begin is to find an example here that is as close to the data you have as a guide on how to proceed.
+In this section you will find a number of tutorials on the analysis of ASL data using the BASIL command line tools. If you are trying to use BASIL on your own data then a good place to begin is to find an example here that is as close to the data you have as a guide on how to proceed.
 
 Single-delay ASL
 ================

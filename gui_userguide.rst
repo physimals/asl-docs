@@ -1,6 +1,6 @@
-=======================
-BASIL User Guide
-=======================
+==============
+GUI User Guide
+==============
 
 The graphical user interface to the BASIL tools can be accessed by typing ``asl_gui`` at the command line. It should provide most of the options required for analysis of ASL data inlcuding the majority of the more advanced features of BASIL.
 
@@ -20,7 +20,7 @@ The GUI has five tabs, whose function are fairly self-explanatory. Each tab repr
 More details on each tab are provided below. Note that some of the options available on each tab depend on what information is present in your data (set on the data tab). Thus your view of the tab might differ from the one shown here slightly.
 
 Input Data
---------------------
+----------
 
 .. image:: images/aslgui_data.jpg
 

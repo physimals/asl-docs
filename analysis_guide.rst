@@ -2,11 +2,55 @@
 ASL Analysis Guide
 =============================
 
-BASIL provides a comprehesive set of tools for the generation of quantative perfusion images from ASL data from an individual and links to other tools in FSL so that neuorimaging studies can be performed with groups of individuals, potentially also incorporating other neuroimaging data. The purpose of this section of the documentation is to provide some gudiance as to key concepts you might want to know to understand ASL and its analysis. More detailed gudiance can be found in the following primer (for which online examples using BASIL are available):
+Bayesian Inference for Arterial Spin Labelling MRI
+==================================================
 
-`Introduction to Perfusion Quantification using Arterial Spin Labelling`_, Michael Chappell, Bradley MacIntosh, and Thomas Okell, Oxford University Press, 2017.
+.. image:: images/basil_perfusion.jpg
+   :scale: 100 %
+   :alt: BASIL perfusion image
+   :align: right
 
-.. _Introduction to Perfusion Quantification using Arterial Spin Labelling: https://global.oup.com/academic/product/introduction-to-perfusion-quantification-using-arterial-spin-labelling-9780198793816?q=neuroimaging&lang=en&cc=gb#
+Arterial Spin Labeling (ASL) MRI is a non-invasive method for the quantification 
+of perfusion. Analysis of ASL data typically requires the inversion of a kinetic 
+model of labeled blood-water inflow along with a separate calculation of the equilibrium 
+magnetization of arterial blood. The BASIL toolbox provides the tools to do this 
+based on Bayeisan inference principles. The toolbox was orginally developed for 
+multi delay (inversion time) data where it can be used to greatest effect, but 
+is also sufficiently fleixble to deal with the widely used single delay form 
+of acquisition.
+
+If you want to 
+perform analysis of a functional experiment with ASL data, i.e. one where 
+you want to use a GLM, then you should consult the perfusion section of 
+`FEAT <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT/UserGuide>`_, 
+or if you have dual-echo (combined BOLD and ASL) data then consult 
+`FABBER <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FABBER>`_.
+
+For single delay ASL data kinetic model inversion is relatively trivial and 
+solutions to the standard model have been described in the literature. However,
+there are various advantages to aquiring ASL data at multiple times 
+post-inversion and fitting the resultant data to a kinetic model. This 
+permits problems in perfusion estimation associated with variable bolus arrival 
+time to be avoided, since this becomes a parameter of the model whose value is 
+determined from the data. Commonly the model fitting will be performed with a 
+least squares technique providing parameter estimates, e.g. perfusion and bolus 
+arrival time. In contrast to this BASIL uses a (fast) Bayesian inference method 
+for the model inversion, this provides a number of advantages:
+
+ - Voxel-wise estimation of perfusion and bolus arrival time along with parameter 
+   variance (allowing confidence intervals to be calculated).
+
+ - Incorporation of natural varaibility of other model parameters, e.g. values of T1,
+   T1b and labeling/bolus duration.
+
+ - Spatial regularization of the estimated perfusion image.
+
+ - Correction for partial volume effects (where the appropriate segmentation 
+   information is available).
+
+While the first two apply specfically to the case of mulitple delay data, the latter 
+are also applicable to single delay ASL and are only available using the Bayesian 
+technique employed by BASIL.
 
 ASL analysis principles
 =========================
@@ -121,3 +165,24 @@ T1 values
 T1 values are important to the kinetic model inversion and should be chosen based on the field strength that data was acquired at, consideration might also need to be taken of the subject in which analysis is being carried out. BASIL by deafult takes values for 3T and assumes for the tissue only a grey matter value, unless partial volume correction is applied when separate grey and white matter values are specified. By deafult a separate value for the T1 of bloos is used unless operating in 'white paper' mode, where the blood T1 value is also used for the tissue.
 
 Commonly it is assumed that T1 values are fixed across the brain in the quantification. However, these value are not absolutely certain and may well vary across the brain and between individuals. BASIL can take this into account by inferring on T1 values, you should still, however, set sensible expected values. NOTE: maps of T1 produced by this process are unlikely to be accurate measures of T1 in the brain - ASL data is not suitable for this. The purpose of including T1 the inference is primarily to take account of their varaibility when estimating the other parameters. An exception to this is QUASAR data (in quasil) where a tissue T1 image is estimated from the saturation recovery of the control data (and subsequently applied to the kinetic curve fitting).
+
+Further Reading
+===============
+
+To learn more about ASL, acquisition choices, the
+principles of analysis and how perfusion images can be used in group
+studies you might like to read:
+
+*Introduction to Perfusion Quantification using Arterial Spin
+Labelling*, Oxford Neuroimaging Primers, Chappell, MacIntosh & Okell,
+Oxford University Press, 2017.
+
+Online examples are availble to go with this primer using the BASIL
+tools. These can be found on the Oxford Neuroimaging Primers
+website: http://www.neuroimagingprimers.org
+
+The following book reamins a good introduction to functional imaging
+including perfusion using ASL:
+
+*Introduction to Functional Magnetic Resonance Imaging: principles and
+Techniques*. Buxton, Cambridge University Press, 2009.

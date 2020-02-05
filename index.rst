@@ -1,25 +1,45 @@
-Basil/Oxford ASL toolbox
-========================
+BASIL toolset
+=============
 
-The Basil/Oxford ASL toolbox is a set of tools for processing ASL-MRI data. It is available within `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`_ (v6.0.1 or later is strongly recommended).
+BASIL is a collection of tools that aid in the creation of quantitative 
+CBF images from ASL data. It is available within `FSL <https://fsl.fmrib.ox.ac.uk/fsl/fslwiki>`_ 
+(v6.0.1 or later is strongly recommended). 
 
-``Oxford ASL`` is the name of the main ASL processing pipeline. Features include preprocessing, distortion correction, brain extraction, model fitting, partial volume correction and calibration.
-
-``Basil`` is the name of the GUI front-end to the processing pipeline, and is also the name of the code that runs the model fitting part of the pipeline.
-
-The toolbox also includes standalone tools for preprocessing, calibration and handling QUASAR and Turbo-QUASAR sequences. 
-
-Sections
---------
+BASIL includes complete high-level pipelines for
+processing ASL data and also individual tools for more bespoke analysis. 
 
 .. toctree::
    :maxdepth: 2
 
-   basil
-   basil_analysisguide
-   oxasl
-   basilcmd
-   aslcalib
-   aslfile
-   quasil
-   toast
+   overview
+   analysis_guide
+   gui_userguide
+   tutorials
+   tools
+   
+References
+==========
+
+If you employ BASIL in your research please reference the article below, plus any others 
+that specifically relate to the analysis you have performed:
+
+ - *Chappell MA, Groves AR, Whitcher B, Woolrich MW. Variational Bayesian inference for a non-linear forward model. IEEE Transactions on Signal Processing 57(1):223-236, 2009.*
+
+If you employ spatial regularisation (priors) you should ideally reference this article too:
+
+ - *A.R. Groves, M.A. Chappell, M.W. Woolrich, Combined Spatial and Non-Spatial Prior for Inference on MRI Time-Series , NeuroImage 45(3) 795-809, 2009.*
+
+If you fit the macrovascular (arterial) contribution you should reference this article too.
+
+ - *Chappell MA, MacIntosh BJ, Donahue MJ, Gunther M, Jezzard P, Woolrich MW. Separation of Intravascular Signal in Multi-Inversion Time Arterial Spin Labelling MRI. Magn Reson Med 63(5):1357-1365, 2010.*
+
+If you employ the partial volume correction method then you should reference this article too.
+
+ - *Chappell MA, MacIntosh BJ, Donahue MJ,Jezzard P, Woolrich MW. Partial volume correction of multiple inversion time arterial spin labeling MRI data, Magn Reson Med, 65(4):1173-1183, 2011.*
+
+If you perform model-based analysis of QUASAR ASL data then you should
+reference this article too.
+
+ - *Chappell, M. A., Woolrich, M. W., Petersen, E. T., Golay, X., & Payne, S. J. (2012). Comparing model-based and model-free analysis methods for QUASAR arterial spin labeling perfusion quantification. doi:10.1002/mrm.243*
+
+  
