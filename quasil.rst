@@ -2,11 +2,6 @@
 QUASIL
 ======================
 
-.. toctree::
-   :maxdepth: 2
-
-   quasil_userguide
-
 Overview
 ------------------
 
@@ -19,3 +14,8 @@ More information on the model used can be found in:
 More information on the model-free method can be found in the original QUASAR paper:
 
  *Petersen, E., Lim, T., & Golay, X. (2006). Model-free arterial spin labeling quantification approach for perfusion MRI. Magnetic resonance in medicine , 55(2), 219–232. doi:10.1002/mrm.20784*
+
+.. toctree::
+   :maxdepth: 2
+
+   quasil_userguide
