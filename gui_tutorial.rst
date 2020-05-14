@@ -6,7 +6,13 @@ Basil GUI.
 
 We will be working with single and multi-PLD data from the 
 `FSL tutorial on Arterial Spin Labelling <https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/ASLpractical/index.html>`_.
-You will need to download this data before following the tutorial.
+You will need to download the following ASL data before following the tutorial:
+
+https://fsl.fmrib.ox.ac.uk/fslcourse/downloads/asl.tar.gz
+
+To extract the data from a terminal window you should run::
+
+    tar -xzf asl.tar.gz
 
 The tutorial has been written so that we start with the most basic analysis and gradually add
 options and show the effect they have on the output. However this is not a complete description of all available
