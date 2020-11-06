@@ -79,7 +79,7 @@ looks roughly like this, we might check if the data order that the
 GUI is expecting matches that in the data. We could alter the 'Data
 order' settings if needed and update the preview again. 
 
-.. image::  images/PWI.jpeg
+.. image::  images/pwi_spld.png
     :alt: BASIL GUI previewing perfusion-weighted image
     
 Note also, beneath the 'Data Preview', that there is a 'Data order
@@ -133,7 +133,7 @@ the calibration image ``aslcalib.nii.gz``. Change the
 'Calibration mode' to 'voxelwise', and set the 'Sequence TR (s)' to
 be 4.8.
 
-.. image:: images/Calib.jpeg
+.. image:: images/calib_voxelwise.png
     :alt: BASIL GUI Calibration
 
 Finally, we need to set the analysis options: either skip to the
@@ -149,7 +149,7 @@ formula. To check this, select 'Check Compatibility' under the heading
 our analysis is not compatible with the white paper. To fix this, click 
 'Make compatible' - the GUI will first tell you what it is going to change:
 
-.. image:: images/wp_changes.jpeg
+.. image:: images/wp_make_compat.png
     :alt: BASIL GUI Make White Paper compatible
 
 Click 'OK' to make these changes and note that the analysis is now marked
@@ -159,7 +159,7 @@ Note that in the lower left corner the GUI is now telling
 us that we are 'Ready to Go'. At this point you can click 'Run' to start 
 the analysis.
 
-.. image:: images/Analysis.jpeg
+.. image:: images/analysis_wp.png
     :alt: BASIL GUI Analysis
 
 The output of the oxford_asl command line tool is shown in a 
@@ -207,7 +207,7 @@ correction'. Load the 'Phase-encode-reveresed calibration image'
 ``aslcalib_PA.nii.gz``. Set the 'Effective EPI echo
 spacing' (also known as the dwell time) to 0.95ms and the 'Phase encoding direction' to 'y'.
 
- .. image:: images/Dist.jpeg
+ .. image:: images/distcorr.png
      :alt: BASIL GUI previewing perfusion-weighted image
 
 On the 'Analysis' tab, select 'Motion Correction'. Make sure you
@@ -222,7 +222,7 @@ you can comapre to the previous analysis.
 
 Now click 'Run'.
 
- .. image:: images/Analysis2.jpeg
+ .. image:: images/analysis_moco.png
      :alt: BASIL GUI Analysis
 
 For this analysis we are still in 'White
@@ -268,10 +268,10 @@ tab, for 'Structural data from' select 'Existing FSL_ANAT
 output'. Then for the 'Existing FSL_ANAT output' choose
 ``T1.anat``. 
 
- .. image:: images/Struct.jpeg
+ .. image:: images/struct.png
      :alt: BASIL GUI Structure
 
-*This analysis will take somewhat longer overall (potentailly
+*This analysis will take somewhat longer overall (potentially
 15-20 mins), the extra time
 is taken up doing careful registration between ASL and structural
 images. Thus, this is a good point to keep reading on and leave the
@@ -320,17 +320,25 @@ derive a single value for the equilibrium magnetization of arterial
 blood and use that in the calibration process.
 
 Go back to the analysis you have already set up. We are now going
-to turn off 'White Paper' mode, this will provide us with more
-options to get a potentially more accurate analysis. To do this return to the 'Analysis' tab
-and deselect the 'White Paper' option, you will see that the
-'Arterial Transit Time' goes from 0 seconds to 1.3 seconds (the
-default value for pcASL in BASIL based on our experience with pcASL
-labeling plane placement) and the 'T1' value (for tissue) is
-different to 'T1b' (for arterial blood), since the Standard (aka
-Buxton) model for ASL kinetics considers labeled blood both in the
+to move away from 'White Paper' mode to get a potentially more accurate analysis.
+To do this return to the 'Analysis' tab and set the 'Arterial Transit Time' to
+1.3s (the default value for pcASL in BASIL based on our experience with pcASL
+labeling plane placement).
+
+Also set 'T1' (tissue blood T1 value) to 1.3s, different from 
+'T1b' (for arterial blood) since the Standard (aka Buxton) model for 
+ASL kinetics considers labeled blood both in the
 vascualture and the tissue.
 
-.. image:: images/Analysis3.jpeg
+turn off 'White Paper' mode, this will provide us with more
+options  
+and deselect the 'White Paper' option, you will see that the
+'Arterial Transit Time' goes from 0 seconds to 1.3 seconds  and the 'T1' value (for tissue) is
+different to 'T1b' (for arterial blood). Note that the 'White Paper Mode' is indicating that
+the analysis is no longer white paper compatible - since we don't care about this any more
+we can turn off 'Check compatibility' to remove the warning.
+
+.. image:: images/analysis_nowp.png
     :alt: BASIL GUI Analysis
 
 Now that we are not in 'White Paper' mode we can also change the
@@ -338,9 +346,6 @@ calibration method. On the 'Calibration' tab, change the 'Calibration mode' to '
 Region'. Now all of the 'Reference tissue' options will become
 available, but leave these as they are: we will accept the default
 option of using the CSF (in the ventricles) for calibration.
-
-.. image:: images/Calib2.jpeg
-    :alt: BASIL GUI Calibration
 
 You could click 'Run' now and wait for the analysis to
 complete. But, in the interests of time we will save ourselves the
@@ -351,6 +356,10 @@ clicking run, therefore, do:
     ``csfmask.nii.gz`` from the data directory. This is a ready
     prepared ventricular mask for this subject. (in fact it is precisely
     the mask you would get if you ran the analysis as setup above). 
+    
+.. image:: images/calib_refregion.png
+    :alt: BASIL GUI Calibration
+
   - Go back to the 'Structure' tab and choose 'None' for 'Structural
     data from'. This will turn off all of the registration
     processes. 
@@ -452,7 +461,7 @@ correctly read 8. Click 'Update' below the 'Data preview pane'. A
 perfusion-weighted image should appear - this is an average over all
 the PLDs (and will thus look different to Example 1).
 
-.. image:: images/Input2.jpeg
+.. image:: images/pwi_mpld.png
     :alt: BASIL GUI Input Data
 
 Note the 'Data order preview'. For mutli-PLD ASL it is important
@@ -461,20 +470,29 @@ options in the GUI are not correct. The PLDs do come as label-control
 pairs, i.e. alternating label then control images. But, the default
 assumption in the GUI is that a full set of the
 6 PLDs has been acquired first, then this has been repeated 8
-subseqeunt times, this is indcated in the preview by colouring the
-first instance of a PLD as purple and subsequent as green, with
-different PLDs appearing as different shades of purple (or
-green). This is quite commonly how multi-PLD ASL data is acquired,
+subseqeunt times. 
+
+This is indicated in the preview by the 96 input volumes being divided
+up into 8 repeats (blue boxes), each containing 6 PLDs (red boxes).
+
+.. image:: images/data_order_wrong.png
+    :alt: BASIL GUI incorrect data ordering
+
+This is quite commonly how multi-PLD ASL data is acquired,
 but that might not be how the data is ordered in the final image
 file.
 
-As we noted earlier, in this data all of the measurements at the
-same PLD are grouped together. You need to change the 'Grouping
-order' on the 'Input Data' tab: leave the first option along
-('Label/Control pairs') and change the second option from 'PLDs' to
-'Repeats'. Note that the data order preview changes to reflect the
-different ordering. This is now correct: remeber that the purple
-coloured entries indicate the first time that PLD was acquired.
+As we noted earlier, in this data all of the repeated measurements at the
+same PLD are grouped together. Under 'Data order' you need to change 
+'Volumes grouped by' from 'Repeats' to 'PLDs'.
+
+Note that the data order preview changes to reflect the
+different ordering. Now the 96 volumes are divided up into 6 PLDs (red boxes
+now at the top), and within each red PLD box there are 8 repeats (blue
+boxes). This is now correct.
+
+.. image:: images/data_order_correct.png
+    :alt: BASIL GUI correct data ordering
 
 Note that if you were to click 'Update' on the 'Data preview' nothing
 changes, the ordering doesn't affect the (simple) way in which we
@@ -495,7 +513,12 @@ Once we are happy with the PWI and data order, we can set the
   - Bolus duration (s) - 1.4 (shorter than the default). 
   - PLDs (s) - 0.25, 0.5, 0.75, 1.0, 1.254, 1.5.  
   - Readout - '2D multi-slice' with 'Time per slice' 45.2. 
- 
+
+The input tab should appear as follows:
+
+.. image:: images/input_mpld.png
+    :alt: BASIL GUI Calibration
+
 Move to the 'Calibration' tab, select 'Enable Calibration' and as
 the 'Calibration Image' load the ``aslcalib.nii.gz`` image
 from the Single-PLD data (it is from the same subject in the same
@@ -506,7 +529,7 @@ region of tissue to use. Select 'Mask' and load
 ``csfmask.nii.gz``. Set the 'Sequence TR' to be 4.8, but
 leave all of the other options alone.
 
-.. image:: images/Calib3.jpeg
+.. image:: images/calib_refregion.png
     :alt: BASIL GUI Calibration
 
 Move to the 'Distortion Correction' tab. Select 'Apply distortion
@@ -514,6 +537,9 @@ correction'. Load the 'Phase-encode-reveresed calibration image'
 ``aslcalib_PA.nii.gz`` from the Single-PLD pcASL data. Set the 'Effective EPI echo
 spacing' to 0.95ms again and the 'Phase encoding direction' to 'y'.
 
+.. image:: images/distcorr.png
+    :alt: BASIL GUI distortion correction
+    
 Finally, move to the 'Analysis' tab. Choose an output directory,
 leave all of the other options alone. Click 'Run'.
 
