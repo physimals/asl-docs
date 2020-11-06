@@ -31,7 +31,7 @@ Perfusion quantification using Single PLD pcASL
 -----------------------------------------------
 
 The aim of this exercise is to perform perfusion quantification
-with one of the most widely recommened variants of ASL. Single PLD
+with one of the most widely recommended variants of ASL. Single PLD
 pcASL is now regarded as sufficiently simple and reliable, both for
 acquisition and analysis, that it is the first option most people
 should consider when using ASL for the first time. Although more can be done with other ASL variants,
@@ -40,7 +40,7 @@ particularly when acquisition time allows.
 The data
 ~~~~~~~~
 
-This dataset used **pcASL labeling** and we are going to start
+This dataset used **pcASL labelling** and we are going to start
 with data collected using a **single post-label delay**. This dataset 
 follows as closely as possible the
 recommendations of the ASL Consensus Paper (commonly called the
@@ -62,7 +62,7 @@ The files you will need to begin with are:
     posterior-anterior phase encoding (anterior-posterior was used in
     the rest of the ASL data). This is provided for distortion
     correction. 
-  - ``T1.nii.gz`` - the T1-weigthed anatomical of the same
+  - ``T1.nii.gz`` - the T1-weighted anatomical of the same
     subject. 
 
 To launch the GUI at the command line you will need to type
@@ -101,7 +101,7 @@ the 30 repeats.
 You can try a different 'Data order' option to see what
 happens. For example, change 'Label/Control pairs' from 'Label then control' to
 'Control then label'. This switches the expected order of label and
-control images within the pair. If you then udpate the preview you
+control images within the pair. If you then update the preview you
 will find that the contrast reverses, the perfusion now has the
 wrong 'sign'.
  
@@ -118,7 +118,7 @@ data and the analysis we want to perform.
 
 On the 'Input Data' tab we need to specify the 'Acquisition parameters':
 
-  -  Labelling - cASL/pcASL (the deafult option). 
+  -  Labelling - cASL/pcASL (the default option). 
   -  Bolus duration (s) - 1.8 (default). 
   -  PLDs (s) - 1.8 (default). 
   -  Readout - 2D multi-slice (you will need to set this). 
@@ -126,7 +126,7 @@ On the 'Input Data' tab we need to specify the 'Acquisition parameters':
 
 You can now hit 'Next' and you will be taken to the next tab. For
 this (simple) analysis we do not want to use a structural image, so
-we can move on by clicking 'Next' again. Or we could skip stright to
+we can move on by clicking 'Next' again. Or we could skip straight to
 the 'Calibration' tab using the menu across the top.
 
 On the 'Calibration' tab, 'Enable Calibration' first, then load
@@ -460,13 +460,13 @@ the PLDs (and will thus look different to Example 1).
 .. image:: images/pwi_mpld.png
     :alt: BASIL GUI Input Data
 
-Note the 'Data order preview'. For mutli-PLD ASL it is important
+Note the 'Data order preview'. For multi-PLD ASL it is important
 to get the data order specification right. In this case the default
 options in the GUI are not correct. The PLDs do come as label-control
 pairs, i.e. alternating label then control images. But, the default
 assumption in the GUI is that a full set of the
 6 PLDs has been acquired first, then this has been repeated 8
-subseqeunt times. 
+subsequent times. 
 
 This is indicated in the preview by the 96 input volumes being divided
 up into 8 repeats (blue boxes), each containing 6 PLDs (red boxes).
