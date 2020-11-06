@@ -11,13 +11,14 @@ If you are taking part in an organized course the data will have been downloaded
 
     /data/fsl_course_data/ASL
     
-Otherwise, you will need to download the following ASL data before following the tutorial:
+.. note::
+   If you are not taking part in a course you will need to download the following ASL data before following the tutorial:
 
-https://fsl.fmrib.ox.ac.uk/fslcourse/downloads/asl.tar.gz
+   https://fsl.fmrib.ox.ac.uk/fslcourse/downloads/asl.tar.gz
 
-To extract the data from a terminal window you should run::
+   To extract the data from a terminal window you should run::
 
-    tar -xzf asl.tar.gz
+       tar -xzf asl.tar.gz
 
 The tutorial has been written so that we start with the most basic analysis and gradually add
 options and show the effect they have on the output. However this is not a complete description of all available
@@ -327,14 +328,9 @@ labeling plane placement).
 
 Also set 'T1' (tissue blood T1 value) to 1.3s, different from 
 'T1b' (for arterial blood) since the Standard (aka Buxton) model for 
-ASL kinetics considers labeled blood both in the
-vascualture and the tissue.
+ASL kinetics considers labeled blood both in the vascualture and the tissue.
 
-turn off 'White Paper' mode, this will provide us with more
-options  
-and deselect the 'White Paper' option, you will see that the
-'Arterial Transit Time' goes from 0 seconds to 1.3 seconds  and the 'T1' value (for tissue) is
-different to 'T1b' (for arterial blood). Note that the 'White Paper Mode' is indicating that
+Note that the 'White Paper Mode' is indicating that
 the analysis is no longer white paper compatible - since we don't care about this any more
 we can turn off 'Check compatibility' to remove the warning.
 
