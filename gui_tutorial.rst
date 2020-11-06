@@ -6,7 +6,12 @@ Basil GUI.
 
 We will be working with single and multi-PLD data from the 
 `FSL tutorial on Arterial Spin Labelling <https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/ASLpractical/index.html>`_.
-You will need to download the following ASL data before following the tutorial:
+
+If you are taking part in an organized course the data will have been downloaded for you and available in::
+
+    /data/fsl_course_data/ASL
+    
+Otherwise, you will need to download the following ASL data before following the tutorial:
 
 https://fsl.fmrib.ox.ac.uk/fslcourse/downloads/asl.tar.gz
 
@@ -39,7 +44,7 @@ with data collected using a **single post-label delay**. This dataset
 follows as closely as possible the
 recommendations of the ASL Consensus Paper (commonly called the
 'White Paper') on a good general purpose
-ASL acquisition, although we have chosen to use a 2D mutli-slice
+ASL acquisition, although we have chosen to use a 2D multi-slice
 readout rather than a full-volume 3D readout.
 
 The files you will need to begin with are:
@@ -82,14 +87,18 @@ preview'. The idea of this graphic is to help visually to confirm
 that the way that the GUI is intepreting the ordering of volumes in
 the data matches what you are expecting. In this case we have a
 single PLD repeated 30 times with the label and control images
-paired in the data (this is pretty common). What the 'Data order
-preview' shows is the first instance of the PLD in purple, showing
-both the label and control (hatched) volume. Each subsequent repeat
-of the same PLD is coloured green, again showing that we have a
-label follwed by control (hatched) volume.
+paired in the data (this is pretty common). 
+
+In the 'Data order preview' diagram, the volumes in the input data
+are shown on the horizontal axis - in this case from 1 to 60. The
+blue blocks at the top show that these volumes are divided into 30
+repeats. Within each repeat the red boxes show that we have a single PLD
+and within that PLD the green boxes show a tag and control image (in that
+order). This pattern is repeated (shown by the ellipsis boxes ...) for
+the 30 repeats.
 
 You can try a different 'Data order' option to see what
-happens. Change 'Label/Control pairs' from 'Label then control' to
+happens. For example, change 'Label/Control pairs' from 'Label then control' to
 'Control then label'. This switches the expected order of label and
 control images within the pair. If you then udpate the preview you
 will find that the contrast reverses, the perfusion now has the
@@ -106,7 +115,7 @@ image to get values in the units of ml/100g/min.
 To do this we need to tell the BASIL GUI some information about the
 data and the analysis we want to perform.
 
-On the 'Input Data' tab we need to sepcify the 'Acquisition parameters':
+On the 'Input Data' tab we need to specify the 'Acquisition parameters':
 
   -  Labelling - cASL/pcASL (the deafult option). 
   -  Bolus duration (s) - 1.8 (default). 
@@ -131,12 +140,24 @@ Finally, we need to set the analysis options: either skip to the
 'Analysis' tab or click 'Next' twice.
 
 On the 'Analysis' tab, choose an output directory name, e.g.,
-``basil``. And, select 'Analysis which conforms to White
-Paper', so that we know the analysis is using the same default
+``basil``. 
+
+We want our analysis to use the same 
 parameter values proposed in the 'ASL White Paper' quantification
-formula. Note that in the lower left corner the GUI is now telling
-us that we are 'Ready to Go'. At this point you can click 'Run' in
-the lower right corner.
+formula. To check this, select 'Check Compatibility' under the heading
+'White Paper Mode'. A status icon will be displayed showing that currently
+our analysis is not compatible with the white paper. To fix this, click 
+'Make compatible' - the GUI will first tell you what it is going to change:
+
+.. image:: images/wp_changes.jpeg
+    :alt: BASIL GUI Make White Paper compatible
+
+Click 'OK' to make these changes and note that the analysis is now marked
+as white paper compatible.
+
+Note that in the lower left corner the GUI is now telling
+us that we are 'Ready to Go'. At this point you can click 'Run' to start 
+the analysis.
 
 .. image:: images/Analysis.jpeg
     :alt: BASIL GUI Analysis
@@ -144,7 +165,7 @@ the lower right corner.
 The output of the oxford_asl command line tool is shown in a 
 pop-up window. You can ignore any ``erfc underflow error`` messages
 - they are harmless and occur because we haven't provided any
-structural data
+structural data.
 
 *This analysis should only take a few minutes, but while you are
 waiting you can read ahead and even start changing the options in
@@ -162,7 +183,7 @@ the GUI.
 You will find something that looks very similar to the PWI we viewed before, but now the values at every voxel are in ml/100g/min.
 
 You will also find a PWI saved as
-``basil/native_space/perfusion``. This is very similar to the
+``basil/native_space/perfusion.nii.gz``. This is very similar to the
 PWI displayed in the preview pane, except that the kinetic
 model inversion has been applied to it, this is the image
 pre-calibration.
