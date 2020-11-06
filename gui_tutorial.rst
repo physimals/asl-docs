@@ -269,7 +269,7 @@ tab, for 'Structural data from' select 'Existing FSL_ANAT
 output'. Then for the 'Existing FSL_ANAT output' choose
 ``T1.anat``. 
 
- .. image:: images/struct.png
+ .. image:: images/struc.png
      :alt: BASIL GUI Structure
 
 *This analysis will take somewhat longer overall (potentially
