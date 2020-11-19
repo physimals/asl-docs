@@ -537,7 +537,7 @@ region of tissue to use. Select 'Mask' and load
 ``csfmask.nii.gz``. Set the 'Sequence TR' to be 4.8, but
 leave all of the other options alone.
 
-.. image:: images/calib_refregion.png
+.. image:: images/calib_refregion_mpld.png
     :alt: BASIL GUI Calibration
 
 Move to the 'Distortion Correction' tab. Select 'Apply distortion
@@ -545,7 +545,7 @@ correction'. Load the 'Phase-encode-reveresed calibration image'
 ``aslcalib_PA.nii.gz`` from the Single-PLD pcASL data. Set the 'Effective EPI echo
 spacing' to 0.95ms again and the 'Phase encoding direction' to 'y'.
 
-.. image:: images/distcorr.png
+.. image:: images/distcorr_mpld.png
     :alt: BASIL GUI distortion correction
     
 Finally, move to the 'Analysis' tab. Choose an output directory,
