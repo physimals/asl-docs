@@ -69,7 +69,7 @@ Launching the GUI
 ~~~~~~~~~~~~~~~~~
 
 To launch the GUI, open a terminal window by clicking on |terminal|. At the command line you will need to type
-``asl_gui``. 
+``asl_gui``.
 
 .. note::
     Make sure you launch the GUI from a directory you have write permission on - otherwise you 
@@ -406,7 +406,7 @@ This is very simple to do via the GUI. Return to your earlier
 analysis. You will need
 to revist the 'Structure' tab and reload the ``T1.anat``
 result as you did above, the partial volume estimates produced by
-``fsl_anant`` (in fact they are done using ``fast``)
+``fsl_anat`` (in fact they are done using ``fast``)
 are needed for the correction. On the 'Analysis' tab,
 select 'Partial Volume Correction'. That is it! You might not want to
 click 'Run' at this point becuase partial volume correction takes
