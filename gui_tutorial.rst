@@ -80,7 +80,8 @@ To launch the GUI, open a terminal window by clicking on |terminal|. At the comm
 
 Once it has launched you will find yourself on the 'Input Data' tab, you should:
 
-  - Load the ASL data ``spld_asltc.nii.gz`` as the 'Input Image'. 
+  - Click 'Browse' and load the ASL data ``spld_asltc.nii.gz`` from ``data/fsl_course_data/ASL``
+    as the 'Input Image'. 
   - Set the 'Number of PLDs', which in this case is 1, this is already done by default. 
   - Click the 'Update' button beneath the 'Data Preview' pane on the right. 
 
