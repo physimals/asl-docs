@@ -201,6 +201,10 @@ PWI displayed in the preview pane, except that the kinetic
 model inversion has been applied to it, this is the image
 pre-calibration.
 
+.. note::
+    If you want to view any of the output log files you can use the 
+    ``gedit`` text editor - just type ``gedit`` from a terminal window
+
 Improving the Perfusion Images from single PLD pcASL
 ----------------------------------------------------
 
