@@ -65,6 +65,9 @@ The files you will need to begin with are:
   - ``T1.nii.gz`` - the T1-weighted anatomical of the same
     subject. 
 
+Launching the GUI
+~~~~~~~~~~~~~~~~~
+
 To launch the GUI, open a terminal window by clicking on |terminal|. At the command line you will need to type
 ``asl_gui``. 
 
