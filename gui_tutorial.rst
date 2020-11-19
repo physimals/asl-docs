@@ -73,7 +73,7 @@ To launch the GUI, open a terminal window by clicking on |terminal|. At the comm
     may get errors when you try to run the analysis. If you just open a terminal and type 
     ``asl_gui`` you will be fine.
     
-.. |terminal| image:: terminal.png
+.. |terminal| image:: images/terminal.png
 
 Once it has launched you will find yourself on the 'Input Data' tab, you should:
 
