@@ -9,7 +9,7 @@ We will be working with single and multi-PLD data from the
 
 If you are taking part in an organized course the data will have been downloaded for you and available in::
 
-    /data/fsl_course_data/ASL
+    data/fsl_course_data/ASL
     
 .. note::
    If you are not taking part in a course you will need to download the following ASL data before following the tutorial:
@@ -65,9 +65,17 @@ The files you will need to begin with are:
   - ``T1.nii.gz`` - the T1-weighted anatomical of the same
     subject. 
 
-To launch the GUI at the command line you will need to type
-``asl_gui``. Once it has launched you will find yourself on the 'Input Data' tab, you
-should:
+To launch the GUI, open a terminal window by clicking on |terminal|. At the command line you will need to type
+``asl_gui``. 
+
+.. note::
+    Make sure you launch the GUI from a directory you have write permission on - otherwise you 
+    may get errors when you try to run the analysis. If you just open a terminal and type 
+    ``asl_gui`` you will be fine.
+    
+.. |terminal| image:: terminal.png
+
+Once it has launched you will find yourself on the 'Input Data' tab, you should:
 
   - Load the ASL data ``spld_asltc.nii.gz`` as the 'Input Image'. 
   - Set the 'Number of PLDs', which in this case is 1, this is already done by default. 
