@@ -69,7 +69,7 @@ Launching the GUI
 ~~~~~~~~~~~~~~~~~
 
 To launch the GUI, open a terminal window by clicking on |terminal|. At the command line you will need to type
-``asl_gui``.
+``asl_gui``. Don't worry if you see a few 'errors' in the terminal window - this is normal!
 
 .. note::
     Make sure you launch the GUI from a directory you have write permission on - otherwise you 
