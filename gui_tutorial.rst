@@ -315,14 +315,16 @@ directory:
     absolute perfusion values found and it is not aytpical too see
     values in the range 30-50 here. There is also a white matter result
     (for which a threshold of 90% was used). 
-  - ``basil/native_space/gm_mask.nii.gz`` - this is the gray
-    matter mask used in the above calculations. There is also the
-    associated white matter mask. 
-  - ``basil/native_space/gm_roi.nii.gz`` - this is another
+  - ``basil/native_space/gm_mask.nii.gz`` - this is a
     mask that represents areas in which there is some grey matter (at
     least 10% from the partial volume estimates). This can be useful for
     visualisation, but mainly when looking at partial volume corrected
-    data. 
+    data.
+  - ``basil/native_space/gm_roi.nii.gz`` - this mask represents voxels which 
+    are close to 'pure' GM. It is used for the calculation of the mean 
+    perfusion in gray matter descibed above. There is also the
+    associated white matter mask. 
+     
  
 Different model and calibration choices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
