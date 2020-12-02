@@ -27,6 +27,35 @@ Various subdirectories are created:
 
 If you find the registration to be unsatisfactory, a new registration can be performed without having to repeat the main analysis using the results in ``native_space``.
 
+Region analysis
+~~~~~~~~~~~~~~~
+
+If the ``--region-analysis`` option is specified an additional directory ``native_space/region_analysis`` will be created containing three files:
+
+ - ``region_analysis.csv`` - This file contains region analysis for all voxels within the brain mask
+ - ``region_analysis_gm.csv`` - This file contains sub-region analysis for all voxels with at least 80% GM (i.e. near 'pure' GM voxels)
+ - ``region_analysis_wm.csv`` - This file contains sub-region analysis for all voxels with at least 90% WM (i.e. near 'pure' WM voxels)
+ 
+Region analysis is performed by using the registration from the structural image to standard space from an ``fsl_anat`` run. Hence ``--fslanat`` must
+be used in order to run region analysis.
+
+The output files are in comma-separated format, suitable for loading into most spreadsheet or data processing applications. Within each region the following information is presented:
+
+ - ``Nvoxels`` - The number of voxels identified as being within this region
+ - ``Mean``, ``Std``, ``Median``, ``IQR`` - Standard summary statistics for the perfusion values within this region
+ - ``Precision-weighted mean`` - The mean perfusion weighted by voxelwise precision (1/std.dev) estimates. This measure takes into account the confidence of the 
+   inference in the value returned for each voxel and is a standard measure used in meta-analysis to combine results of varying levels of confidence.
+ - ``I2`` - A measure of heterogeneity for the voxels within the region expressed as a percentage. A high value of I2 suggests that there is significant
+   variation in perfusion *within* the region that is not attributable to the inferred uncertainty in the estimates. For a definition of I2 and an overview
+   of its use in meta-analyses, see https://www.ncbi.nlm.nih.gov/pmc/articles/PMC192859/
+
+The regions defined are taken from the Harvard-Oxford cortical and subcortical atlases. Standard space regions are transformed to native ASL space and 
+voxels with probability fraction > 0.5 are considered to lie within a region. At least 10 voxels must be found in order for statistics to be presented.
+
+In addition, statistics are presented for 'generic' GM and WM regions. For each tissue type, two such regions are defined, one with 'some' of the
+tissue present (e.g. at least 10% GM), and one intended to capture 'pure' tissue types (e.g. at least 80% GM). Note that there is an overlap here with the 
+separate output files for GM and WM which are explicitly based on the 'pure' tissue type subregions.
+
 Usage
 -----
 
