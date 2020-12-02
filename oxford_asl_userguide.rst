@@ -1,11 +1,11 @@
-=========================
-Oxford ASL User Guide
-=========================
+=======================
+Command line User Guide
+=======================
 
 Overview
 --------
 
-Oxford_ASL is an automated command line utility that can process ASL
+``oxford_asl`` is an automated command line utility that can process ASL
 data to produce a calibrated map of resting state tissue perfusion. It
 also includes a range of other useful analysis methods inlcuding
 amongst others:
