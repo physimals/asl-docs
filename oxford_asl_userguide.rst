@@ -77,6 +77,8 @@ The inclusion of a structural image is optional but highly recommended, as vario
 --sbrain=<image>  Brain extracted (e.g., using ``bet``) version of the structural image.
 --fastsrc=<image_stub>  The results of a ``fast`` segmentation of the structural image. This option is an alternative to ``--fslanat`` for entering partial volume estimates (and bias field), in the same space as the structural image, into ``oxford_asl``. It presumes the images will be presented with the same naming syntax as a ``fast`` output, but any alternative source of partial volume estimates could be used.
 --senscorr  Instruct ``oxford_asl`` to use the bias field map from ``fsl_anat`` or ``fast`` for coil sensitivity correction where this hasn't been done on the scanner or there isn't a separate correction available.
+--region-analysis  Generate additional regional analysis of the perfusion map by registration of the image to standard space and comparison with regions in
+the Hardvard-Oxford standard atlas.
 
 **Calibration**
 
