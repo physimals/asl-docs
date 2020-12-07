@@ -17,7 +17,7 @@ practicals on:
 
   - `FSLeyes <https://www.youtube.com/watch?v=80d9FoqvuGo&list=PLvgasosJnUVku_GE64BfFuftEvh3Y8lHC&index=1>`_
   - `BET <https://www.youtube.com/watch?v=CcjBoqpgACc&index=1&list=PLvgasosJnUVku_GE64BfFuftEvh3Y8lHC>`_
-  - `FSL Utils <https://www.youtube.com/watch?v=7Ud6uBuxqXY&list=PLvgasosJnUVku_GE64BfFuftEvh3Y8lHC&index=2`_
+  - `FSL Utils <https://www.youtube.com/watch?v=7Ud6uBuxqXY&list=PLvgasosJnUVku_GE64BfFuftEvh3Y8lHC&index=2>`_
 
 The `FSL course <http://fsl.fmrib.ox.ac.uk/fslcourse/online_materials.html>`_
 provides a wide range of videos and practical
@@ -27,11 +27,12 @@ topics that will be covered (especially for the group analysis
 section).
 
 We would recommend familarity with:
-* Section 1: Image Registration and Distorition Correction (videos 1-5
-are all helpful)
-* Section 2: Segmentation and Structural Analysis (video 7 on FAST)
-* Section 4: Statistics & Task fMRI: Inference and Group Analysis (videos
-15-20 provide useful background on group analysis)
+
+ - Section 1: Image Registration and Distorition Correction (videos 1-5
+   are all helpful)
+ - Section 2: Segmentation and Structural Analysis (video 7 on FAST)
+ - Section 4: Statistics & Task fMRI: Inference and Group Analysis (videos
+   15-20 provide useful background on group analysis)
 
 Bayesian Inference for Arterial Spin Labelling MRI
 ==================================================
