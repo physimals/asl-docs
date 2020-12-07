@@ -52,7 +52,7 @@ Introduction
 
 .. raw:: html
 
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <div style="position: relative; height: 0; overflow: hidden; max-width: 100%; height: auto;">
       <iframe src="https://youtube.com/embed/grSeSiZZ8hE" frameborder="0" width="560" height="315"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
@@ -77,7 +77,7 @@ ASL acquisition
 
 .. raw:: html
 
-    <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <div  style="position: relative; height: 0; overflow: hidden; max-width: 100%; height: auto;">
       <iframe width="560" height="315" src="https://youtube.com/embed/PpUq7eX8KZA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
@@ -141,7 +141,7 @@ Analysis of ASL data
 
 .. raw:: html
 
-    <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <div  style="position: relative; height: 0; overflow: hidden; max-width: 100%; height: auto;">
       <iframe width="560" height="315" src="https://youtube.com/embed/baK7XRmmSOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
@@ -206,7 +206,7 @@ Further Quantification of ASL data
 
 .. raw:: html
 
-    <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <div  style="position: relative; height: 0; overflow: hidden; max-width: 100%; height: auto;">
       <iframe width="560" height="315" src="https://youtube.com/embed/yC46T4kvJKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
@@ -241,7 +241,7 @@ Group analysis using ASL data
 
 .. raw:: html
 
-    <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <div  style="position: relative; height: 0; overflow: hidden; max-width: 100%; height: auto;">
       <iframe width="560" height="315" src="https://youtube.com/embed/2zVQ7vYe73k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
@@ -269,7 +269,7 @@ Advanced analysis methods
 
 .. raw:: html
 
-    <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <div  style="position: relative; height: 0; overflow: hidden; max-width: 100%; height: auto;">
       <iframe width="560" height="315" src="https://youtube.com/embed/Pp-jRHpGrOQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
