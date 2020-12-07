@@ -2,6 +2,37 @@
 ASL Analysis Guide
 =============================
 
+Preparatory materials
+=====================
+
+If you are new to Neuroimaging or to FSL tools you might find the
+following resources helpful before looking at the material on ASL.
+
+If you are not particularly familar with MRI you might like to
+read a `Short Introduction to MRI Physics for Neuroimaging <http://www.neuroimagingprimers.org/online-appendices/>`_ 
+available via the neuroimagingprimers.org website.
+
+If you are new to FSL we recommend these three short introductory FSL 
+practicals on:
+
+  - `FSLeyes <https://www.youtube.com/watch?v=80d9FoqvuGo&list=PLvgasosJnUVku_GE64BfFuftEvh3Y8lHC&index=1>`_
+  - `BET <https://www.youtube.com/watch?v=CcjBoqpgACc&index=1&list=PLvgasosJnUVku_GE64BfFuftEvh3Y8lHC>`_
+  - `FSL Utils <https://www.youtube.com/watch?v=7Ud6uBuxqXY&list=PLvgasosJnUVku_GE64BfFuftEvh3Y8lHC&index=2`_
+
+The `FSL course <http://fsl.fmrib.ox.ac.uk/fslcourse/online_materials.html>`_
+provides a wide range of videos and practical
+exercises. Whilst you do not need to have looked at any of this before
+the BASIL course, you might find some of it helpful background for
+topics that will be covered (especially for the group analysis
+section).
+
+We would recommend familarity with:
+* Section 1: Image Registration and Distorition Correction (videos 1-5
+are all helpful)
+* Section 2: Segmentation and Structural Analysis (video 7 on FAST)
+* Section 4: Statistics & Task fMRI: Inference and Group Analysis (videos
+15-20 provide useful background on group analysis)
+
 Bayesian Inference for Arterial Spin Labelling MRI
 ==================================================
 
