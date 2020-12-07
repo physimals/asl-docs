@@ -2,14 +2,14 @@
 ASL Analysis Guide
 =============================
 
-This guide introduces some of the issues you may face in acquiring and
-analysing ASL data. It includes five pre-recorded video lectures as used
-in the BASIL course (FSL mini-course).
-
 .. image:: images/basil_perfusion.jpg
    :scale: 100 %
    :alt: BASIL perfusion image
    :align: right
+
+This guide introduces some of the issues you may face in acquiring and
+analysing ASL data. It includes five pre-recorded video lectures as used
+in the BASIL course (FSL mini-course).
 
 Preparatory materials
 =====================
@@ -52,8 +52,8 @@ Introduction
 
 .. raw:: html
 
-    <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="560" height="315" src="https://youtu.be/grSeSiZZ8hE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+      <iframe src="https://youtube.com/embed/grSeSiZZ8hE" frameborder="0" width="560" height="315"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 Arterial Spin Labeling (ASL) MRI is a non-invasive method for the quantification 
@@ -78,7 +78,7 @@ ASL acquisition
 .. raw:: html
 
     <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="560" height="315" src="https://youtu.be/PpUq7eX8KZA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://youtube.com/embed/PpUq7eX8KZA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 There are various parameters associated with an ASL acquisition. Some of which are 
@@ -142,7 +142,7 @@ Analysis of ASL data
 .. raw:: html
 
     <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="560" height="315" src="https://youtu.be/baK7XRmmSOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://youtube.com/embed/baK7XRmmSOk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 The generation of a perfusion-weighted image from ASL data is relatively simple, 
@@ -207,7 +207,7 @@ Further Quantification of ASL data
 .. raw:: html
 
     <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="560" height="315" src="https://youtu.be/yC46T4kvJKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://youtube.com/embed/yC46T4kvJKI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 For single delay ASL data kinetic model inversion is relatively trivial and 
@@ -242,7 +242,7 @@ Group analysis using ASL data
 .. raw:: html
 
     <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="560" height="315" src="https://youtu.be/2zVQ7vYe73k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://youtube.com/embed/2zVQ7vYe73k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 
@@ -270,7 +270,7 @@ Advanced analysis methods
 .. raw:: html
 
     <div  style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-      <iframe width="560" height="315" src="https://youtu.be/Pp-jRHpGrOQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://youtube.com/embed/Pp-jRHpGrOQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 There are a number of other analysis steps and processes that are specific to ASL, or 
