@@ -6,6 +6,11 @@ This guide introduces some of the issues you may face in acquiring and
 analysing ASL data. It includes five pre-recorded video lectures as used
 in the BASIL course (FSL mini-course).
 
+.. image:: images/basil_perfusion.jpg
+   :scale: 100 %
+   :alt: BASIL perfusion image
+   :align: right
+
 Preparatory materials
 =====================
 
