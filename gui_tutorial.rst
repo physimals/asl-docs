@@ -9,7 +9,7 @@ We will be working with single and multi-PLD data from the
 
 If you are taking part in an organized course the data will have been downloaded for you and available in::
 
-    data/fsl_course_data/ASL
+    ~/fsl_course_data/ASL
     
 .. note::
    If you are not taking part in a course you will need to download the following ASL data before following the tutorial:
@@ -80,7 +80,7 @@ To launch the GUI, open a terminal window by clicking on |terminal|. At the comm
 
 Once it has launched you will find yourself on the 'Input Data' tab, you should:
 
-  - Click 'Browse' and load the ASL data ``spld_asltc.nii.gz`` from ``data/fsl_course_data/ASL``
+  - Click 'Browse' and load the ASL data ``spld_asltc.nii.gz`` from ``~/fsl_course_data/ASL``
     as the 'Input Image'. 
   - Set the 'Number of PLDs', which in this case is 1, this is already done by default. 
   - Click the 'Update' button beneath the 'Data Preview' pane on the right. 
