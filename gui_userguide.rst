@@ -2,22 +2,31 @@
 GUI User Guide
 ==============
 
-The graphical user interface to the BASIL tools can be accessed by typing ``asl_gui`` at the command line. It should provide most of the options required for analysis of ASL data inlcuding the majority of the more advanced features of BASIL.
+The graphical user interface to the BASIL tools can be accessed by typing ``asl_gui`` at the command line. It should provide most of the options required 
+for analysis of ASL data inlcuding the majority of the more advanced features of BASIL.
 
-Note: if you are using a release of BASIL that you have installed separately from FSL you may need to specfically call ``asl_gui`` with the full path to where it is installed: e.g. ``/Users/{blah}/Downloads/oxford_asl/asl_gui``. This page documents the GUI avilable in FSL v6 (also available via the pre-release website), there are some differences with the GUI found in FSL v5.
+Note: if you are using a release of BASIL that you have installed separately from FSL you may need to specfically call ``asl_gui`` with the full path to
+ where it is installed: e.g. ``/Users/{blah}/Downloads/oxford_asl/asl_gui``. This page documents the GUI avilable in FSL v6 (also available via the 
+ pre-release website), there are some differences with the GUI found in FSL v5.
 
-The GUI largely provides a more approachable interface to the ``oxford_asl`` command line tool (and even produces a command line call for ``oxford_asl`` for you to reuse separately if you like). 
+The GUI largely provides a more approachable interface to the ``oxford_asl`` command line tool (and even produces a command line call for ``oxford_asl`` 
+for you to reuse separately if you like). 
 
-The GUI has five tabs, whose function are fairly self-explanatory. Each tab represents one step in the (notional) workflow for your ASL analysis and you can work through them using the prev/next buttons in the lowe right of each tab. For many analyses you will be able to accept many of the default options and you might find you do no need to even visit some of the later tabs.
+The GUI has five tabs, whose function are fairly self-explanatory. Each tab represents one step in the (notional) workflow for your ASL analysis and you 
+can work through them using the prev/next buttons in the lowe right of each tab. For many analyses you will be able to accept many of the default options
+and you might find you do no need to even visit some of the later tabs.
 
 - Input Data: Specify details of the ASL data here, this is also where oyu have to record details about the acquisition used.
-- Calibration: Specify your calibration image (if you have one), to be used to produce images of absolute perfision (in ml/100g/min). You can also choose to set options relating to the method for estimation of the equilibrium magnetization of arterial blood.
-- Structural: Specify a structural image, or the output of a previous run of ``fsl_anat``, to be used in the analysis process and for registration. Analysis can proceed without a structural iamge, but if you have one it is recommeded that you include it.
+- Calibration: Specify your calibration image (if you have one), to be used to produce images of absolute perfision (in ml/100g/min). You can also choose
+  to set options relating to the method for estimation of the equilibrium magnetization of arterial blood.
+- Structural: Specify a structural image, or the output of a previous run of ``fsl_anat``, to be used in the analysis process and for registration. 
+  Analysis can proceed without a structural iamge, but if you have one it is recommeded that you include it.
 - Distortion correction: If you have suitable images to do distortion correction of your ASL data you can include them here.
 - Analysis: Options relating to the analysis, primarily the kinetic model and the estimation process.
 
 
-More details on each tab are provided below. Note that some of the options available on each tab depend on what information is present in your data (set on the data tab). Thus your view of the tab might differ from the one shown here slightly.
+More details on each tab are provided below. Note that some of the options available on each tab depend on what information is present in your data 
+(set on the data tab). Thus your view of the tab might differ from the one shown here slightly.
 
 Input Data
 ----------
@@ -26,23 +35,39 @@ Input Data
 
 **Data contents**
 
-- *Input Image*:  A single 4D nifti file of the main ASL data (either label-control pairs or subtracted images), with the individual measurements in the 4th dimension.
+- *Input Image*:  A single 4D nifti file of the main ASL data (either label-control pairs or subtracted images), with the individual measurements 
+  in the 4th dimension.
 - *Numer of PLDs*: Set the number of post-label delays (or inversion times/inflow times) in the data.
-- *Number of repeats*: A value will be calculated here based on the number of PLDs you entered in the box above. Use this is a sanity check again the number of repeats you expect from your acquisition.
+- *Number of repeats*: A value will be calculated here based on the number of PLDs you entered in the box above. Use this is a sanity check again 
+  the number of repeats you expect from your acquisition.
 
 **Data order**
 
-- Grouping order: This specfies how different measurements are grouped within the data. (There are two options that you can indepdently set for this option). In the lower right of the tab is a visual guide, the *data order preview* for the ordering of the measurments in the data that might be helpful when setting these options.
-  
-  - For single PLD data you simply need to choose if the label and control images are interleaved (this is conventional) - *Label/Control pairs* - or if the first half of the data is all of the label images and the rest control - *repeats*. 
-  - For multi-PLD data there are more options, as there are label and control images, from a number of different PLDs, with each PLD having been repeated a number of times. It is conventional for label and control images to be interleaved - first option box *Label/Control pairs*. The second option box then either specifies that a full set of PLDs come in order as a group, with this grouping repeated multiple times (conventinoally how the data is acquired) - second option box *PLDs* - or if all of the repeated measurements of one PLD are grouped together, before the next - second option box *repeats*.
-  - The **data order preview**. To interpret this note that:
-  
-    - Control images are hatched to distinguish them from label
-    - The first appearance of a measurent at a given PLD appears in mauve (each PLD in a multi-PLD acquisition is given a different shade),
-    - Subsequent repeats of the same PLD are shown in green (again shading is used to denote different PLDs). 
+- Volumes grouped by: For multi-PLD data, this specifies whether the acquisition consisted of a full set of all PLDs, with the whole block repeated 
+  multiple times (Volumes grouped by ``Repeats``), or if the first PLD was repeated multiple times, followed by all repeats of the second PLD, and so 
+  on (Volumes grouped by ``TIs/PLDs``).
 
-- *Label-control pairs*: Sepcify whether the first volume is a label or a control image. You can also untick the box associated with this option if your data has already been label-control subtracted.
+- Label/control pairing: This specifies whether the label image was before the control or vice versa, or if the data is already subtracted.
+
+The choices selected here are reflected in the **data order preview** view, at the bottom right of the window. This gives a visual representation of
+the volumes in the input data. The horizontal axis represents the sequence of volumes in your data, and the boxes above shows the PLD, repeat and
+label/control corresponding to each volume.
+
+.. image:: images/aslgui_dataorder_preview1.png
+
+Data preview for single-PLD data with ``Label then control`` ordering and 48 repeats. Note that the 'Volumes grouped by' option makes no practical
+difference for single PLD data.
+
+.. image:: images/aslgui_dataorder_preview2.png
+
+Data preview for multi-PLD data with 6 PLDs, with ``Label then control `` ordering and volumes grouped by ``Repeats``. The first set of volumes 
+contains a single repeat of all the PLDs, followed by another block of all PLDs, etc.
+
+.. image:: images/aslgui_dataorder_preview3.png
+
+*Data preview for multi-PLD data with 6 PLDs, with ``Control then label `` ordering and volumes grouped by ``PLDs``. Note that the order of the 
+label and control images (the green ``L`` and ``C`` boxes) has changed, and the first set of volumes is 8 repeats of PLD1, followed by 8 repeats
+of PLD 2, etc.
 
 **Acquisition parameters**
 
@@ -55,23 +80,14 @@ Input Data
 - Readout: Specify if a full 3D or a 2D multi-slice acquisition was used. For 2D you should then set the time taken to acquire each slice (in miliseconds) as this determines the true PLD/TI for each slice.
 - Multi-band: Inlcude this option where the readout was a multi-band (simultaneous multi-slice) 2D acquisition, in which case you need to specify the number of slices in each band, to correctly set the PLD/TI for each slice.
 
-.. image:: images/aslgui_dataorder_preview.jpg
-
-*Data preview for a single-PLD label-control pair, repeated 20 times. Grouping order is* ``Label/Control pairs``
-
-.. image:: images/aslgui_dataorder_preview2.jpg
-
-*Data preview for a single-PLD label-control pair with repeats. The label is repeated 20 times, then the control is repeated 20 times. Grouping order is* ``Repeats``
-
-.. image:: images/aslgui_dataorder_preview3.jpg
-
-*Data preview for 4 PLDs. A set of 4 control-label pairs, one for each PLD, is repeated 5 times. Grouping order is* ``Label/Control pairs``, ``PLDs`` *using the* ``Control then label`` *setting*
-
 **Data preview - perfusion weighted image**
 
 .. image:: images/aslgui_preview.jpg
 
-On the right of the window is a preview pane. Once you have set the *Data contents* and *Data order* parameters you can press *preview* and the GUI will generate a perfuion-weighted image based on the information you have provided. This is a good sanity check to ensure that you have set these parameters correctly - if at this stage you dont see something that looks like a perfusion-weighted image - i.e., something in which the grey matter structure of the brain is evident - then you probably haven't set the ordering correctly. You can scroll through the slices in the image using your mouses' scroll wheel (or equivalent). Note that for multi-PLD data this preview averages all the different PLD.
+On the right of the window is a preview pane. Once you have set the *Data contents* and *Data order* parameters you can press *preview* and the GUI will generate a perfuion-weighted 
+image based on the information you have provided. This is a good sanity check to ensure that you have set these parameters correctly - if at this stage you dont see something that 
+looks like a perfusion-weighted image - i.e., something in which the grey matter structure of the brain is evident - then you probably haven't set the ordering correctly. You can 
+scroll through the slices in the image using your mouses' scroll wheel (or equivalent). Note that for multi-PLD data this preview averages all the different PLD.
 
 
 Structural
