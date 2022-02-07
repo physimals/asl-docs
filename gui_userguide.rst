@@ -31,7 +31,7 @@ More details on each tab are provided below. Note that some of the options avail
 Input Data
 ----------
 
-.. image:: images/aslgui_data.jpg
+.. image:: images/aslgui_data.png
 
 **Data contents**
 
@@ -60,12 +60,12 @@ difference for single PLD data.
 
 .. image:: images/aslgui_dataorder_preview2.png
 
-Data preview for multi-PLD data with 6 PLDs, with ``Label then control `` ordering and volumes grouped by ``Repeats``. The first set of volumes 
+Data preview for multi-PLD data with 6 PLDs, with ``Label then control`` ordering and volumes grouped by ``Repeats``. The first set of volumes 
 contains a single repeat of all the PLDs, followed by another block of all PLDs, etc.
 
 .. image:: images/aslgui_dataorder_preview3.png
 
-*Data preview for multi-PLD data with 6 PLDs, with ``Control then label `` ordering and volumes grouped by ``PLDs``. Note that the order of the 
+*Data preview for multi-PLD data with 6 PLDs, with ``Control then label`` ordering and volumes grouped by ``PLDs``. Note that the order of the 
 label and control images (the green ``L`` and ``C`` boxes) has changed, and the first set of volumes is 8 repeats of PLD1, followed by 8 repeats
 of PLD 2, etc.
 
@@ -82,7 +82,7 @@ of PLD 2, etc.
 
 **Data preview - perfusion weighted image**
 
-.. image:: images/aslgui_preview.jpg
+.. image:: images/aslgui_preview.png
 
 On the right of the window is a preview pane. Once you have set the *Data contents* and *Data order* parameters you can press *preview* and the GUI will generate a perfuion-weighted 
 image based on the information you have provided. This is a good sanity check to ensure that you have set these parameters correctly - if at this stage you dont see something that 
@@ -93,17 +93,17 @@ scroll through the slices in the image using your mouses' scroll wheel (or equiv
 Structural
 ------------
 
-.. image:: images/aslgui_struct.jpg
+.. image:: images/aslgui_struct.png
 
-- *Use FSL_ANAT output*: Recommended, use the output for a previous ``fsl_anat`` analysis to obtain stuctural image information.
-- *Use Structural Image*: Supply a high-resolution structural image (only if above option is deselected).
-- *Brain extraction*: Supply a brain extracted version of the structural image or request an ``fsl_anat`` analysis to be run for brain extraction.
-- *Transform to standard space*: Provide a linear matrix (``flirt``) or warp (``fnirt``) from structural image to standard space. Only required if an ``fsl_anat`` output is not available and results are required in standard space.
-  
+- *Structural Data From* - The recommended option is ``Existing FSL_ANAT output`` where you have already run FSL_ANAT on the structural image. Select the FSL_ANAT output
+  directory below. Alternatively you can supply a structural image and run FSL_ANAT on it as part of the analysis, however this will add quite a lot of runtime so it's better
+  to do it once and then just re-use the output. You can also avoid using FSL_ANAT at all and just supply your own structural image. If you have a brain segmentation you can
+  supply it (otherwise BET will be run), and you can supply an existing transformation to standard (MNI) space (either a linear FLIRT matrix transformation or a nonlinear FNIRT warp).
+
 Calibration
 -----------
 
-.. image:: images/aslgui_calib.jpg
+.. image:: images/aslgui_calib.png
 
 **Enable Calibration**
 
@@ -121,16 +121,16 @@ These options apply to the *Reference Region* mode of calibration.
 
 - *Type*: The reference tissue type to use, one of: *CSF/white matter/grey matter/none*. For the first three options a mask will be generated automatically from the structural image (if you have specfied one), otherwise (or alternatively) you should specify your own mask in the *Reference Tissue Mask* box (this should be in the same space as the ASL data). Generally CSF or white matter are good choices, avoid grey matter due to partial volume effects.
 - *Sequence TE*: This corrects for T2 differences between the reference tissue and the brain tissue (using a blood T2 value) based on the TE of the data (which is assumed to be the same as any calibration image).
-- *Reference T2/ Blood T2*: T2 values, these are only relevant if you specify the TE of your sequence. T2 of the reference deafults to a CSF value. These should be replaced by T2* values if appropriate.
 - *Reference T1*: T1 of the reference tissue.
-- *Coil Sensitivity Image*: Optionally inlcude an image of coil sensitivity to apply in the calibration process (same resolution as the ASL data). This is applicable where 'pre-scan normalise' or the equivalent hasn't been performed on the scanner when using parallel acquisition.
+- *Reference T2/Blood T2*: T2 values, these are only relevant if you specify the TE of your sequence. T2 of the reference deafults to a CSF value. These should be replaced by T2* values if appropriate.
 
 Distortion Correction
---------------------------------
+---------------------
 
-.. image:: images/aslgui_distcorr.jpg
+.. image:: images/aslgui_distcorr.png
 
-- *Apply distortion correction*: Select to apply correction for readout distortions in the ASL data using a suitable set of reference images. You will need either a *calibration image* with a different phase encoding direction to the main calibration image, or a *fieldmap*.
+- *Apply distortion correction*: Select to apply correction for readout distortions in the ASL data using a suitable set of reference images. You will need either a *calibration 
+  image* with a different phase encoding direction to the main calibration image, or a *fieldmap*.
 
 *Calibration image mode*
 
@@ -157,13 +157,13 @@ Distortion Correction
 Analysis
 --------
 
-.. image:: images/aslgui_analysis.jpg
+.. image:: images/aslgui_analysis.png
 
 **Basic analysis options**
 
 - *Output directory*: where to put the results.
-- *Brain Mask*: BASIL will try to create a brain mask for you using the available data, you may specify your own mask here (in the same space as the ASL data).
-- *Analysis which conforms to 'White Paper'*: sets kinetic model such that it mimics the assumptions made in the formula provided in the ASL consensus, 'white', paper.
+- *User-specified brain mask*: Normally, BASIL will try to create a brain mask for you using the available data, however you may specify your own mask here (in the same space 
+  as the ASL data).
 
 **Inital parameter values**
 
@@ -181,13 +181,34 @@ This section sets parameter values for the kientic model. In some cases these ar
 - *Fix label duration*: Takes the value for the label duration from the *Input Data* tab as fixed, turn off to estimate this from the data (the value on the data tab will be used as prior information in that case). You are most likely to want to deslect the option for pASL data, particularly where QUIPSSII/Q2TIPS has not been used to fix the label duration.
 - *Partial Voume Correction*: Correct for the different contributions from grey and white matter, and CSF to the perfusion image. This will produce separate grey and white matter perfusion maps.
 - *Motion Correction*: Uses ``mcflirt`` to perform motion correction of the ASL data (and the calibration image).
+- *Exchange/Dispersion model*: These are advanced options that affect the modelling of the blood/tissue compartments and the dispersion of the labelled blood bolus during transit.
 
-  
+**White paper mode**
+
+This option allows you to check if the analysis you have set up is compatible with the recommendations in the consensus paper (Alsop et al, 2014). This paper described a
+simple kinetic model for ASL analysis primarily designed for single-PLD data. While BASIL is capable of more complex modelling, particularly for multi-PLD data, it may be 
+useful for comparison to be able to perform an analysis that uses the white paper recommendations. Selecting this option allows the user to view and correct their options
+for this purpose.
+
+.. image:: images/aslgui_wpno.png
+
+.. image:: images/aslgui_wpreasons.png
+
+.. image:: images/aslgui_wpyes.png
+
+
 Output
 ------
 
-The outputs from the GUI are a perfusion image called ``perfusion.nii.gz``, which provides blood flow in relative (scanner) units, and an arrival time image called ``arrival.nii.gz`` for multi-PLD ASL. If a calibration image has been provided then a further image, ``perfusion_calib.nii.gz``, is also produced, which is a flow map in absolute units (ml/100g/min). Results in native ASL, structural and standard space will appear in the output directory within separate subdirectories. Where applicable transformation between spaces will also be saved, along with summary measures of perfusion in the ``native_space`` subdirectory if the structural information is availabe to calculate these.
+The outputs from the GUI are a perfusion image called ``perfusion.nii.gz``, which provides blood flow in relative (scanner) units, and an arrival time image called 
+``arrival.nii.gz`` for multi-PLD ASL. If a calibration image has been provided then a further image, ``perfusion_calib.nii.gz``, is also produced, which is a flow 
+map in absolute units (ml/100g/min). Results in native ASL, structural and standard space will appear in the output directory within separate subdirectories. Where 
+applicable transformation between spaces will also be saved, along with summary measures of perfusion in the ``native_space`` subdirectory if the structural information 
+is availabe to calculate these.
 
-If calibration was performed then a separate subdirectory will be created and will contain text file called ``M0b.txt`` that records the estimated M0 value from arterial blood if the reference region mode was use, otherwise an image will be supplied instead. For reference region calibration, if a manual reference tissue mask was not supplied then the automatically generated one will also be saved in as ``refmask.nii.gz``, you should inspect this to ensure that it is a reasonable mapping of the tissue you are using for the reference region (normally CSF in the ventricles).
+If calibration was performed then a separate subdirectory will be created and will contain text file called ``M0b.txt`` that records the estimated M0 value from arterial 
+blood if the reference region mode was use, otherwise an image will be supplied instead. For reference region calibration, if a manual reference tissue mask was not 
+supplied then the automatically generated one will also be saved in as ``refmask.nii.gz``, you should inspect this to ensure that it is a reasonable mapping of the 
+tissue you are using for the reference region (normally CSF in the ventricles).
 
 
