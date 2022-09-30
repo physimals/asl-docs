@@ -14,6 +14,7 @@ amongst others:
 - registration to a structural image (and thereby a template space)
 - partial volume correction
 - distorition correction
+- ROI analysis
 
 If you have ASL data to analyse, ``oxford_asl`` is most likely the tool
 you will want to use, unless you want a graphical user interface. In
@@ -23,7 +24,8 @@ call to ``oxford_asl``.
 What you will need
 -------------------------
 As a minimum to use ``oxford_asl`` all you need are some ASL data (label
-and control pairs). In practice you will also most probably want:
+and control pairs or already subtracted). In practice you will also most 
+probably want:
 
 - *a calibration image*: normally a proton-density-weighted image (or
   a close match) acquired with the same readout parameters as the main
@@ -100,11 +102,14 @@ to be aware of:
 Typical Usage
 -------------
 
+Typing ``oxford_asl`` with no options will give the basic usage information, further options are revealed by typing ``oxford_asl --more``.
+
+A typical processing run would usually look something like this:
+
     oxford_asl -i [asl_data] -o [output_dir] <data parameters> <analysis options> \
     -c [M0_calib] <calibration parameters> --fslanat [fsl_anat_output_dir]
 
 This command would analyse the ASL data, including calculation of perfusion in absolute (ml/100g/min) units using the calibration data, and register the results to the strcutural image, as well as producing perfusion maps in MNI152 standard space. In general, the use of an fsl_anat analysis of a structural image with ``oxford_asl`` is recommended, but it is not required: perfusion can be calculated in the native space without the structural information.
-
 
 Output
 ------
@@ -123,42 +128,11 @@ Various subdirectories are created:
 
 If you find the registration to be unsatisfactory, a new registration can be performed without having to repeat the main analysis using the results in ``native_space``.
 
-Region analysis
-~~~~~~~~~~~~~~~
 
-If the ``--region-analysis`` option is specified an additional directory ``native_space/region_analysis`` will be created containing three files:
+Detailed usage information
+--------------------------
 
- - ``region_analysis.csv`` - This file contains region analysis for all voxels within the brain mask
- - ``region_analysis_gm.csv`` - This file contains sub-region analysis for all voxels with at least 80% GM (i.e. near 'pure' GM voxels)
- - ``region_analysis_wm.csv`` - This file contains sub-region analysis for all voxels with at least 90% WM (i.e. near 'pure' WM voxels)
- 
-Region analysis is performed by using the registration from the structural image to standard space from an ``fsl_anat`` run. Hence ``--fslanat`` must
-be used in order to run region analysis.
-
-The output files are in comma-separated format, suitable for loading into most spreadsheet or data processing applications. Within each region the following information is presented:
-
- - ``Nvoxels`` - The number of voxels identified as being within this region
- - ``Mean``, ``Std``, ``Median``, ``IQR`` - Standard summary statistics for the perfusion values within this region
- - ``Precision-weighted mean`` - The mean perfusion weighted by voxelwise precision (1/std.dev) estimates. This measure takes into account the confidence of the 
-   inference in the value returned for each voxel and is a standard measure used in meta-analysis to combine results of varying levels of confidence.
- - ``I2`` - A measure of heterogeneity for the voxels within the region expressed as a percentage. A high value of I2 suggests that there is significant
-   variation in perfusion *within* the region that is not attributable to the inferred uncertainty in the estimates. For a definition of I2 and an overview
-   of its use in meta-analyses, see https://www.ncbi.nlm.nih.gov/pmc/articles/PMC192859/
-
-The regions defined are taken from the Harvard-Oxford cortical and subcortical atlases. Standard space regions are transformed to native ASL space and 
-voxels with probability fraction > 0.5 are considered to lie within a region. At least 10 voxels must be found in order for statistics to be presented.
-
-In addition, statistics are presented for 'generic' GM and WM regions. For each tissue type, two such regions are defined, one with 'some' of the
-tissue present (e.g. at least 10% GM), and one intended to capture 'pure' tissue types (e.g. at least 80% GM). Note that there is an overlap here with the 
-separate output files for GM and WM which are explicitly based on the 'pure' tissue type subregions.
-
-Usage
------
-
-Typing ``oxford_asl`` with no options will give the basic usage information, further options are revleaed by typing ``oxford_asl --more``.
-
--i <asl_data>  ASL data with the individual ASL images stacked in the time (4th) dimension.
--o <output_directory>  (optional)  places the results in a different directory to the current working directory.
+This section contains a more in-depth look at some of the options available in oxford_asl
 
 **Main options**
 
@@ -248,7 +222,6 @@ There are some extended options (to be used alongside a structural image) for th
 --noiseprior  Use the in-built informative prior for noise estimation. This is particuarly useful where you only have a small number of repeats/volumes in the main ASL data (e.g., if your data has already been averaged before you get it). This provides information to ``basil`` about the typical noise present in ASL data and helps with the application of appropriate spatial regularisation.
 --noisesd  The standard deviation of the noise as described by the noise prior, overrides the values set internally and needs to be of the form of the standard deviation of the noise relative to the magnitude of the ASL data (only for very advanced use).
 
-
 **Distortion Correction**
 
 Distortion correction for (EPI) ASL images follows the methodology used in BOLD EPI distortion correction.
@@ -294,3 +267,76 @@ The data can also be analysed as separate epochs based on the different measurem
 
 --elen  Length of each epoch in TIs.
 --eol   Overlap of each epoch in TIs (default is 0).
+
+**Region analysis**
+
+Region analysis involves the generation of summary statistics for perfusion and arterial
+transit time within defined brain regions, either from standard atlases or from ROI images
+supplied by the user.
+
+*Basic region analysis with oxford_asl*
+
+If the ``--region-analysis`` option is specified an additional directory ``native_space/region_analysis`` will be created containing three files:
+
+ - ``region_analysis.csv`` - This file contains region analysis statistics for all voxels within the brain mask
+ - ``region_analysis_gm.csv`` - This file contains region analysis statistics for grey matter
+ - ``region_analysis_wm.csv`` - This file contains region analysis statistics for white matter
+
+Region analysis is performed by using the registration from the structural image to standard space from an ``fsl_anat`` run. Hence ``--fslanat`` must
+be used in order to run region analysis.
+
+The output files are in comma-separated format, suitable for loading into most spreadsheet or data processing applications. Within each region the following information is presented:
+
+ - ``Nvoxels`` - The number of voxels identified as being within this region
+ - ``Mean``, ``Std``, ``Median``, ``IQR`` - Standard summary statistics for the perfusion values within this region
+ - ``Precision-weighted mean`` - The mean perfusion weighted by voxelwise precision (1/std.dev) estimates. This measure takes into account the confidence of the 
+   inference in the value returned for each voxel and is a standard measure used in meta-analysis to combine results of varying levels of confidence.
+ - ``I2`` - A measure of heterogeneity for the voxels within the region expressed as a percentage. A high value of I2 suggests that there is significant
+   variation in perfusion *within* the region that is not attributable to the inferred uncertainty in the estimates. For a definition of I2 and an overview
+   of its use in meta-analyses, see https://www.ncbi.nlm.nih.gov/pmc/articles/PMC192859/
+
+*Definition of grey/white matter voxels*
+
+The definition of the included data for GM/WM output files varies according to whether or not you
+have included partial volume correction in your oxford_asl run.
+
+If you have **not** used partial volume correction then GM voxels are derived from the structural
+segmentation and by default includes voxels with at least 80% GM. This threshold can be modified 
+using the ``--gm-thresh`` option. WM voxels are those with at least 90% WM, and again this can be
+modified using ``--wm-thresh``. The intention here is to restrict the statistics to those voxels
+which are near-enough 'pure' GM/WM.
+
+If you **do** have partial volume correction, then oxford_asl will have generated separate perfusion
+maps for GM and WM which (in principle) only contains the perfusion contribution from these components.
+We use these single-tissue perfusion maps to generate the GM/WM statistics. However a base threshold
+of 10% is used to remove voxels that contain very little of the selected tissue type, e.g. the GM
+stats will ignore voxels with less than 10% GM. This is because the GM perfusion estimates in such voxels
+will have very high uncertainty and could bias the statistics.
+
+*Standard regions*
+
+By default, statistics are generated for a standard set of regions as follows:
+
+GM and WM segmentation maps are used to define 'pure' GM and WM ROIs thresholded at 80% and 90% respectively.
+Note that these regions are included in all data files regardless of whether partial volume correction was
+performed, and are independent of the separation of voxels into GM and WM described above.
+
+A second set of GM and WM ROIs are included based on 10%+ thresholding - i.e. regions including *some* of the
+corresponding tissue type.
+
+A further set of standard regions are taken from the Harvard-Oxford cortical and subcortical atlases. 
+Standard space regions are transformed to native ASL space and voxels with probability fraction > 0.5 
+are considered to lie within a region. At least 10 voxels must be found in order for statistics to be 
+presented.
+
+*Using user-specified ROIs*
+
+In many cases users will want to provide their own ROIs to generate statistics in. This is supported
+via the ``--region-analysis-atlas`` option. This option can contain one or more image files (comma
+separated) each of which contains a 3D label image in MNI space. Each voxel contains an integer label
+and each unique integer > 1 defines a region in which to generate statistics.
+
+To make the output more readable you can specify the names of the regions for each atlas using the 
+``--region-analysis-atlas-labels`` option. Again this should be one or more file names (comma separated)
+and each file contains a list of text labels, one per line. The number of labels should be equal to the
+number of regions defined in the corresponding atlas image.
