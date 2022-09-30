@@ -135,8 +135,8 @@ Distortion Correction
 *Calibration image mode*
 
 - *Phase encode reversed calibration image*: An image that matches the calibration image in all acquisition parameters, except that the phase-encode direction is reversed.
-- *Effective EPI echo spacing*: Set this value from the sequence in seconds (typical values are of the order of 0.1 ms).
-- *Phase encode direction*: The phase encode direction of the calibration image (i.e. the image entered on the *Calibration* tab).
+- *Effective EPI echo spacing*: Set this value from the sequence in seconds (typical values are of the order of 0.01 ms).
+- *Phase encode direction*: The phase encode direction of the calibration image (i.e. the image entered on the *Calibration* tab) and must match that of the main ASL data.
 
   Note that in this mode ``oxford_asl`` uses TOPUP_ to do the distortion correction. For this, the Effective EPI echo spacing is converted to total readout time by multiplication by the number of slices (minus one) in the encode direction.
 
@@ -144,13 +144,13 @@ Distortion Correction
   
 *Fieldmap mode*
 
-- *Effective EPI echo spacing*: Set this value from the sequence in seconds (sometimes called the dwell time), typical values are of the order of 0.1 ms.
-- *Phase encode direction*: The phase encode direction of the calibration image (entered on the *Calibration* tab).
+- *Effective EPI echo spacing*: Set this value from the ASL sequence in seconds (sometimes called the dwell time), typical values are of the order of 0.01 ms.
+- *Phase encode direction*: The phase encode direction of the ASL images (entered on the *Calibration* tab).
 - *Fieldmap image*: A fieldmap image (need not necessarily matched to the ASL nor structural image resolution) in rad/s - be careful about the units, as this is not consistent between neuroimaging tools.
 - *Fieldmap magnitude image*: A magntiude image to go with the fieldmap, this is used for registration of the fieldmap.
 - *Brain extracted fieldmap magntiude image*: Brain extracted version of above image.
 
-  For more information on fieldmapping see the documentation associated with FUGUE_ (note the fieldmap correction in the BASIL GUI is akin to using FEAT for fieldmap correction and uses ``epi_reg``, albeit in a way specfically setup for ASL data).
+  For more information on fieldmapping see the documentation associated with FUGUE_ (note the fieldmap correction in the BASIL GUI is akin to using FEAT for fieldmap correction and uses ``epi_reg``, albeit in a way specfically setup for ASL data). A common choioce for phase encoding is Anterior Posterior (AP), which would normally tranlsate into 'y'. However, whether this is '+y' or '-y' isn't necessiarly preditable and you might need to try both and see which one visibly makes the distortion worse (and then use the other!)
 
 .. _FUGUE: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE/Guide#SIEMENS_data
 
