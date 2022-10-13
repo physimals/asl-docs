@@ -128,6 +128,30 @@ Various subdirectories are created:
 
 If you find the registration to be unsatisfactory, a new registration can be performed without having to repeat the main analysis using the results in ``native_space``.
 
+**Calibrated output**
+
+If calibration is enabled, calibrated perfusion outputs are available with the suffix ``_calib``. These contain quantified perfusion in ml/100g/min
+
+**Whole-brain averages**
+
+Within the ``native_space`` subdirectory, several whole-brain average values are defined:
+
+ - ``<output>_gm_mean``: These are averages values in pure GM which by default is defined as voxels with more than 80% GM partial volume. This
+ threshold can be modified using the ``--gm-thresh`` option
+ - ``<output>_wm_mean``: These are averages values in pure WM which by default is defined as voxels with more than 90% WM partial volume. This
+ threshold can be modified using the ``--wm-thresh`` option
+ - ``<output>_cortical_gm_mean``: These are average values in cortical GM which is defined as 'pure GM' voxels (see above) that are included in 
+ the Harvard-Oxford atlas Left/Right cortical mask (i.e. excluding subcortical GM).
+ - ``<output>_cerebral_wm_mean``: These are average values in cerebral WM which is defined as 'pure WM' voxels (see above) that are included in 
+ the Harvard-Oxford atlas Left/Right cortical mask (i.e. excluding subcortical WM).
+
+**Normalized output **
+
+In all spaces, normalized output is produced, regardless of whether calibrated output is also being generated. Normalized output is generated
+by dividing the relative perfusion values by one of the whole brain averages defined above.
+
+ - ``perfusion_norm`` - This is perfusion normalized by whole brain mean pure GM (perfusion_gm_mean)
+ - ``perfusion_wm_norm`` - When partial volume correction is enabled, this is WM perfusion normalized by whole brain mean pure WM (perfusion_wm_mean)
 
 Detailed usage information
 --------------------------
