@@ -44,7 +44,7 @@ probably want:
   they offer particular advantages if you have multi-delay/PLD data.
 
 Things to note
--------------------------
+--------------
 To produce the most robust analysis possible ``oxford_asl`` includes a
 number of things in the overall analysis pipeline that you might want
 to be aware of:
@@ -292,7 +292,8 @@ The data can also be analysed as separate epochs based on the different measurem
 --elen  Length of each epoch in TIs.
 --eol   Overlap of each epoch in TIs (default is 0).
 
-**Region analysis**
+Region analysis
+---------------
 
 Region analysis involves the generation of summary statistics for perfusion and arterial
 transit time within defined brain regions, either from standard atlases or from ROI images
