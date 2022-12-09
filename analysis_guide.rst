@@ -7,7 +7,11 @@ ASL Analysis Guide
    :alt: BASIL perfusion image
    :align: right
 
-This guide introduces the essential concepts you need to understand when acquiring and
+Perfusion Quantification using Arterial Spin Labelling MRI
+==========================================================
+
+Arterial Spin Labeling (ASL) MRI is a non-invasive method for the quantification 
+of perfusion. This guide introduces the essential concepts you need to understand when acquiring and
 analysing ASL data, as well as more advanced analysis techniques you
 might exploit when aiming for higher accuracy and senstivity when
 using ASL in a study.
@@ -21,7 +25,7 @@ The guide includes five pre-recorded video lectures that are used
 in the BASIL course (an FSL mini-course).
 
 Preparatory materials
-=====================
+---------------------
 
 If you are new to Neuroimaging or to FSL tools you might find the
 following resources helpful before looking at the material on ASL.
@@ -46,14 +50,10 @@ We would recommend familarity with:
  - Section 4: Statistics & Task fMRI: Inference and Group Analysis (videos
    15-20 provide useful background on group analysis)
 
-Perfusion Quantification using Arterial Spin Labelling MRI
-==================================================
+Introductory video
+------------------
 
-Introduction
-------------
-
-Arterial Spin Labeling (ASL) MRI is a non-invasive method for the quantification 
-of perfusion. In this introductory video we examine what perfusion is
+In this video we examine what perfusion is
 and why we might be interested in measuring it in the brain. We
 briefly consider alternative established perfusion imaging techniques
 to understand when and where we might use ASL. Finally, we introduce
@@ -64,8 +64,6 @@ the BASIL toolbox, avaiable as part of FSL.
     <div style="position: relative; height: 0; overflow: hidden; max-width: 100%; height: auto;">
       <iframe src="https://youtube.com/embed/grSeSiZZ8hE" frameborder="0" width="560" height="315"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-
-
 
 ASL acquisition
 ---------------
@@ -130,7 +128,7 @@ high flow in the
 labelling region.
 
 Readout
-~~~~~~~~~~~~~~
+~~~~~~~
 
 A variety of readouts can be combined with ASL labelling to acquire
 ASL data. The important distinction is between (multi-slice) 2D and 3D
@@ -138,7 +136,7 @@ readouts, since in the former the later time of acquisition of mroe
 superior slices needs to be acocunted for in the quantification.
 
 Background Suppression
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 It is common for background suppression to be applied in an ASL
 acquistion to suppress signal not associated with labeled-blood water
@@ -243,7 +241,7 @@ for the model inversion, this provides a number of advantages:
  - Correction for partial volume effects (where the appropriate segmentation 
    information is available).
 
-   Spatial regularization
+Spatial regularization
 ~~~~~~~~~~~~~~~~~~~~~~
 
 BASIL can apply a spatial regularisation to the estimated perfusion image and this is 
@@ -294,7 +292,7 @@ strategies and BASIL always produces images in the native space of the
 data, so that registration can be revisted at a later point.
 
 Advanced Analysis
--------------------------
+-----------------
 
 In the previous sections we have consider what is needed to get a
 quantative perfusion image out of ASL data. There are a series of
@@ -415,7 +413,7 @@ be estimated from the flow velocity information.
 To analyse Turbo-QUASAR in BASIL, you can the TOAST command line tool.
 
 Further Reading
-===============
+---------------
 
 To learn more about ASL, acquisition choices, the
 principles of analysis and how perfusion images can be used in group
