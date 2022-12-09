@@ -12,8 +12,8 @@ processing ASL data and also individual tools for more bespoke analysis.
    :maxdepth: 2
 
    analysis_guide
-   tutorials
    overview
+   tutorials
    gui_userguide
    oxford_asl_userguide
    tools
