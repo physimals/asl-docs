@@ -329,7 +329,7 @@ directory:
 Different model and calibration choices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Thus far the calibration to get perfsion in units of ml/100g/min
+Thus far the calibration to get perfusion in units of ml/100g/min
 has been done using a voxelwise division of the realtive perfusion
 image by the (suitably corrected) calibration image - so called
 'voxelwise' calibration. This is in keeping with the recommendations
@@ -470,7 +470,7 @@ whole new analysis as we are moving on to a new set of data and not
 reuse any GUI you already have open. On the
 'Input Data' tab, for the 'Input Image' load
 ``mpld_asltc.nii.gz``. Unlike the single-PLD data, we need to specify the correct number
-of PLD, which is 6. At this point the 'Number of repeats' should
+of PLDs, which is 6. At this point the 'Number of repeats' should
 correctly read 8. Click 'Update' below the 'Data preview pane'. A
 perfusion-weighted image should appear - this is an average over all
 the PLDs (and will thus look different to Example 1).
@@ -518,7 +518,7 @@ the timeseries: the raw intensity of both label and control images
 for one PLD are different to those from another PLD (due to the
 background suprresion). THe timeseries for the raw data looks like a
 series of steps, indicating the repeated measurements from each PLD
-are grouped together (groubed by 'repeats').
+are grouped together (grouped by 'repeats').
 
 Once we are happy with the PWI and data order, we can set the
 'Acquisition parameters':
@@ -531,7 +531,7 @@ Once we are happy with the PWI and data order, we can set the
 The input tab should appear as follows:
 
 .. image:: images/input_mpld.png
-    :alt: BASIL GUI Calibration
+    :alt: BASIL GUI Multi-PLD Input
 
 Move to the 'Calibration' tab, select 'Enable Calibration' and as
 the 'Calibration Image' load the ``aslcalib.nii.gz`` image
