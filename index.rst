@@ -24,6 +24,10 @@ References
 If you employ BASIL in your research please reference the article below, plus any others 
 that specifically relate to the analysis you have performed:
 
+ - *Michael A. Chappell, Thomas F. Kirk, Martin S. Craig, Flora A. Kennedy McConnell, Moss Y. Zhao, Bradley J. MacIntosh, Thomas W. Okell, Mark W. Woolrich; BASIL: A toolbox for perfusion quantification using arterial spin labelling. Imaging Neuroscience 2023; 1 1–16. doi: https://doi.org/10.1162/imag_a_00041*
+
+For detail of the Variational Bayes method employed in Basil:
+
  - *Chappell MA, Groves AR, Whitcher B, Woolrich MW. Variational Bayesian inference for a non-linear forward model. IEEE Transactions on Signal Processing 57(1):223-236, 2009.*
 
 If you employ spatial regularisation (priors) you should ideally reference this article too:
