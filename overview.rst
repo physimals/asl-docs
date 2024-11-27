@@ -14,8 +14,8 @@ who want to do processing of ASL data.
 
  - ``oxford_asl`` - A command line interface for most common ASL perfusion analysis.
 
-Individual analysis components
-------------------------------
+Individual analysis tools
+-------------------------
 
 These are designed to perform a specific task in the analysis of ASL data. In many cases
 the higher-level tools will call them when required, however they can also be used individually
