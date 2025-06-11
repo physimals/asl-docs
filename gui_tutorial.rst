@@ -5,7 +5,7 @@ This tutorial demonstrates some of the common options available in the
 Basil GUI.
 
 We will be working with single and multi-PLD data from the 
-`FSL tutorial on Arterial Spin Labelling <https://fsl.fmrib.ox.ac.uk/fslcourse/lectures/practicals/ASLpractical/index.html>`_.
+FSL tutorial on Arterial Spin Labelling.
 
 If you are taking part in an organized course the data will have been downloaded for you and available in::
 
@@ -202,8 +202,11 @@ model inversion has been applied to it, this is the image
 pre-calibration.
 
 .. note::
-    If you want to view any of the output log files you can use the 
-    ``gedit`` text editor - just type ``gedit`` from a terminal window
+    If you want to view the output log files you can use any 
+    text editor - some examples are ``gedit``, ``mousepad`` or ``code``.
+    You can run these from a terminal window if they are installed,
+    or look through the applications menus to find another text
+    editor
 
 Improving the Perfusion Images from single PLD pcASL
 ----------------------------------------------------
@@ -419,7 +422,7 @@ click 'Run' at this point becuase partial volume correction takes
 substantially longer to run.
 
 You will find the results of this analysis already completed for
-you in the directory ``~/fsl_course_data/ASL/basil_spld_pvout``. In this results directory you will still find an analysis performed
+you in the directory ``~/fsl_course_data/ASL/oxasl_spld_pvout``. In this results directory you will still find an analysis performed
 without partial volume correction in ``basil/native_space``
 as before. The results of partial volume correction can be found in
 ``basil/native_space/pvcorr``. This new subdirectory has the
@@ -622,7 +625,7 @@ wish to click 'Run' right now.
 
 You will find the results of this analysis already completed for
 you in the directory
-``~/fsl_course_data/ASL/basil_mpld_pvout``. This results directory contains, as a further subdirectory, ``pvcorr``,
+``~/fsl_course_data/ASL/oxasl_mpld_pvout``. This results directory contains, as a further subdirectory, ``pvcorr``,
 within the ``native_space`` subdirectory, the partial volume
 corrected results: gray matter (``perfusion_calib.nii.gz``
 etc) and white matter perfusion
