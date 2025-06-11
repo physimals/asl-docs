@@ -4,7 +4,7 @@
 
 # -- General configuration ------------------------------------------------
 
-extensions = []
+extensions = ["sphinx_rtd_theme",]
 templates_path = ['_templates']
 
 # General information about the project.
