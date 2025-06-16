@@ -364,6 +364,9 @@ Region'. Now all of the 'Reference tissue' options will become
 available, but leave these as they are: we will accept the default
 option of using the CSF (in the ventricles) for calibration.
 
+.. image:: images/calib_refregion.png
+    :alt: BASIL GUI Calibration
+
 You could click 'Run' now and wait for the analysis to
 complete. But, in the interests of time we will save ourselves the
 bother of doing all of the registration all over again. Before
@@ -373,10 +376,6 @@ clicking run, therefore, do:
     ``csfmask.nii.gz`` from the data directory. This is a ready
     prepared ventricular mask for this subject. (in fact it is precisely
     the mask you would get if you ran the analysis as setup above). 
-    
-.. image:: images/calib_refregion.png
-    :alt: BASIL GUI Calibration
-
   - Go back to the 'Structure' tab and choose 'None' for 'Structural
     data from'. This will turn off all of the registration
     processes. 
