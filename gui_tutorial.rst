@@ -407,7 +407,7 @@ Partial Volume Correction
 Having dealt with structural image, and in the process obtained
 partial volume estimates, we are now in a position to do partial
 volume correction. This does more than simply attempt to estimate
-the mean perfusion within the grey matter, but attempts to derive and
+the mean perfusion within the grey matter, but attempts to derive an
 image of gray matter perfusion directly (along with a separate image
 for white matter).
 
@@ -519,9 +519,9 @@ correct, so always check carefully. One way to do this, in this
 case, would be to open the data in ``fsleyes`` and look at
 the timeseries: the raw intensity of both label and control images
 for one PLD are different to those from another PLD (due to the
-background suprresion). THe timeseries for the raw data looks like a
+background suprresion). The timeseries for the raw data looks like a
 series of steps, indicating the repeated measurements from each PLD
-are grouped together (grouped by 'repeats').
+are grouped together (grouped by 'PLDs').
 
 Once we are happy with the PWI and data order, we can set the
 'Acquisition parameters':
